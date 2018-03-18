@@ -1,0 +1,27 @@
+uuid: 8b981384-a171-4348-b0d1-30bf3dca049f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_attachments
+    - node.type.event
+  module:
+    - file
+id: node.event.field_event_attachments
+field_name: field_event_attachments
+entity_type: node
+bundle: event
+label: 'Forms & Documents'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf doc docx xls xslx ppt pptx jpg png gif pages numbers ics'
+  max_filesize: ''
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
