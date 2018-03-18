@@ -1,0 +1,38 @@
+node.type.*.third_party.hide_revision_field:
+  type: mapping
+  label: 'Hide Revision Field'
+  mapping:
+    hide:
+      type: boolean
+      label: 'Whether to show the revision field on this node type.'
+    personalizable:
+      type: boolean
+      label: 'Whether to enable users to personalize this setting (via their user page).'
+    personalization:
+      type: sequence
+      label: 'User specific personalization of revision vield visibiity.'
+      sequence:
+        type: mapping
+        mapping:
+          hide:
+            type: boolean
+            label: 'User specific version of whether to show the revision field on this node type.'
+media_entity.bundle.*.third_party.hide_revision_field:
+  type: mapping
+  label: 'Hide Revision Field'
+  mapping:
+    hide:
+      type: boolean
+      label: 'Whether to show the revision field on this media bundle.'
+    personalizable:
+      type: boolean
+      label: 'Whether to enable users to personalize this setting (via their user page).'
+    personalization:
+      type: sequence
+      label: 'User specific personalization of revision vield visibiity.'
+      sequence:
+        type: mapping
+        mapping:
+          hide:
+            type: boolean
+            label: 'User specific version of whether to show the revision field on this media bundle.'

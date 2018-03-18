@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for Hide Revision Field.
+ */
+
+use Drupal\user\RoleInterface;
+
+/**
+ * Implements hook_install().
+ */
+function hide_revision_field_install() {
+  user_role_grant_permissions(RoleInterface::ANONYMOUS_ID, array('view revision field'));
+}

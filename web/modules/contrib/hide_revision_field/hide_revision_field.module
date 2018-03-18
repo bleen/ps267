@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * @file hide_revision_field.module
+ * Manages hiding revision information fields on revisionable entities
+ * (ie Node or Media) edit/create forms.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Alter entity bundle forms to add checkbox to control visibility of revision
+ * information fields per bundle.
+ * Also alter entity create/edit forms to disable the visibility of revision
+ * information field if it is disabled for the bundle.
+ */
+function hide_revision_field_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['node_type_edit_form', 'media_bundle_edit_form'])) {
+    $entity = $form_state->getFormObject()->getEntity();
+    $form['workflow']['hide_revision_fieldset'] = [
+      '#type' => 'fieldset',
+      '#title' => t('Revision Field Visibility'),
+      'hide_revision_field' => [
+        '#type' => 'checkbox',
+        '#title' => t('Hide'),
+        '#default_value' => $entity->getThirdPartySetting('hide_revision_field', 'hide', 0),
+      ],
+      'hide_revision_field_personalizable' => [
+        '#type' => 'checkbox',
+        '#title' => t('Allow Per User Settings'),
+        '#default_value' => $entity->getThirdPartySetting('hide_revision_field', 'personalizable', TRUE),
+      ],
+    ];
+
+    $form['#entity_builders'][] = 'hide_revision_field_bundle_builder';
+  }
+  $info = $form_state->getBuildInfo();
+  if (isset($info['base_form_id']) && in_array($info['base_form_id'], ['node_form', 'media_form'])) {
+    // Check the user has permissions to view revision fields.
+    if (!\Drupal::currentUser()->hasPermission('view revision field')) {
+      $form['revision_information']['#access'] = FALSE;
+      return;
+    }
+
+    switch($info['base_form_id']) {
+      case 'node_form':
+        $type = 'node_type';
+        break;
+      case 'media_form':
+        $type = 'media_bundle';
+        break;
+    }
+    $bundle = entity_load($type, $form_state->getFormObject()->getEntity()->bundle());
+    if ($user_id = \Drupal::currentUser()->id() && $bundle->getThirdPartySetting('hide_revision_field', 'personalizable', TRUE)) {
+      $personalization = $bundle->getThirdPartySetting('hide_revision_field', 'personalization');
+      if (isset($personalization[$user_id])) {
+        if ($personalization[$user_id]['hide']) {
+          $form['revision_information']['#access'] = FALSE;
+        }
+        return;
+      }
+    }
+    if ($bundle->getThirdPartySetting('hide_revision_field', 'hide')) {
+      $form['revision_information']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Entity form builder for bundle forms to save value to 3rd party settings.
+ */
+function hide_revision_field_bundle_builder($entity_type, ConfigEntityInterface $type, &$form, FormStateInterface $form_state) {
+  $type->setThirdPartySetting('hide_revision_field', 'hide', $form_state->getValue('hide_revision_field'));
+  $type->setThirdPartySetting('hide_revision_field', 'personalizable', $form_state->getValue('hide_revision_field_personalizable'));
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add the personalizable settings to an individual user's account page.
+ *
+ * @see \Drupal\user\ProfileForm::form()
+ */
+function hide_revision_field_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  // Ensure user has necessary permission.
+  if (!\Drupal::currentUser()->hasPermission('administer personalized revision visibilty')) {
+    return;
+  }
+  $user_id = $form_state->getFormObject()->getEntity()->id();
+  if (!isset($form['entity_options'])) {
+    $form['entity_options'] = [
+      '#type' => 'details',
+      '#title' => t('Entity Personalization'),
+      '#tree' => TRUE,
+      '#open' => FALSE,
+      '#weight' => 10,
+    ];
+  }
+
+  $types = [
+    'node_type' => [
+      'title' => t('Content'),
+      'access' => 'node',
+    ],
+    'media_bundle' => [
+      'title' => t('Media'),
+      'access' => 'media',
+    ],
+  ];
+
+  foreach ($types as $type => $type_data) {
+    // Ensure that the entity type exists for this install.
+    if (!\Drupal::entityTypeManager()->hasDefinition($type)) {
+      continue;
+    }
+    if (!isset($form['entity_options'][$type])) {
+      $form['entity_options'][$type] = [
+        '#title' => $type_data['title'],
+        '#type' => 'details',
+        '#open' => TRUE,
+      ];
+    }
+    foreach (\Drupal::entityTypeManager()->getStorage($type)->loadMultiple() as $bundle) {
+      // Filter by entity access permission.
+      if (!\Drupal::entityTypeManager()->getAccessControlHandler($type_data['access'])->createAccess($bundle->id())) {
+        continue;
+      }
+
+      // Filter by entity settings.
+      if (!$bundle->getThirdPartySetting('hide_revision_field', 'personalizable', TRUE)) {
+        continue;
+      }
+      $label = $bundle->label();
+      $id = $bundle->id();
+      $defaults = $bundle->getThirdPartySetting('hide_revision_field', "personalization");
+      if (!isset($defaults[$user_id])) {
+        $defaults[$user_id] = [
+          'hide' => $bundle->getThirdPartySetting('hide_revision_field', 'hide', FALSE),
+        ];
+      }
+      if (!isset($form['entity_options'][$type][$id])) {
+        $form['entity_options'][$type][$id] = [
+          '#title' => $label,
+          '#type' => 'details',
+          '#tree' => TRUE,
+          '#open' => TRUE,
+        ];
+      }
+      $form['entity_options'][$type][$id]['hide'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Hide Revision Field'),
+        '#default_value' => $defaults[$user_id]['hide'],
+      ];
+    }
+  }
+  $form['actions']['submit']['#submit'][] = 'hide_revision_field_user_profile_form_submit';
+}
+
+/**
+ * Submit callback for the user profile form to save the settings.
+ */
+function hide_revision_field_user_profile_form_submit($form, FormStateInterface $form_state) {
+  $user_id = $form_state->getFormObject()->getEntity()->id();
+  foreach ($form_state->getValue('entity_options') as $type => $bundles) {
+    foreach ($bundles as $bundle => $data) {
+      $bundle = entity_load($type, $bundle);
+      $settings = $bundle->getThirdPartySetting('hide_revision_field', 'personalization', []);
+      $settings[$user_id] = ['hide' => $data['hide']];
+      $bundle->setThirdPartySetting('hide_revision_field', "personalization", $settings);
+      $bundle->save();
+    }
+  }
+}
