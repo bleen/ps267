@@ -1,10 +1,10 @@
-uuid: 2e6cdcf6-561d-4e1a-83f8-226d306a9bd8
+uuid: cd037c7d-984a-4f13-8d36-635bd92f9da9
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
-    - node.type.article
+    - field.storage.node.field_announcement_image
+    - node.type.announcement
   module:
     - custom_add_another
     - image
@@ -12,16 +12,14 @@ third_party_settings:
   custom_add_another:
     custom_add_another: ''
     custom_remove: ''
-_core:
-  default_config_hash: tgJzhA7Swh4M_gWU5FwFe5lPxPj5rebpMbvhpdNrERs
-id: node.article.field_image
-field_name: field_image
+id: node.announcement.field_announcement_image
+field_name: field_announcement_image
 entity_type: node
-bundle: article
+bundle: announcement
 label: Image
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -30,12 +28,12 @@ settings:
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''
-  alt_field: true
-  title_field: false
+  alt_field: false
   alt_field_required: true
+  title_field: false
   title_field_required: false
   default_image:
-    uuid: null
+    uuid: ''
     alt: ''
     title: ''
     width: null
