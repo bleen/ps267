@@ -4,17 +4,59 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
-    - field.field.node.event.field_event_attachments
-    - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_image
+    - field.field.node.event.field_forms_documents
+    - field.field.node.event.field_important_dates
     - image.style.thumbnail
     - node.type.event
   module:
-    - datetime
-    - file
+    - field_group
     - focal_point
+    - paragraphs
     - scheduler
     - text
+third_party_settings:
+  field_group:
+    group_extras:
+      children:
+        - group_dates
+        - group_attachments
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        label: Extras
+        direction: vertical
+        id: extras
+        classes: ''
+      label: Extras
+    group_dates:
+      children:
+        - field_important_dates
+      parent_name: group_extras
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Dates
+    group_attachments:
+      children:
+        - field_forms_documents
+      parent_name: group_extras
+      weight: 23
+      format_type: tab
+      format_settings:
+        label: 'Forms and Documents'
+        formatter: closed
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Forms and Documents'
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -29,19 +71,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  field_event_attachments:
-    weight: 4
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
-    type: file_generic
-    region: content
-  field_event_dates:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_event_image:
     weight: 1
     settings:
@@ -51,6 +80,30 @@ content:
       offsets: '50,50'
     third_party_settings: {  }
     type: image_focal_point
+    region: content
+  field_forms_documents:
+    type: entity_reference_paragraphs
+    weight: 24
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_important_dates:
+    type: entity_reference_paragraphs
+    weight: 23
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
     region: content
   promote:
     type: boolean_checkbox

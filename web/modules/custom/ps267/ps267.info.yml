@@ -1,0 +1,8 @@
+name: ps267
+description: Provides basic functionality and customizations for PS267.org.
+package: Custom
+
+type: module
+core: 8.x
+
+hidden: false

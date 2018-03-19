@@ -1,0 +1,32 @@
+uuid: 6b5b1d30-3a61-4ee3-9d06-7f4c172555d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_attachment_file
+    - paragraphs.paragraphs_type.attachments
+  module:
+    - custom_add_another
+    - file
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.attachments.field_attachment_file
+field_name: field_attachment_file
+entity_type: paragraph
+bundle: attachments
+label: Attachment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf doc docx xls xslx ppt pptx jpg png gif pages numbers ics txt'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

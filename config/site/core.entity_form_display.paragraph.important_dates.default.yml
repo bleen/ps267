@@ -1,0 +1,33 @@
+uuid: 83e261c3-354e-46a2-b559-b2c2b5957022
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.important_dates.field_important_date_date
+    - field.field.paragraph.important_dates.field_important_date_label
+    - paragraphs.paragraphs_type.important_dates
+  module:
+    - datetime
+id: paragraph.important_dates.default
+targetEntityType: paragraph
+bundle: important_dates
+mode: default
+content:
+  field_important_date_date:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_important_date_label:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

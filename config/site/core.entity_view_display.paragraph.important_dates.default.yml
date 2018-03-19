@@ -1,0 +1,33 @@
+uuid: 1dd07e98-c824-44d9-99cb-0b5244c16c28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.important_dates.field_important_date_date
+    - field.field.paragraph.important_dates.field_important_date_label
+    - paragraphs.paragraphs_type.important_dates
+  module:
+    - datetime
+id: paragraph.important_dates.default
+targetEntityType: paragraph
+bundle: important_dates
+mode: default
+content:
+  field_important_date_date:
+    weight: 0
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_important_date_label:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

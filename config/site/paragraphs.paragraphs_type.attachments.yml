@@ -1,0 +1,9 @@
+uuid: a161eb0a-1a9d-4a47-933d-e96324e662b4
+langcode: en
+status: true
+dependencies: {  }
+id: attachments
+label: Attachment
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

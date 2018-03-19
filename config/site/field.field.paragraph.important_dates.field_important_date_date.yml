@@ -1,0 +1,29 @@
+uuid: 11e922e4-b05c-4706-ade9-d221894eff95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_important_date_date
+    - paragraphs.paragraphs_type.important_dates
+  module:
+    - custom_add_another
+    - datetime
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.important_dates.field_important_date_date
+field_name: field_important_date_date
+entity_type: paragraph
+bundle: important_dates
+label: Date
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

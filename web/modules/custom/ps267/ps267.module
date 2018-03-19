@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Provides basic functionality and customization for ps267.org.
+ *
+ * When enabled this module makes small improvements to the editorial
+ * experience and functionality of the site.
+ */
+

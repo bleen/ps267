@@ -1,0 +1,25 @@
+uuid: 2d39cfa1-2e47-4b5e-a049-60a616586ef6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_important_date_label
+    - paragraphs.paragraphs_type.important_dates
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.important_dates.field_important_date_label
+field_name: field_important_date_label
+entity_type: paragraph
+bundle: important_dates
+label: Label
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
