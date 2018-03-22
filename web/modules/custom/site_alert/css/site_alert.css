@@ -1,0 +1,30 @@
+.site-alert {
+    margin: .5em;
+    padding: 1em;
+    border: 1px solid;
+    border-radius: 1em;
+    position: relative;
+    font-size: 1.25em;
+}
+.site-alert a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.site-alert.severity-1 {
+    color: #31708f;
+    border-color: #bce8f1;
+    background-color: #d9edf7;
+}
+
+.site-alert.severity-2 {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.site-alert.severity-3 {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

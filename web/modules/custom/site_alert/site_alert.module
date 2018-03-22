@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * Allows admins to display a site-wide alert to all users.
+ *
+ * When enabled this module allows alerts (of different severity levels) to be
+ * displayed (or scheduled to be displayed). Users can dismiss these alerts.
+ *
+ * @todo: retrieve message content via AJAX to avoid caching issues?
+ * @todo: make messages dismissible
+ * @todo: optionally display in block
+ */
+
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function site_alert_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+
+  switch ($route_name) {
+    case 'help.page.site_alert':
+      $output .= '<p>';
+      $output .= 'Site alert allows a privileged user to display an alert';
+      $output .= ' across the top of every page to every user. Site alerts can';
+      $output .= ' be scheduled to turn on a specific date and time as well as';
+      $output .= ' expire on a specific date and time. ';
+      $output .= '</p>';
+      $output .= '<p>';
+      $output .= 'Users must select a "severity" when managing site alerts.';
+      $output .= ' This indicates to the theme how the alert should look. For';
+      $output .= ' example, a high severity message may be styled in red or';
+      $output .= ' may have a specific animation to ensure users see it.';
+      $output .= '</p>';
+      break;
+  }
+
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function site_alert_theme($existing, $type, $theme, $path) {
+  return [
+    'site_alert' => [
+      'variables' => [
+        'alert' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function site_alert_page_top(array &$page_top) {
+  $alert = \Drupal::state()->get('site_alert.alert', NULL);
+
+  if (!is_null($alert)) {
+    $active = !is_null($alert) && $alert['active'];
+
+    $show = TRUE;
+    if ($alert['hide_from_admin']) {
+      $route = \Drupal::routeMatch()->getRouteObject();
+      $show = \Drupal::service('router.admin_context')->isAdminRoute($route) == FALSE;
+    }
+
+    if ($active && $show) {
+      $page_top['site_alert'] = [
+        '#theme' => 'site_alert',
+        '#alert' => $alert,
+        '#attached' => [
+          'library' => ['site_alert/drupal.site_alert'],
+        ],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function site_alert_cron() {
+  $state = \Drupal::state();
+  $alert = $state->get('site_alert.alert', []);
+
+  $start_on = $alert['start_on'] ?: '';
+  $end_on = $alert['end_on'] ?: '';
+  $now = DrupalDateTime::createFromTimestamp(time());
+
+  // Turn on an alert if its scheduled start on date is in the past.
+  if (!empty($start_on) && $start_on <= $now) {
+    $alert['active'] = TRUE;
+    $alert['start_on'] = '';
+    $state->set('site_alert.alert', $alert);
+
+    \Drupal::logger('site_alert')->info('A scheduled site alert has been activated.');
+  }
+
+  // Turn off an alert if its scheduled end on date is in the past.
+  if (!empty($end_on) && $end_on <= $now) {
+    $state->delete('site_alert.alert');
+
+    \Drupal::logger('site_alert')->info('The current site alert has expired.');
+  }
+}
+

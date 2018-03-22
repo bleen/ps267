@@ -1,0 +1,7 @@
+site_alert.manage_form:
+  path: '/admin/config/system/site-alert'
+  defaults:
+    _title: 'Manage Site Alerts'
+    _form: '\Drupal\site_alert\Form\SiteAlertManageForm'
+  requirements:
+    _permission: 'manage site alerts'
