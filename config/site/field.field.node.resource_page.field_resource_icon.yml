@@ -1,0 +1,26 @@
+uuid: 22f2a32c-0612-4f07-8bbe-b7b8cdc0f75d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_icon
+    - node.type.resource_page
+  module:
+    - custom_add_another
+    - fontawesome
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: node.resource_page.field_resource_icon
+field_name: field_resource_icon
+entity_type: node
+bundle: resource_page
+label: Icon
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: fontawesome_icon

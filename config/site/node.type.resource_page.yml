@@ -1,0 +1,33 @@
+uuid: b40bb583-2065-4f73-8601-6d4ce34ebc90
+langcode: en
+status: true
+dependencies:
+  module:
+    - hide_revision_field
+    - menu_ui
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: true
+    publish_past_date: error
+    publish_required: false
+    publish_revision: false
+    publish_touch: true
+    unpublish_enable: true
+    unpublish_required: false
+    unpublish_revision: false
+  hide_revision_field:
+    hide: true
+    personalizable: false
+name: 'Resource Page'
+type: resource_page
+description: 'Use <em>resource pages</em> for static content that is frequently re-visited by users such as the "school lunch" page.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

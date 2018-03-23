@@ -8,3 +8,19 @@
  * experience and functionality of the site.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the node-resource-page-form form.
+ */
+function ps267_form_node_resource_page_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $children_keys = Element::children($form['field_resource_icon']['widget']);
+  foreach ($children_keys as $key) {
+    $form['field_resource_icon']['widget'][$key]['icon_name']['#field_prefix'] = '';
+    $form['field_resource_icon']['widget'][$key]['icon_name']['#title'] = $form['field_resource_icon']['widget'][$key]['#title'];
+    $form['field_resource_icon']['widget'][$key]['settings']['#access'] = FALSE;
+  }
+
+}

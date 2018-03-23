@@ -13,7 +13,8 @@
         "drupal/adminimal_admin_toolbar": "^1.5",
         "drupal/field_group": "^1.0",
         "drupal/paragraphs": "^1.2",
-        "drupal/custom_add_another": "^1.0@beta"
+        "drupal/custom_add_another": "^1.0@beta",
+        "drupal/fontawesome": "^2.0"
     },
     "replace": {
         "drupal/core": "^8.5"

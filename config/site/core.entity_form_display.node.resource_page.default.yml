@@ -1,0 +1,70 @@
+uuid: cce41882-a981-476f-b35f-0eabc48656f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resource_page.body
+    - field.field.node.resource_page.field_resource_icon
+    - node.type.resource_page
+  module:
+    - fontawesome
+    - scheduler
+    - text
+id: node.resource_page.default
+targetEntityType: node
+bundle: resource_page
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_resource_icon:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: fontawesome_icon_widget
+    region: content
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

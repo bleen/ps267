@@ -1,0 +1,36 @@
+uuid: e03d2569-4368-4bc8-a8f3-acc540cae8b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resource_page.body
+    - field.field.node.resource_page.field_resource_icon
+    - node.type.resource_page
+  module:
+    - fontawesome
+    - text
+    - user
+id: node.resource_page.default
+targetEntityType: node
+bundle: resource_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_resource_icon:
+    weight: 102
+    label: above
+    settings:
+      layers: false
+    third_party_settings: {  }
+    type: fontawesome_icon_formatter
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }
