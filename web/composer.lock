@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdf9cf6be4907c7cc2ec91529115d439",
+    "content-hash": "aacbfc9915ea44bdeb4b505a650f89e0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1159,6 +1159,53 @@
             "homepage": "https://www.drupal.org/project/fontawesome",
             "support": {
                 "source": "http://cgit.drupalcode.org/fontawesome"
+            }
+        },
+        {
+            "name": "drupal/gtranslate",
+            "version": "1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/gtranslate",
+                "reference": "8.x-1.13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/gtranslate-8.x-1.13.zip",
+                "reference": "8.x-1.13",
+                "shasum": "e1e74d7b3ee3e2fc3afbff46a44d18a7488277c5"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.13",
+                    "datestamp": "1473178439",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "edo888",
+                    "homepage": "https://www.drupal.org/user/291183"
+                }
+            ],
+            "description": "Uses Google power to translate your website.",
+            "homepage": "https://www.drupal.org/project/gtranslate",
+            "support": {
+                "source": "http://cgit.drupalcode.org/gtranslate"
             }
         },
         {

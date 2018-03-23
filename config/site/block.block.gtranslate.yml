@@ -1,0 +1,20 @@
+uuid: f080a53d-91e3-4452-a378-d498b3474616
+langcode: en
+status: true
+dependencies:
+  module:
+    - gtranslate
+  theme:
+    - bartik
+id: gtranslate
+theme: bartik
+region: header
+weight: 0
+provider: null
+plugin: gtranslate_block
+settings:
+  id: gtranslate_block
+  label: Language
+  provider: gtranslate
+  label_display: visible
+visibility: {  }
