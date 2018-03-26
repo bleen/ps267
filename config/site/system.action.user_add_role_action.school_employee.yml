@@ -1,0 +1,14 @@
+uuid: 7e57ac39-f0ec-44fd-aa97-07a0b5aed60a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.school_employee
+  module:
+    - user
+id: user_add_role_action.school_employee
+label: 'Add the School Employee role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: school_employee

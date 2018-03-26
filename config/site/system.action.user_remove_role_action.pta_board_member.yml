@@ -1,0 +1,14 @@
+uuid: 58bd4b00-68b3-42f9-9caf-32e71f3b6ac9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pta_board_member
+  module:
+    - user
+id: user_remove_role_action.pta_board_member
+label: 'Remove the PTA Board Member (current) role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: pta_board_member

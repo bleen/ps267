@@ -1,0 +1,14 @@
+uuid: ef54e991-a8d7-4f51-a804-c38871c0a714
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pta_board_member
+  module:
+    - user
+id: user_add_role_action.pta_board_member
+label: 'Add the PTA Board Member (current) role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: pta_board_member

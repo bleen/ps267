@@ -1,0 +1,9 @@
+uuid: 28c157e8-2280-4db0-824b-165891c06ced
+langcode: en
+status: true
+dependencies: {  }
+id: pta_board_member
+label: 'PTA Board Member'
+weight: 3
+is_admin: null
+permissions: {  }

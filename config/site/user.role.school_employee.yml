@@ -1,0 +1,9 @@
+uuid: ba79e261-8ac9-43f7-a702-b4642a281621
+langcode: en
+status: true
+dependencies: {  }
+id: school_employee
+label: 'School Employee'
+weight: 4
+is_admin: null
+permissions: {  }

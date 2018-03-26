@@ -1,0 +1,14 @@
+uuid: 998e77d5-d9c3-4ea6-8bec-1f06ed9052c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.school_employee
+  module:
+    - user
+id: user_remove_role_action.school_employee
+label: 'Remove the School Employee role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: school_employee
