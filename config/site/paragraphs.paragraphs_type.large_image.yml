@@ -1,0 +1,9 @@
+uuid: 84797b19-038f-49db-b38d-2fca446c7baa
+langcode: en
+status: true
+dependencies: {  }
+id: large_image
+label: 'Large Image'
+icon_uuid: null
+description: 'A large image that typically fills the width of its container or is otherwise centered. '
+behavior_plugins: {  }

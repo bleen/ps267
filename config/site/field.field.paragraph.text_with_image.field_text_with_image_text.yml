@@ -1,0 +1,26 @@
+uuid: fc76b645-af38-4114-9c39-79d3f5fca2c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_with_image_text
+    - paragraphs.paragraphs_type.text_with_image
+  module:
+    - custom_add_another
+    - text
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.text_with_image.field_text_with_image_text
+field_name: field_text_with_image_text
+entity_type: paragraph
+bundle: text_with_image
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

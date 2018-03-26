@@ -1,0 +1,26 @@
+uuid: 6088de8a-f673-4476-8c6d-6e075d9e503b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_with_map_map
+    - paragraphs.paragraphs_type.text_with_map
+  module:
+    - custom_add_another
+    - google_map_field
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.text_with_map.field_text_with_map_map
+field_name: field_text_with_map_map
+entity_type: paragraph
+bundle: text_with_map
+label: Map
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: google_map_field

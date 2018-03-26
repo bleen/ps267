@@ -1,0 +1,9 @@
+uuid: 9ed13a5d-ddf3-420c-aeac-f8aa8a7bd57e
+langcode: en
+status: true
+dependencies: {  }
+id: text_with_map
+label: 'Text with map'
+icon_uuid: null
+description: 'A section of text with an accompanying map.'
+behavior_plugins: {  }

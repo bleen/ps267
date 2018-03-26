@@ -1,0 +1,27 @@
+uuid: 1ddf3447-8ac7-48b4-ade8-f39a04578d87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.large_image.field_large_image_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.large_image
+  module:
+    - image
+id: paragraph.large_image.default
+targetEntityType: paragraph
+bundle: large_image
+mode: default
+content:
+  field_large_image_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

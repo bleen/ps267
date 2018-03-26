@@ -1,0 +1,25 @@
+uuid: 113e0a7a-7643-47c7-a87b-d543e63056b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_with_image_header
+    - paragraphs.paragraphs_type.text_with_image
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.text_with_image.field_text_with_image_header
+field_name: field_text_with_image_header
+entity_type: paragraph
+bundle: text_with_image
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
