@@ -1,0 +1,48 @@
+uuid: 3acbf773-26cc-4f12-b9aa-4793b129685b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.calendar_event.body
+    - field.field.node.calendar_event.field_calendar_event_date
+    - node.type.calendar_event
+  module:
+    - datetime
+    - text
+id: node.calendar_event.default
+targetEntityType: node
+bundle: calendar_event
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_calendar_event_date:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  publish_on: true
+  status: true
+  sticky: true
+  uid: true
+  unpublish_on: true

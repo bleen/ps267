@@ -1,0 +1,37 @@
+uuid: 44e4beeb-778c-4d2e-be9b-48a0238c3714
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.calendar_event.body
+    - field.field.node.calendar_event.field_calendar_event_date
+    - node.type.calendar_event
+  module:
+    - datetime
+    - text
+    - user
+id: node.calendar_event.default
+targetEntityType: node
+bundle: calendar_event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_calendar_event_date:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

@@ -17,7 +17,8 @@
         "drupal/custom_add_another": "^1.0@beta",
         "drupal/fontawesome": "^2.0",
         "drupal/gtranslate": "^1.13",
-        "drupal/google_map_field": "^1.5"
+        "drupal/google_map_field": "^1.5",
+        "drupal/calendar": "1.x-dev"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
