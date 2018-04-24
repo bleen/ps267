@@ -27,10 +27,10 @@ third_party_settings:
     unpublish_revision: false
 _core:
   default_config_hash: KuyA4NHPXcmKAjRtwa0vQc2ZcyrUJy6IlS2TAyMNRbc
-name: 'Basic page'
+name: Page
 type: page
-description: 'Use <em>basic pages</em> for your static content, such as an ''About us'' page.'
+description: 'Use <em>page</em> to build a new area of the site. Each page must have a unique URL and each can have multiple sections.'
 help: ''
-new_revision: true
-preview_mode: 1
+new_revision: false
+preview_mode: 0
 display_submitted: false
