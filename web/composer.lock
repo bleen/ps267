@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd3309567dbd2a74b9141f6ed262b30f",
+    "content-hash": "c018ce85da941e05a2a06d310173a6f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -876,8 +876,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/calendar",
                 "issues": "https://www.drupal.org/project/issues/calendar"
-            },
-            "time": "2018-01-04T14:54:04+00:00"
+            }
         },
         {
             "name": "drupal/calendar_datetime",
@@ -1516,6 +1515,61 @@
             "homepage": "https://www.drupal.org/project/fontawesome",
             "support": {
                 "source": "http://cgit.drupalcode.org/fontawesome"
+            }
+        },
+        {
+            "name": "drupal/footer_message",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/footer_message",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/footer_message-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "304d6696d1690695627215e6744384046ef749ab"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1492425843",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bleedev",
+                    "homepage": "https://www.drupal.org/user/1457094"
+                },
+                {
+                    "name": "justin.",
+                    "homepage": "https://www.drupal.org/user/3302731"
+                },
+                {
+                    "name": "seanberto",
+                    "homepage": "https://www.drupal.org/user/54109"
+                }
+            ],
+            "description": "A configurable footer message, displayed as a block.",
+            "homepage": "https://www.drupal.org/project/footer_message",
+            "support": {
+                "source": "http://cgit.drupalcode.org/footer_message"
             }
         },
         {

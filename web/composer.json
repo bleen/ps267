@@ -18,7 +18,8 @@
         "drupal/fontawesome": "^2.0",
         "drupal/gtranslate": "^1.13",
         "drupal/google_map_field": "^1.5",
-        "drupal/calendar": "1.x-dev"
+        "drupal/calendar": "1.x-dev",
+        "drupal/footer_message": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

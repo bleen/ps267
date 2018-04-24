@@ -1,0 +1,4 @@
+footer_message_msg: "<p><a href=\"mailt:ps267pta@gmail.com\" itemprop=\"email\">ps267pta@gmail.com</a></p>\r\n<p>School Main Line: <a href=\"tel:212-888-7848\" itemprop=\"telephone\">212-888-7848</a></tel> | School Fax: <a href=\"fax:212-371-2891\" itemprop=\"fax\">212-371-2891</tel></p>\r\n<p itemprop=\"address\" itemscope itemtype=\"http://schema.org/PostalAddress\"><span itemprop=\"streetAddress\">213 East 63rd Street</span>, <span itemprop=\"addressLocality\">New York</span>, <span itemprop=\"addressRegion\">NY</span> <span itemprop=\"postalCode\">10065</span></p>\r\n"
+_core:
+  default_config_hash: CxqIqxmbVC5_Mq-QxouIBmYA71cSW2s2kzvyoKNWqEw
+footer_message_format: full_html
