@@ -49,7 +49,8 @@ services:
       NGINX_ERROR_LOG_LEVEL: debug
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: $PROJECT_DOCROOT
-      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
+## Uncommenting this causes image derivitive creation to fail
+#      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
     volumes:
       - ./:/var/www/html
       - ~/.ssh:/root/.ssh
