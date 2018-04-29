@@ -1,0 +1,20 @@
+uuid: 7f68ae7b-0db6-4fbc-9a75-971e62b48eee
+langcode: en
+status: true
+dependencies:
+  theme:
+    - eses
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: eses_page_title
+theme: eses
+region: content
+weight: -8
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

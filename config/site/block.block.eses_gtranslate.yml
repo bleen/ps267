@@ -1,0 +1,20 @@
+uuid: 50e2998e-0a6d-4052-87c5-0ee19345a928
+langcode: en
+status: true
+dependencies:
+  module:
+    - gtranslate
+  theme:
+    - eses
+id: eses_gtranslate
+theme: eses
+region: header
+weight: 0
+provider: null
+plugin: gtranslate_block
+settings:
+  id: gtranslate_block
+  label: Language
+  provider: gtranslate
+  label_display: visible
+visibility: {  }
