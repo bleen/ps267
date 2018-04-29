@@ -1,0 +1,9 @@
+uuid: f0fe6005-23b7-439a-9ce9-adf9f24faaa4
+langcode: en
+status: true
+dependencies: {  }
+id: basic_text
+label: 'Basic Text'
+icon_uuid: null
+description: 'A section of formatted text.'
+behavior_plugins: {  }

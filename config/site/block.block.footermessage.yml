@@ -1,0 +1,20 @@
+uuid: 419985d8-07dd-4fd0-8ad1-ed95b511666b
+langcode: en
+status: true
+dependencies:
+  module:
+    - footer_message
+  theme:
+    - eses
+id: footermessage
+theme: eses
+region: footer
+weight: 0
+provider: null
+plugin: footer_message_block
+settings:
+  id: footer_message_block
+  label: 'Footer Message'
+  provider: footer_message
+  label_display: '0'
+visibility: {  }

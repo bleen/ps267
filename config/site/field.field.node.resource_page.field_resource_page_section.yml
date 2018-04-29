@@ -1,10 +1,10 @@
-uuid: 57a6e771-deaa-4f5b-8384-d22ea679ff99
+uuid: 9b54fdfd-8e4a-4a1a-8f9c-dc1f154859f3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_page_section
-    - node.type.page
+    - field.storage.node.field_resource_page_section
+    - node.type.resource_page
     - paragraphs.paragraphs_type.basic_text
     - paragraphs.paragraphs_type.large_image
     - paragraphs.paragraphs_type.text_with_image
@@ -16,10 +16,10 @@ third_party_settings:
   custom_add_another:
     custom_add_another: 'Add Another Section'
     custom_remove: 'Remove this Section'
-id: node.page.field_page_section
-field_name: field_page_section
+id: node.resource_page.field_resource_page_section
+field_name: field_resource_page_section
 entity_type: node
-bundle: page
+bundle: resource_page
 label: 'Page Section'
 description: ''
 required: true

@@ -1,0 +1,3 @@
+Allow users to alter widgets within a paragraph form. 
+@see https://www.drupal.org/project/paragraphs/issues/2868155#comment-12566372
+

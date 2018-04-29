@@ -3,19 +3,29 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.text_with_image.field_text_with_image_button
     - field.field.paragraph.text_with_image.field_text_with_image_header
     - field.field.paragraph.text_with_image.field_text_with_image_image
     - field.field.paragraph.text_with_image.field_text_with_image_text
     - image.style.thumbnail
     - paragraphs.paragraphs_type.text_with_image
   module:
-    - image
+    - focal_point
+    - link
     - text
 id: paragraph.text_with_image.default
 targetEntityType: paragraph
 bundle: text_with_image
 mode: default
 content:
+  field_text_with_image_button:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_text_with_image_header:
     weight: 0
     settings:
@@ -29,8 +39,10 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
-    type: image_image
+    type: image_focal_point
     region: content
   field_text_with_image_text:
     weight: 1

@@ -1,0 +1,28 @@
+uuid: 2651894f-6dcf-4b94-9c51-922a3102b198
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_with_image_button
+    - paragraphs.paragraphs_type.text_with_image
+  module:
+    - custom_add_another
+    - link
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.text_with_image.field_text_with_image_button
+field_name: field_text_with_image_button
+entity_type: paragraph
+bundle: text_with_image
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

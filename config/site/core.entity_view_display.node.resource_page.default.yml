@@ -3,25 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.resource_page.body
     - field.field.node.resource_page.field_resource_icon
+    - field.field.node.resource_page.field_resource_page_section
     - node.type.resource_page
   module:
+    - entity_reference_revisions
     - fontawesome
-    - text
     - user
 id: node.resource_page.default
 targetEntityType: node
 bundle: resource_page
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_resource_icon:
     weight: 102
     label: above
@@ -29,6 +22,15 @@ content:
       layers: false
     third_party_settings: {  }
     type: fontawesome_icon_formatter
+    region: content
+  field_resource_page_section:
+    type: entity_reference_revisions_entity_view
+    weight: 103
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   links:
     weight: 100

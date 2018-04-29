@@ -3,32 +3,35 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.resource_page.body
     - field.field.node.resource_page.field_resource_icon
+    - field.field.node.resource_page.field_resource_page_section
     - node.type.resource_page
   module:
     - fontawesome
+    - paragraphs
     - scheduler
-    - text
 id: node.resource_page.default
 targetEntityType: node
 bundle: resource_page
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 2
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    region: content
   field_resource_icon:
     weight: 1
     settings: {  }
     third_party_settings: {  }
     type: fontawesome_icon_widget
+    region: content
+  field_resource_page_section:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
     region: content
   publish_on:
     type: datetime_timestamp_no_default

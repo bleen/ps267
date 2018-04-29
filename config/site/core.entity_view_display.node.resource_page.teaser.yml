@@ -4,25 +4,19 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.resource_page.body
+    - field.field.node.resource_page.field_resource_icon
+    - field.field.node.resource_page.field_resource_page_section
     - node.type.resource_page
   module:
-    - text
     - user
 id: node.resource_page.teaser
 targetEntityType: node
 bundle: resource_page
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    region: content
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_resource_icon: true
+  field_resource_page_section: true
