@@ -1,4 +1,4 @@
-uuid: 2c96fd00-8fbe-440b-8602-51bd2aff8b10
+uuid: 72acb091-9a74-4f04-aed9-7dcaa67ea3e1
 langcode: en
 status: true
 dependencies:
@@ -12,8 +12,8 @@ _core:
   default_config_hash: rx9IrdDv7Ldc4kpalZAxdhIPZfYIeOMh1N-qKoQZwHo
 id: eses_main_menu
 theme: eses
-region: navigation
-weight: 0
+region: navigation_collapsible
+weight: -5
 provider: null
 plugin: 'system_menu_block:main'
 settings:

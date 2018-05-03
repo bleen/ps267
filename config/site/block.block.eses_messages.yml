@@ -1,4 +1,4 @@
-uuid: d9ff6e84-dc32-4621-8bbb-e5623bfca929
+uuid: 8517d8ae-6658-4a6e-8a57-fc133e19ba09
 langcode: en
 status: true
 dependencies:
@@ -10,8 +10,8 @@ _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
 id: eses_messages
 theme: eses
-region: highlighted
-weight: 0
+region: header
+weight: -3
 provider: null
 plugin: system_messages_block
 settings:

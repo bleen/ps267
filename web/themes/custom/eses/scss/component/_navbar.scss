@@ -44,16 +44,55 @@ body {
     }
   }
 }
-.navbar.container {
-  @media #{$tablet} {
-    max-width: (($container-sm - $grid-gutter-width));
+
+.navbar {
+  min-height: $navbar-height + 5;
+
+  &.container {
+    @media #{$tablet} {
+      max-width: (($container-sm - $grid-gutter-width));
+    }
+    @media #{$normal} {
+      max-width: (($container-md - $grid-gutter-width));
+    }
+    @media #{$wide} {
+      max-width: (($container-lg - $grid-gutter-width));
+    }
   }
-  @media #{$normal} {
-    max-width: (($container-md - $grid-gutter-width));
+
+  & .school-logo {
+    position: absolute;
+    top: $padding-small-vertical;
+    display: block;
+    width: 65px;
+    left: 70px;
   }
-  @media #{$wide} {
-    max-width: (($container-lg - $grid-gutter-width));
+
+  // Language
+  & .block-gtranslate {
+    position: absolute;
+    top: $padding-small-vertical;
+    right: $padding-small-horizontal;
+    text-align: center;
+
+    & select {
+      font-size: $font-size-base - 2;
+    }
   }
+}
+
+.navbar-default {
+  background-color: lighten($brand-primary, 15%);
+}
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// JavaScript plugin.
+
+.navbar-toggle {
+  float: left;
+  margin-left: $navbar-padding-horizontal;
 }
 
 // Branding.
@@ -66,4 +105,3 @@ body {
     padding-left: 0;
   }
 }
-

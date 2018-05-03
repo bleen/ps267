@@ -1,4 +1,4 @@
-uuid: c0344088-4f20-416d-a197-88e6bf85bee0
+uuid: b7c59a0b-c0be-4ecb-833b-129789d9ded9
 langcode: en
 status: true
 dependencies:
@@ -6,12 +6,10 @@ dependencies:
     - system
   theme:
     - eses
-_core:
-  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
-id: eses_branding
+id: sitebranding
 theme: eses
-region: header
-weight: -4
+region: navigation
+weight: -5
 provider: null
 plugin: system_branding_block
 settings:
@@ -19,7 +17,7 @@ settings:
   label: 'Site branding'
   provider: system
   label_display: '0'
-  use_site_logo: false
-  use_site_name: true
+  use_site_logo: true
+  use_site_name: false
   use_site_slogan: false
 visibility: {  }

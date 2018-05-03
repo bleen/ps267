@@ -13,3 +13,7 @@
 
 # Disable the CDN provider so compiled source files can be used.
 cdn_provider: ''
+
+logo:
+  path: 'themes/custom/eses/images/eses_logo.png'
+  use_default: false

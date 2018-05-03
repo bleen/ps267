@@ -1,4 +1,4 @@
-uuid: ce3727da-8197-4cf7-9ae2-096900bd7dfb
+uuid: 54c8a7e9-764b-4c6f-82fb-d6ff05ac4196
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: eses_content
 theme: eses
 region: content
-weight: 0
+weight: -2
 provider: null
 plugin: system_main_block
 settings:

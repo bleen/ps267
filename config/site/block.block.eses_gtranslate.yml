@@ -1,4 +1,4 @@
-uuid: 50e2998e-0a6d-4052-87c5-0ee19345a928
+uuid: d2cf2d6e-ee42-48df-a52d-6da4ffa42185
 langcode: en
 status: true
 dependencies:
@@ -8,13 +8,13 @@ dependencies:
     - eses
 id: eses_gtranslate
 theme: eses
-region: header
-weight: 0
+region: navigation
+weight: -4
 provider: null
 plugin: gtranslate_block
 settings:
   id: gtranslate_block
   label: Language
   provider: gtranslate
-  label_display: visible
+  label_display: '0'
 visibility: {  }

@@ -1,4 +1,4 @@
-uuid: d36b65a3-2820-4006-abb5-aadd753bbfe0
+uuid: 727934bc-2534-4f38-9d76-d14826bc4891
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: eses_local_actions
 theme: eses
 region: content
-weight: -8
+weight: -3
 provider: null
 plugin: local_actions_block
 settings:

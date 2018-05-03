@@ -1,4 +1,4 @@
-uuid: 7f68ae7b-0db6-4fbc-9a75-971e62b48eee
+uuid: 887be14c-c2e9-4452-a553-863a58e2c032
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: eses_page_title
 theme: eses
 region: content
-weight: -8
+weight: -5
 provider: null
 plugin: page_title_block
 settings:

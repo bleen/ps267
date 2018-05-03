@@ -6,3 +6,9 @@
  *
  * Place your custom PHP code in this file.
  */
+
+function eses_preprocess_block__system_branding_block(&$variables) {
+  if($variables['content']['site_name']['#access']) {
+    $variables['site_name'] = "East Side Elementary School";
+  }
+}
