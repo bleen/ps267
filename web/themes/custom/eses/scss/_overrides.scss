@@ -1,3 +1,11 @@
+// Break points
+$mobile:          "screen and (max-width: #{$screen-xs-max})";
+$tablet:          "screen and (min-width: #{$screen-sm-min})";
+$normal:          "screen and (min-width: #{$screen-md-min})";
+$wide:            "screen and (min-width: #{$screen-lg-min})";
+$grid-breakpoint: "screen and (min-width: #{$grid-float-breakpoint})";
+
+
 // @todo these should be their own CSS files and only included when
 // specific Drupal libraries are used.
 @import "component/alert";
@@ -15,6 +23,7 @@
 @import "component/tabs";
 @import "component/toolbar";
 @import "component/eses";
+@import "component/asides";
 
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";

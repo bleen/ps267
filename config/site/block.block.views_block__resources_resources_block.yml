@@ -1,0 +1,24 @@
+uuid: ea44d34c-fa3a-4862-a55e-864a5c2d6ae8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.resources
+  module:
+    - views
+  theme:
+    - eses
+id: views_block__resources_resources_block
+theme: eses
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:resources-resources_block'
+settings:
+  id: 'views_block:resources-resources_block'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

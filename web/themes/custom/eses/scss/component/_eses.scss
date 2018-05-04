@@ -1,8 +1,37 @@
-.school-logo img {
-  @include img-responsive;
+// Branding.
+.school-logo {
+  position: absolute;
+  top: $padding-small-vertical;
+  display: block;
+  width: 65px;
+  left: 70px;
+
+  > img {
+    @include img-responsive();
+    position: relative;
+    z-index: 1030; // Do not change; This is the only value that works with both Admin Toolbar and Bootstrap collapsible menu
+  }
 }
+.navbar .school-logo {
+  @media #{$tablet} {
+    display: none;
+  }
+}
+.region-header .school-logo {
+  display: none;
+
+  @media #{$tablet} {
+    display: block;
+    left: 0;
+    width: 180px;
+    top: -1 * $navbar-height;
+  }
+}
+
 .school-name {
-  padding: 0;
+  @media #{$tablet} {
+    padding-left: 200px;
+  }
   font-size: 24px;
   display: block;
   text-align: center;

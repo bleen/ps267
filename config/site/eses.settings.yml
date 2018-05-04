@@ -18,6 +18,6 @@ features:
   comment_user_verification: false
   favicon: true
   node_user_picture: false
-navbar_position: fixed-top
 table_responsive: '-1'
 table: ''
+navbar_position: fixed-top
