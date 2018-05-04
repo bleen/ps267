@@ -92,6 +92,14 @@
   {% endblock %}
 {% endif %}
 
+{% if page.sub_header %}
+  {% block sub_header %}
+    <div id="sub-header" class="sub-header" role="banner">
+      {{ page.sub_header }}
+    </div>
+  {% endblock %}
+{% endif %}
+
 {# Main #}
 {% block main %}
   <div role="main" class="main-container {{ container }} js-quickedit-main-content">

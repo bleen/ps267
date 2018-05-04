@@ -10,6 +10,7 @@ regions:
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   header: 'Top Bar'
+  sub_header: 'Sub Header'
   highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'
