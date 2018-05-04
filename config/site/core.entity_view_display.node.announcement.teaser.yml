@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_image
     - node.type.announcement
   module:
     - text
@@ -17,12 +18,15 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    weight: 0
     settings:
       trim_length: 600
     third_party_settings: {  }
     region: content
   links:
-    weight: 100
+    weight: 1
     region: content
-hidden: {  }
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_announcement_image: true
