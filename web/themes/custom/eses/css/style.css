@@ -7988,13 +7988,41 @@ body.toolbar-loading.toolbar {
   position: relative;
   z-index: 1030;
 }
-
 @media screen and (min-width: 768px) {
-  .navbar .school-logo {
+  .school-logo {
     display: none;
   }
 }
 
+.school-name {
+  font-size: 24px;
+  display: block;
+  text-align: center;
+}
+
+.region-header {
+  max-width: none;
+}
+@media screen and (min-width: 768px) {
+  .region-header {
+    background: linear-gradient(to bottom, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+    position: fixed;
+    z-index: 1030;
+    min-height: 60px;
+    margin-left: -15px;
+    width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .region-header {
+    width: 940px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .region-header {
+    width: 1140px;
+  }
+}
 .region-header .school-logo {
   display: none;
 }
@@ -8004,17 +8032,6 @@ body.toolbar-loading.toolbar {
     left: 0;
     width: 180px;
     top: -55px;
-  }
-}
-
-.school-name {
-  font-size: 24px;
-  display: block;
-  text-align: center;
-}
-@media screen and (min-width: 768px) {
-  .school-name {
-    padding-left: 200px;
   }
 }
 
