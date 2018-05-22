@@ -58,8 +58,8 @@ INSTALLATION
          (http://fontawesome.com) and place inside
          "/libraries/fontawesome" directory. The JS file should
          be at /libraries/fontawesome/svg-with-js/js/fontawesome-all.js
-         Direct link for downloading latest version (current is v5.0.1) is:
-         https://use.fontawesome.com/releases/v5.0.1/fontawesome-free-5.0.1.zip
+         Direct link for downloading latest version (current is v5.0.13) is:
+         https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip
     b. Enable the module at Administer >> Site building >> Modules.
 
 
@@ -71,7 +71,7 @@ as well. See
   https://fontawesome.com/how-to-use/svg-with-js
 for information on basic usage.
 
-CSS Psuedo-elements - if you are using the older version of Font Awesome, CSS
+CSS Pseudo-elements - if you are using the older version of Font Awesome, CSS
 with webfonts, you can use CSS Pseudo-elements for inserting your icons rather
 than the default method. See
   https://fontawesome.com/how-to-use/web-fonts-with-css#pseudo-elements

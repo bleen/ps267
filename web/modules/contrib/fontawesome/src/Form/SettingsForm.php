@@ -91,15 +91,10 @@ class SettingsForm extends ConfigFormBase {
     $form['allow_pseudo_elements'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Allow CSS pseudo-elements?'),
-      '#description' => $this->t('If you do not want to add icons directly in code, you can add them through CSS pseudo-elements. Font Awesome has leveraged the ::before pseudo-element to add icons to a page since the very beginning. For more information on how to use pseudo-elements, see the @pseudoElementsLink. Note that this feature is only available with the Webfonts version of Font Awesome.', [
+      '#description' => $this->t('If you do not want to add icons directly in code, you can add them through CSS pseudo-elements. Font Awesome has leveraged the ::before pseudo-element to add icons to a page since the very beginning. For more information on how to use pseudo-elements, see the @pseudoElementsLink. Note that this feature is always available with the Webfonts version of Font Awesome. If you turn this feature on for SVG with JS, it will slow your site down noticeably.', [
         '@pseudoElementsLink' => Link::fromTextAndUrl($this->t('Font Awesome guide to pseudo-elements'), Url::fromUri('https://fontawesome.com/how-to-use/web-fonts-with-css#pseudo-elements'))->toString(),
       ]),
       '#default_value' => $fontawesome_config->get('allow_pseudo_elements'),
-      '#states' => [
-        'disabled' => [
-          ':input[name="method"]' => ['value' => 'svg'],
-        ],
-      ],
     ];
 
     $form['external'] = [
@@ -212,17 +207,17 @@ class SettingsForm extends ConfigFormBase {
 
     // Use default values if CDN is checked and the locations are blank.
     if ($values['use_cdn']) {
-      if (empty($values['external_svg_location']) || $values['external_svg_location'] == 'https://use.fontawesome.com/releases/v5.0.9/css/all.css' || $values['external_svg_location'] == 'https://use.fontawesome.com/releases/v5.0.9/js/all.js') {
+      if (empty($values['external_svg_location']) || $values['external_svg_location'] == 'https://use.fontawesome.com/releases/v5.0.13/css/all.css' || $values['external_svg_location'] == 'https://use.fontawesome.com/releases/v5.0.13/js/all.js') {
         // Choose the default depending on method.
         if ($values['method'] == 'webfonts') {
-          $values['external_svg_location'] = 'https://use.fontawesome.com/releases/v5.0.9/css/all.css';
+          $values['external_svg_location'] = 'https://use.fontawesome.com/releases/v5.0.13/css/all.css';
         }
         else {
-          $values['external_svg_location'] = 'https://use.fontawesome.com/releases/v5.0.9/js/all.js';
+          $values['external_svg_location'] = 'https://use.fontawesome.com/releases/v5.0.13/js/all.js';
         }
       }
       if ($values['use_shim'] && empty($values['external_shim_location'])) {
-        $values['external_shim_location'] = 'https://use.fontawesome.com/releases/v5.0.9/js/v4-shims.js';
+        $values['external_shim_location'] = 'https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js';
       }
     }
 
