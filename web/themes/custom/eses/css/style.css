@@ -8035,6 +8035,12 @@ body.toolbar-loading.toolbar {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .region-content {
+    padding-top: 60px;
+  }
+}
+
 .block-footer-message {
   text-align: center;
   font-size: 12px;
