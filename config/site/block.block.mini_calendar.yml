@@ -1,0 +1,24 @@
+uuid: beeeeeeb-876f-422e-aeb7-6c60f1796704
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.calendar
+  module:
+    - views
+  theme:
+    - eses
+id: mini_calendar
+theme: eses
+region: sidebar_first
+weight: -5
+provider: null
+plugin: 'views_block:calendar-block_1'
+settings:
+  id: 'views_block:calendar-block_1'
+  label: 'Important Dates'
+  provider: views
+  label_display: visible
+  views_label: 'Important Dates'
+  items_per_page: none
+visibility: {  }
