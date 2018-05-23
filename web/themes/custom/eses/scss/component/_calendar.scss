@@ -1,0 +1,43 @@
+$calendar_shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+
+.mini-calendar {
+  .events {
+    list-style-type: none;
+    padding: 0;
+
+    .event {
+      @include clearfix;
+      border-bottom: 1px dotted #ccc;
+      margin-bottom: .5em;
+
+      .date {
+        display: block;
+        float: left;
+        transform: rotate(-5deg);
+        width: 40px;
+        overflow: hidden;
+        border: 1px solid #000;
+        text-align: center;
+        box-shadow: $calendar_shadow;
+        font-size: .75em;
+        font-weight: bold;
+        margin: 0 1em 1em 0;
+
+        .month {
+          display: block;
+          color: #fff;
+          background: #990000;
+        }
+
+        .day {
+          display: block;
+          font-size: 1.5em;
+        }
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
+}

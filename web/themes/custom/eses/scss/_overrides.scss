@@ -24,6 +24,7 @@ $grid-breakpoint: "screen and (min-width: #{$grid-float-breakpoint})";
 @import "component/toolbar";
 @import "component/eses";
 @import "component/asides";
+@import "component/calendar";
 
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";

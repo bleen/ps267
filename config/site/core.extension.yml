@@ -54,6 +54,7 @@ module:
   tour: 0
   update: 0
   user: 0
+  views_fieldsets: 0
   views_ui: 0
   menu_link_content: 1
   views: 10

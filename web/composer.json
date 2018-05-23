@@ -20,7 +20,8 @@
         "drupal/google_map_field": "^1.5",
         "drupal/calendar": "1.x-dev",
         "drupal/footer_message": "^1.0",
-        "drupal/bootstrap": "^3.11"
+        "drupal/bootstrap": "^3.11",
+        "drupal/views_fieldsets": "^3.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -8058,6 +8058,47 @@ body.toolbar-loading.toolbar {
   }
 }
 
+.mini-calendar .events {
+  list-style-type: none;
+  padding: 0;
+}
+.mini-calendar .events .event {
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 0.5em;
+}
+.mini-calendar .events .event:before, .mini-calendar .events .event:after {
+  content: " ";
+  display: table;
+}
+.mini-calendar .events .event:after {
+  clear: both;
+}
+.mini-calendar .events .event .date {
+  display: block;
+  float: left;
+  transform: rotate(-5deg);
+  width: 40px;
+  overflow: hidden;
+  border: 1px solid #000;
+  text-align: center;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  font-size: 0.75em;
+  font-weight: bold;
+  margin: 0 1em 1em 0;
+}
+.mini-calendar .events .event .date .month {
+  display: block;
+  color: #fff;
+  background: #990000;
+}
+.mini-calendar .events .event .date .day {
+  display: block;
+  font-size: 1.5em;
+}
+.mini-calendar .events .event:last-of-type {
+  border-bottom: none;
+}
+
 /**
  * jQuery UI autocomplete widget style overrides.
  *
