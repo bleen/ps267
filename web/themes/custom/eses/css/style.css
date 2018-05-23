@@ -7329,6 +7329,14 @@ td.visible-print {
 /**
  * Alert styling.
  */
+.alert:before, .alert:after {
+  content: " ";
+  display: table;
+}
+.alert:after {
+  clear: both;
+}
+
 .alert-sm {
   padding: 5px 10px;
 }

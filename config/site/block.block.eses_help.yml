@@ -11,7 +11,7 @@ _core:
 id: eses_help
 theme: eses
 region: help
-weight: -5
+weight: -6
 provider: null
 plugin: help_block
 settings:

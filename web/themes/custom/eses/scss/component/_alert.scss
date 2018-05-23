@@ -1,6 +1,10 @@
 /**
  * Alert styling.
  */
+.alert {
+  @include clearfix;
+}
+
 .alert-sm {
   padding: 5px 10px;
 }
