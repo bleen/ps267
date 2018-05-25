@@ -24,7 +24,7 @@ third_party_settings:
   hide_revision_field:
     hide: true
     personalizable: false
-name: 'Resource Page'
+name: Resource
 type: resource_page
 description: 'Use <em>resource pages</em> for static content that is frequently re-visited by users such as the "school lunch" page.'
 help: ''

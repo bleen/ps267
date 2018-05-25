@@ -501,6 +501,7 @@ display:
         groups:
           1: AND
       display_extenders: {  }
+      use_ajax: true
     display_plugin: default
     display_title: Master
     id: default
@@ -516,9 +517,9 @@ display:
         - user.permissions
       max-age: -1
       tags: {  }
-  block_1:
+  manage_content_block:
     display_plugin: block
-    id: block_1
+    id: manage_content_block
     display_title: Block
     position: 2
     display_options:

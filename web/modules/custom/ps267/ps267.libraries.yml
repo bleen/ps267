@@ -1,0 +1,6 @@
+ps267-admin:
+  version: 1.x
+  css:
+    layout:
+      css/admin-layout.css: {}
+

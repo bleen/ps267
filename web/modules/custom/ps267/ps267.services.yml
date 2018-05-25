@@ -1,0 +1,5 @@
+services:
+  ps267.route_subscriber:
+    class: Drupal\ps267\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

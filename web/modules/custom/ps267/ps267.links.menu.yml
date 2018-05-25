@@ -1,0 +1,6 @@
+ps267.dashboard:
+  title: Dashboard
+  description: 'Administrative Dashboard.'
+  route_name: ps267.dashboard
+  parent: system.admin
+  weight: -20
