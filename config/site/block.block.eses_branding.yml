@@ -10,8 +10,8 @@ _core:
   default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
 id: eses_branding
 theme: eses
-region: header
-weight: -6
+region: sub_header
+weight: -5
 provider: null
 plugin: system_branding_block
 settings:

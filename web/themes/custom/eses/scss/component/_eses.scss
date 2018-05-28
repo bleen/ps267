@@ -1,25 +1,44 @@
-// Branding.
-.school-logo {
-  position: absolute;
-  top: $padding-small-vertical;
-  display: block;
-  width: 65px;
-  left: 70px;
+// Homepage.
+.path-frontpage {
+  h1 {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
 
+// Page layout
+.main-container {
+  padding-top: 1em;
+}
+
+// Branding.
+.school-name {
+  font-size: 24px;
+  display: block;
+  text-align: center;
+}
+
+.school-logo {
   > img {
     @include img-responsive();
     position: relative;
     z-index: 1030; // Do not change; This is the only value that works with both Admin Toolbar and Bootstrap collapsible menu
   }
-
-  @media #{$tablet} {
-    display: none;
-  }
 }
-.school-name {
-  font-size: 24px;
-  display: block;
-  text-align: center;
+
+.region-navigation {
+  .school-logo {
+    position: absolute;
+    top: $padding-small-vertical;
+    display: block;
+    width: 65px;
+    left: 70px;
+
+    @media #{$tablet} {
+      display: none;
+    }
+  }
 }
 
 .region-header {
@@ -39,22 +58,27 @@
   @media #{$wide} {
     width: (($container-lg - $grid-gutter-width));
   }
+}
+
+.region-sub-header {
+  position: relative;
 
   .school-logo {
     display: none;
 
     @media #{$tablet} {
+      position: absolute;
+      top: -50px;
+      left: 10px;
       display: block;
-      left: 0;
       width: 180px;
-      top: -1 * $navbar-height;
     }
   }
 }
 
 .region-content {
   @media #{$tablet} {
-    padding-top: 60px;
+    //padding-top: 60px;
   }
 }
 
@@ -66,3 +90,8 @@
     margin: 3px 0;
   }
 }
+
+.info-rail {
+  //margin-top: 70px;
+}
+

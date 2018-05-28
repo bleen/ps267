@@ -94,7 +94,7 @@
 
 {% if page.sub_header %}
   {% block sub_header %}
-    <div id="sub-header" class="sub-header" role="banner">
+    <div id="sub-header" class="sub-header container" role="banner">
       {{ page.sub_header }}
     </div>
   {% endblock %}
@@ -115,7 +115,7 @@
     {# Sidebar First #}
     {% if page.sidebar_first %}
     {% block sidebar_first %}
-      <aside class="col-sm-3" role="complementary">
+      <aside class="col-sm-3 info-rail" role="complementary">
         {{ page.sidebar_first }}
       </aside>
     {% endblock %}

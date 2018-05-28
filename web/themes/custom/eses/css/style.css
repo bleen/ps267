@@ -7361,6 +7361,10 @@ td.visible-print {
   color: #843534;
 }
 
+.site-alert {
+  margin-top: 70px;
+}
+
 /**
  * AJAX (throbber) styling.
  */
@@ -7982,13 +7986,22 @@ body.toolbar-loading.toolbar {
   margin-bottom: 15px;
 }
 
-.school-logo {
-  position: absolute;
-  top: 5px;
-  display: block;
-  width: 65px;
-  left: 70px;
+.path-frontpage h1 {
+  border: none;
+  margin: 0;
+  padding: 0;
 }
+
+.main-container {
+  padding-top: 1em;
+}
+
+.school-name {
+  font-size: 24px;
+  display: block;
+  text-align: center;
+}
+
 .school-logo > img {
   display: block;
   max-width: 100%;
@@ -7996,16 +8009,18 @@ body.toolbar-loading.toolbar {
   position: relative;
   z-index: 1030;
 }
+
+.region-navigation .school-logo {
+  position: absolute;
+  top: 5px;
+  display: block;
+  width: 65px;
+  left: 70px;
+}
 @media screen and (min-width: 768px) {
-  .school-logo {
+  .region-navigation .school-logo {
     display: none;
   }
-}
-
-.school-name {
-  font-size: 24px;
-  display: block;
-  text-align: center;
 }
 
 .region-header {
@@ -8031,21 +8046,20 @@ body.toolbar-loading.toolbar {
     width: 1140px;
   }
 }
-.region-header .school-logo {
+
+.region-sub-header {
+  position: relative;
+}
+.region-sub-header .school-logo {
   display: none;
 }
 @media screen and (min-width: 768px) {
-  .region-header .school-logo {
+  .region-sub-header .school-logo {
+    position: absolute;
+    top: -50px;
+    left: 10px;
     display: block;
-    left: 0;
     width: 180px;
-    top: -55px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .region-content {
-    padding-top: 60px;
   }
 }
 
