@@ -10,6 +10,10 @@
 // Page layout
 .main-container {
   padding-top: 1em;
+  min-height: 350px; // This wouldn't be needed if overflow-x worked without cutting off elements on the vertical axis
+  @media #{$tablet} {
+    padding-top: 50px;
+  }
 }
 
 // Branding.
@@ -65,8 +69,16 @@
 
   .school-logo {
     display: none;
+  }
 
-    @media #{$tablet} {
+  @media #{$tablet} {
+    position: fixed;
+    z-index: 1030;
+    width: 100%;
+    min-height: 70px;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 75%,rgba(255,255,255,0) 100%);;
+
+    .school-logo {
       position: absolute;
       top: -50px;
       left: 10px;
@@ -77,8 +89,8 @@
 }
 
 .region-content {
-  @media #{$tablet} {
-    //padding-top: 60px;
+  @media #{$mobile} {
+    padding-right: 42px;
   }
 }
 

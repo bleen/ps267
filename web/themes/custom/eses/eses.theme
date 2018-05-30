@@ -12,3 +12,7 @@ function eses_preprocess_block__system_branding_block(&$variables) {
     $variables['site_name'] = "East Side Elementary School";
   }
 }
+
+function eses_preprocess_region__sidebar_first(&$variables) {
+  $variables['#attached']['library'] = "eses/eses";
+}

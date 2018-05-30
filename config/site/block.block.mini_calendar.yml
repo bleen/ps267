@@ -18,7 +18,7 @@ settings:
   id: 'views_block:calendar-block_1'
   label: 'Important Dates'
   provider: views
-  label_display: '0'
+  label_display: visible
   views_label: 'Important Dates'
   items_per_page: none
 visibility: {  }
