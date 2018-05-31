@@ -6,10 +6,46 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.announcement.body
     - field.field.node.announcement.field_announcement_image
+    - image.style.thumbnail
     - node.type.announcement
   module:
+    - ds
+    - image
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - node_title
+        - node_changed_date
+        - field_announcement_image
+        - body
+    fields:
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 1
+        label: hidden
+        formatter: ds_post_date_detailed_medium_date
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
 id: node.announcement.teaser
 targetEntityType: node
 bundle: announcement
@@ -17,16 +53,19 @@ mode: teaser
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 0
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    region: content
-  links:
-    weight: 1
-    region: content
+    type: text_default
+    weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: ds_content
+  field_announcement_image:
+    type: image
+    weight: 2
+    region: ds_content
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: content
+    third_party_settings: {  }
 hidden:
-  field_announcement_image: true
+  links: true
