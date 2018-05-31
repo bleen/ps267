@@ -7982,6 +7982,10 @@ body.toolbar-loading.toolbar {
   margin-bottom: 15px;
 }
 
+h1, h2, h3, h4, h5, .block-title {
+  font-family: "Boogaloo", Helvetica, Arial, sans-serif;
+}
+
 .path-frontpage h1 {
   border: none;
   margin: 0;
@@ -7999,6 +8003,7 @@ body.toolbar-loading.toolbar {
 }
 
 .school-name {
+  font-family: "Boogaloo", Helvetica, Arial, sans-serif;
   font-size: 24px;
   display: block;
   text-align: center;

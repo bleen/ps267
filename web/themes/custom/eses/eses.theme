@@ -2,17 +2,34 @@
 
 /**
  * @file
- * Bootstrap sub-theme.
- *
- * Place your custom PHP code in this file.
+ * Custom Bootstrap sub-theme.
  */
 
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function eses_page_attachments_alter(array &$attachments) {
+  // Add a google font to all pages.
+  $link = [
+    'rel' => 'stylesheet',
+    'href' => 'https://fonts.googleapis.com/css?family=Boogaloo',
+  ];
+  $attachments['#attached']['html_head_link'][] = [$link];
+}
+
+/**
+ * Implements hook_preprocess().
+ */
 function eses_preprocess_block__system_branding_block(&$variables) {
   if($variables['content']['site_name']['#access']) {
     $variables['site_name'] = "East Side Elementary School";
   }
 }
 
+/**
+ * Implements hook_preprocess().
+ */
 function eses_preprocess_region__sidebar_first(&$variables) {
   $variables['#attached']['library'] = "eses/eses";
 }
