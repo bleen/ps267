@@ -1,0 +1,12 @@
+uuid: 04d7e9d4-1847-4654-856b-6cbd81163501
+langcode: en
+status: true
+dependencies: {  }
+id: contact_us
+label: 'Contact Us'
+recipients:
+  - ps267.119x@bleen.net
+reply: ''
+weight: -9
+message: 'Thank you for contacting us. Someone will get back to you as soon as possible. '
+redirect: /
