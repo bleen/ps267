@@ -17,9 +17,6 @@ h1, h2, h3, h4, h5, .block-title {
   padding-top: 1em;
   min-height: 350px; // This wouldn't be needed if overflow-x worked without cutting off elements on the vertical axis
   @media #{$tablet} {
-    padding-top: 50px;
-  }
-  @media #{$wide} {
     padding-top: 70px;
   }
 }
