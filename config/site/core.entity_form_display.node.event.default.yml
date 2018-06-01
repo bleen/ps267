@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_calls_to_action
     - field.field.node.event.field_event_image
     - field.field.node.event.field_forms_documents
     - field.field.node.event.field_important_dates
@@ -21,6 +22,7 @@ third_party_settings:
       children:
         - group_dates
         - group_attachments
+        - group_calls_to_action
       parent_name: ''
       weight: 20
       format_type: tabs
@@ -57,6 +59,19 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Forms and Documents'
+    group_calls_to_action:
+      children:
+        - field_calls_to_action
+      parent_name: group_extras
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Calls to Action'
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -69,6 +84,18 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_calls_to_action:
+    type: entity_reference_paragraphs
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   field_event_image:

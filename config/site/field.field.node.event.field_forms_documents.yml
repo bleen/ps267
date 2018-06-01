@@ -12,7 +12,7 @@ dependencies:
 third_party_settings:
   custom_add_another:
     custom_add_another: 'Add Another Form or Document'
-    custom_remove: ''
+    custom_remove: 'Remove this Form or Document'
 id: node.event.field_forms_documents
 field_name: field_forms_documents
 entity_type: node
