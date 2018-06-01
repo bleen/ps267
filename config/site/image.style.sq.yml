@@ -1,0 +1,15 @@
+uuid: 6425085a-3684-44e4-8ac2-e4b479adb0c3
+langcode: en
+status: true
+dependencies: {  }
+name: sq
+label: 'Square (300x300)'
+effects:
+  9e821171-7335-498a-b0a2-7893b30a000a:
+    uuid: 9e821171-7335-498a-b0a2-7893b30a000a
+    id: image_scale
+    weight: -9
+    data:
+      width: 300
+      height: 300
+      upscale: false

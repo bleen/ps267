@@ -25,6 +25,7 @@ $grid-breakpoint: "screen and (min-width: #{$grid-float-breakpoint})";
 @import "component/eses";
 @import "component/asides";
 @import "component/calendar";
+@import "component/announcements";
 
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";
@@ -38,7 +39,7 @@ ol, ul {
 
 // Page header.
 .page-header {
-  margin-top: 0;
+  margin: 0;
 }
 
 // Footer.

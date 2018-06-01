@@ -8017,6 +8017,13 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 
+.field--name-node-changed-date {
+  font-size: 0.7em;
+  font-style: italic;
+  color: #999;
+  margin: 0 0 0.5em 1em;
+}
+
 .school-name {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
   font-size: 34px;
@@ -8326,6 +8333,24 @@ h1, h2, h3, h4, h5, .block-title {
   border-bottom: none;
 }
 
+.node--type-announcement h2 {
+  margin: 0;
+}
+.node--type-announcement.node--view-mode-teaser {
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+.node--type-announcement.node--view-mode-teaser img {
+  float: left;
+  margin: 0 1em 0.5em 0;
+  box-shadow: 3px 3px 7px 1px #565656;
+}
+.node--type-announcement.node--view-mode-teaser .field--name-node-link {
+  margin: 0.5em 0;
+  font-size: 0.9em;
+}
+
 /**
  * jQuery UI autocomplete widget style overrides.
  *
@@ -8379,7 +8404,7 @@ ol, ul {
 }
 
 .page-header {
-  margin-top: 0;
+  margin: 0;
 }
 
 .footer {

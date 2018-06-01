@@ -5,8 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_attachment
     - field.field.node.announcement.field_announcement_image
-    - image.style.thumbnail
+    - image.style.sq
     - node.type.announcement
   module:
     - ds
@@ -35,7 +36,13 @@ third_party_settings:
         - node_changed_date
         - field_announcement_image
         - body
+        - node_link
     fields:
+      node_link:
+        plugin_id: node_link
+        weight: 4
+        label: hidden
+        formatter: default
       node_changed_date:
         plugin_id: node_changed_date
         weight: 1
@@ -46,6 +53,10 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.announcement.teaser
 targetEntityType: node
 bundle: announcement
@@ -64,8 +75,9 @@ content:
     region: ds_content
     label: hidden
     settings:
-      image_style: thumbnail
+      image_style: sq
       image_link: content
     third_party_settings: {  }
 hidden:
+  field_announcement_attachment: true
   links: true

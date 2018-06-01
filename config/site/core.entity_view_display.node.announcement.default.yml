@@ -8,10 +8,31 @@ dependencies:
     - field.field.node.announcement.field_announcement_image
     - node.type.announcement
   module:
+    - ds
     - file
     - image
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - node_changed_date
+        - field_announcement_image
+        - body
+        - field_announcement_attachment
+    fields:
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 0
+        label: hidden
+        formatter: ds_post_date_detailed_medium_date
 id: node.announcement.default
 targetEntityType: node
 bundle: announcement
@@ -20,28 +41,26 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: content
   field_announcement_attachment:
-    weight: 103
-    label: above
+    weight: 3
+    label: hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
     region: content
   field_announcement_image:
-    weight: 102
-    label: above
+    weight: 1
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
     region: content
-  links:
-    weight: 100
-    region: content
-hidden: {  }
+hidden:
+  links: true

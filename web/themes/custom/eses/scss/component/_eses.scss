@@ -24,6 +24,13 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 
+.field--name-node-changed-date {
+  font-size: .7em;
+  font-style: italic;
+  color: #999;
+  margin: 0 0 .5em 1em;
+}
+
 // Branding.
 .school-name {
   font-family: $font-family-headers;
@@ -127,8 +134,3 @@ h1, h2, h3, h4, h5, .block-title {
     margin: 3px 0;
   }
 }
-
-.info-rail {
-  //margin-top: 70px;
-}
-

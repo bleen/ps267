@@ -1,0 +1,17 @@
+uuid: 04e17852-3611-4cb8-b128-e909277914cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: small
+label: 'Small (fp, 320x240)'
+effects:
+  6ed897e2-a288-46be-b2e0-a482cf09fcae:
+    uuid: 6ed897e2-a288-46be-b2e0-a482cf09fcae
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 320
+      height: 240
+      crop_type: focal_point
