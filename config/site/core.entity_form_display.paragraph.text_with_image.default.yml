@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.text_with_image.field_text_with_image_header
     - field.field.paragraph.text_with_image.field_text_with_image_image
+    - field.field.paragraph.text_with_image.field_text_with_image_position
     - field.field.paragraph.text_with_image.field_text_with_image_text
     - image.style.thumbnail
     - paragraphs.paragraphs_type.text_with_image
@@ -33,6 +34,12 @@ content:
       offsets: '50,50'
     third_party_settings: {  }
     type: image_focal_point
+    region: content
+  field_text_with_image_position:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_text_with_image_text:
     weight: 1

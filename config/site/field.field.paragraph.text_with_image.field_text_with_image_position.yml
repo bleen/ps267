@@ -1,0 +1,28 @@
+uuid: 7d2269c4-acd7-4135-ada6-9b56adec0c23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_with_image_position
+    - paragraphs.paragraphs_type.text_with_image
+  module:
+    - custom_add_another
+    - options
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.text_with_image.field_text_with_image_position
+field_name: field_text_with_image_position
+entity_type: paragraph
+bundle: text_with_image
+label: 'Image Position'
+description: 'Choose where the image should appear (when it is placed next to the text)'
+required: true
+translatable: false
+default_value:
+  -
+    value: Left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

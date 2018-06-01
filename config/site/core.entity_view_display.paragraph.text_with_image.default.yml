@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.text_with_image.field_text_with_image_header
     - field.field.paragraph.text_with_image.field_text_with_image_image
+    - field.field.paragraph.text_with_image.field_text_with_image_position
     - field.field.paragraph.text_with_image.field_text_with_image_text
     - paragraphs.paragraphs_type.text_with_image
   module:
@@ -39,4 +40,5 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-hidden: {  }
+hidden:
+  field_text_with_image_position: true

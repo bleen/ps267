@@ -1,0 +1,24 @@
+uuid: ff41d6ce-4e72-463d-8081-17ef4f10b9b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: general_content
+label: 'General Content'
+type: 'canonical_entities:node'
+pattern: '[node:content-type]/[node:title]'
+selection_criteria:
+  77421dc7-55c7-4e24-9273-44a3ba0418cc:
+    id: node_type
+    bundles:
+      announcement: announcement
+      event: event
+      resource_page: resource_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 77421dc7-55c7-4e24-9273-44a3ba0418cc
+selection_logic: and
+weight: -5
+relationships: {  }
