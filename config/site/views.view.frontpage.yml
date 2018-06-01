@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.rss
     - core.entity_view_mode.node.teaser
+    - node.type.announcement
   module:
     - node
     - user
@@ -123,16 +124,16 @@ display:
           plugin_id: boolean
           entity_type: node
           entity_field: status
-        langcode:
-          id: langcode
+        type:
+          id: type
           table: node_field_data
-          field: langcode
+          field: type
           relationship: none
           group_type: group
           admin_label: ''
           operator: in
           value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+            announcement: announcement
           group: 1
           exposed: false
           expose:
@@ -160,9 +161,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: language
           entity_type: node
-          entity_field: langcode
+          entity_field: type
+          plugin_id: bundle
       pager:
         type: full
         options:
@@ -240,6 +241,10 @@ display:
       fields: {  }
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     display_plugin: default
     display_title: Master
     id: default

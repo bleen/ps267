@@ -8011,6 +8011,11 @@ h1, h2, h3, h4, h5, .block-title {
     padding-top: 70px;
   }
 }
+@media screen and (min-width: 1200px) {
+  .main-container {
+    padding-top: 90px;
+  }
+}
 
 .school-name {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
