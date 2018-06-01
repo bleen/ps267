@@ -36,6 +36,57 @@ $calendar_shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
         }
       }
 
+      .details {
+        font-size: .8em;
+        color: #666;
+        font-style: italic;
+        margin: 0 0 .5em 0;
+        padding-left: 60px;
+
+        p {
+          margin: 0;
+        }
+
+        @media #{$tablet} {
+          margin: 0;
+          font-size: .7em;
+          text-align: center;
+          padding-left: 0;
+          clear: left;
+        }
+        @media #{$normal} {
+          margin: 0 0 .5em 0;
+          font-size: .9em;
+          text-align: left;
+          padding-left: 60px;
+          clear: none;
+        }
+      }
+
+      @media #{$tablet} {
+        font-size: .75em;
+
+        .date {
+          width: 30px;
+        }
+
+        .details {
+          font-size: 1em;
+        }
+      }
+
+      @media #{$normal} {
+        font-size: 1em;
+
+        .date {
+          width: 40px;
+        }
+
+        .details {
+          font-size: .8em;
+        }
+      }
+
       &:last-of-type {
         border-bottom: none;
       }

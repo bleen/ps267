@@ -89,7 +89,7 @@ body {
   .navbar-nav {
     @media #{$tablet} {
       margin-top: 10px;
-      padding-left: 200px;
+      padding-left: 175px;
       background-color: transparent;
 
       > li > a {
@@ -113,6 +113,12 @@ body {
       > li > a:hover {
         background-color: #CCC;
       }
+    }
+    @media #{$normal} {
+      padding-left: 235px;
+    }
+    @media #{$wide} {
+      padding-left: 280px;
     }
   }
 }

@@ -19,14 +19,21 @@ h1, h2, h3, h4, h5, .block-title {
   @media #{$tablet} {
     padding-top: 50px;
   }
+  @media #{$wide} {
+    padding-top: 70px;
+  }
 }
 
 // Branding.
 .school-name {
   font-family: $font-family-headers;
-  font-size: 24px;
+  font-size: 36px;
   display: block;
   text-align: center;
+
+  @media #{$wide} {
+    font-size: 48px;
+  }
 }
 
 .school-logo {
@@ -87,9 +94,21 @@ h1, h2, h3, h4, h5, .block-title {
     .school-logo {
       position: absolute;
       top: -50px;
-      left: 10px;
+      left: 15px;
       display: block;
-      width: 180px;
+      width: 150px;
+    }
+  }
+  @media #{$normal} {
+    .school-logo {
+      left: 15px;
+      width: 205px;
+    }
+  }
+  @media #{$wide} {
+    .school-logo {
+      left: 18px;
+      width: 250px;
     }
   }
 }

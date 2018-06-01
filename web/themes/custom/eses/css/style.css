@@ -7704,7 +7704,7 @@ body.navbar-is-fixed-bottom {
 @media screen and (min-width: 768px) {
   .navbar-default .navbar-nav {
     margin-top: 10px;
-    padding-left: 200px;
+    padding-left: 175px;
     background-color: transparent;
   }
   .navbar-default .navbar-nav > li > a {
@@ -7728,6 +7728,16 @@ body.navbar-is-fixed-bottom {
   }
   .navbar-default .navbar-nav > li > a:hover {
     background-color: #CCC;
+  }
+}
+@media screen and (min-width: 992px) {
+  .navbar-default .navbar-nav {
+    padding-left: 235px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .navbar-default .navbar-nav {
+    padding-left: 280px;
   }
 }
 
@@ -8001,12 +8011,22 @@ h1, h2, h3, h4, h5, .block-title {
     padding-top: 50px;
   }
 }
+@media screen and (min-width: 1200px) {
+  .main-container {
+    padding-top: 70px;
+  }
+}
 
 .school-name {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 36px;
   display: block;
   text-align: center;
+}
+@media screen and (min-width: 1200px) {
+  .school-name {
+    font-size: 48px;
+  }
 }
 
 .school-logo > img {
@@ -8071,9 +8091,21 @@ h1, h2, h3, h4, h5, .block-title {
   .region-sub-header .school-logo {
     position: absolute;
     top: -50px;
-    left: 10px;
+    left: 15px;
     display: block;
-    width: 180px;
+    width: 150px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .region-sub-header .school-logo {
+    left: 15px;
+    width: 205px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .region-sub-header .school-logo {
+    left: 18px;
+    width: 250px;
   }
 }
 
@@ -8093,9 +8125,10 @@ h1, h2, h3, h4, h5, .block-title {
 
 .region-sidebar-first {
   margin-top: 0;
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   width: 275px;
-  right: -290px;
+  right: -275px;
 }
 @media screen and (min-width: 768px) {
   .region-sidebar-first {
@@ -8131,6 +8164,15 @@ h1, h2, h3, h4, h5, .block-title {
   margin-top: 0;
   font-size: 1.25em;
 }
+.region-sidebar-first section .resource-list {
+  list-style-type: none;
+  padding-left: 1.5em;
+  text-indent: -1.25em;
+  margin-left: 0.5em;
+}
+.region-sidebar-first section .resource-list svg {
+  min-width: 1em;
+}
 @media screen and (min-width: 768px) {
   .region-sidebar-first section {
     margin-bottom: 1em;
@@ -8143,9 +8185,6 @@ h1, h2, h3, h4, h5, .block-title {
   }
   .region-sidebar-first section#block-views-block-resources-resources-block {
     top: 0;
-  }
-  .region-sidebar-first section .block-title {
-    font-size: 1.15em;
   }
 }
 .region-sidebar-first section:before, .region-sidebar-first section:after {
@@ -8227,6 +8266,56 @@ h1, h2, h3, h4, h5, .block-title {
   display: block;
   font-size: 1.5em;
   background: #fff;
+}
+.mini-calendar .events .event .details {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  margin: 0 0 0.5em 0;
+  padding-left: 60px;
+}
+.mini-calendar .events .event .details p {
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .mini-calendar .events .event .details {
+    margin: 0;
+    font-size: 0.7em;
+    text-align: center;
+    padding-left: 0;
+    clear: left;
+  }
+}
+@media screen and (min-width: 992px) {
+  .mini-calendar .events .event .details {
+    margin: 0 0 0.5em 0;
+    font-size: 0.9em;
+    text-align: left;
+    padding-left: 60px;
+    clear: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .mini-calendar .events .event {
+    font-size: 0.75em;
+  }
+  .mini-calendar .events .event .date {
+    width: 30px;
+  }
+  .mini-calendar .events .event .details {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 992px) {
+  .mini-calendar .events .event {
+    font-size: 1em;
+  }
+  .mini-calendar .events .event .date {
+    width: 40px;
+  }
+  .mini-calendar .events .event .details {
+    font-size: 0.8em;
+  }
 }
 .mini-calendar .events .event:last-of-type {
   border-bottom: none;
