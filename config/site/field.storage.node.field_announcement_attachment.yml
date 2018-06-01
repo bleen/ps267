@@ -1,0 +1,23 @@
+uuid: 278e9f82-1fcf-4e0b-a408-257d20aa9818
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: node.field_announcement_attachment
+field_name: field_announcement_attachment
+entity_type: node
+type: file
+settings:
+  display_field: true
+  display_default: true
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

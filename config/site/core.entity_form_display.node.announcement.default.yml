@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_attachment
     - field.field.node.announcement.field_announcement_image
     - image.style.thumbnail
     - node.type.announcement
   module:
+    - file
     - image
     - scheduler
     - text
@@ -25,6 +27,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  field_announcement_attachment:
+    weight: 3
+    settings:
+      progress_indicator: bar
+    third_party_settings: {  }
+    type: file_generic
+    region: content
   field_announcement_image:
     weight: 1
     settings:
@@ -37,17 +46,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 4
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -61,7 +70,7 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

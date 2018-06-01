@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_attachment
     - field.field.node.announcement.field_announcement_image
     - node.type.announcement
   module:
+    - file
     - image
     - text
     - user
@@ -21,6 +23,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_announcement_attachment:
+    weight: 103
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
     region: content
   field_announcement_image:
     weight: 102

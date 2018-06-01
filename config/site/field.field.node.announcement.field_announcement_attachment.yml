@@ -1,0 +1,32 @@
+uuid: a2fac2d5-2010-429a-8d07-9538e525b212
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_announcement_attachment
+    - node.type.announcement
+  module:
+    - custom_add_another
+    - file
+third_party_settings:
+  custom_add_another:
+    custom_add_another: 'Add Another Attachment'
+    custom_remove: 'Remove this Attachment'
+id: node.announcement.field_announcement_attachment
+field_name: field_announcement_attachment
+entity_type: node
+bundle: announcement
+label: Attachment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf doc docx txt ppt pptx pages jpg'
+  max_filesize: ''
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
