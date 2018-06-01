@@ -1,0 +1,25 @@
+uuid: e2efd714-6797-4d24-a72d-7e7dfc0d5357
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_list_header
+    - paragraphs.paragraphs_type.list
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.list.field_list_header
+field_name: field_list_header
+entity_type: paragraph
+bundle: list
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,61 @@
+uuid: d595dec8-b817-4125-a4a8-cd285557d0a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_list_tems
+    - paragraphs.paragraphs_type.attachments
+    - paragraphs.paragraphs_type.button
+    - paragraphs.paragraphs_type.important_dates
+    - paragraphs.paragraphs_type.list
+  module:
+    - custom_add_another
+    - entity_reference_revisions
+third_party_settings:
+  custom_add_another:
+    custom_add_another: 'Add Another List Item'
+    custom_remove: 'Remove this List Item'
+id: paragraph.list.field_list_tems
+field_name: field_list_tems
+entity_type: paragraph
+bundle: list
+label: 'List Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      attachments: attachments
+      button: button
+      important_dates: important_dates
+    target_bundles_drag_drop:
+      list:
+        weight: 9
+        enabled: false
+      attachments:
+        enabled: true
+        weight: 10
+      basic_text:
+        weight: 11
+        enabled: false
+      button:
+        enabled: true
+        weight: 12
+      important_dates:
+        enabled: true
+        weight: 13
+      large_image:
+        weight: 14
+        enabled: false
+      text_with_image:
+        weight: 15
+        enabled: false
+      text_with_map:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

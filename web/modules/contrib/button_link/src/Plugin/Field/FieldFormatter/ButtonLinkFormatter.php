@@ -34,6 +34,8 @@ class ButtonLinkFormatter extends LinkFormatter {
       'target' => '',
       'link_text' => '',
       'btn_type' => 'btn-default',
+      'btn_size' => '',
+      'icon_class' => '',
     ) + parent::defaultSettings();
   }
 
@@ -74,6 +76,12 @@ class ButtonLinkFormatter extends LinkFormatter {
       ],
     ];
 
+    $form['icon_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Classes for icons, example: "fa fa-anchor".'),
+      '#default_value' => $settings['icon_class'],
+    ];
+
     return $form + $parentForm;
   }
 
@@ -89,6 +97,9 @@ class ButtonLinkFormatter extends LinkFormatter {
     }
     if (!empty($settings['rel'])) {
       $summary[] = $this->t('Add rel="@rel"', ['@rel' => $settings['rel']]);
+    }
+    if (!empty($settings['icon_class'])) {
+      $summary[] = $this->t('Icon class: "@rel"', ['@rel' => $settings['icon_class']]);
     }
     if (!empty($settings['target'])) {
       $summary[] = $this->t('Open link in new window');
@@ -119,7 +130,7 @@ class ButtonLinkFormatter extends LinkFormatter {
       }
 
       if (!empty($settings['link_text'])) {
-        $link_title = $settings['link_text'];
+        $link_title = $this->t($settings['link_text']);
       }
 
       // The link_separate formatter has two titles; the link text (as in the
@@ -142,6 +153,7 @@ class ButtonLinkFormatter extends LinkFormatter {
         '#url' => $url,
         '#type' => $settings['btn_type'],
         '#size' => $settings['btn_size'],
+        '#icon_class' => $settings['icon_class'],
       );
 
       if (!empty($item->_attributes)) {

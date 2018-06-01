@@ -1,0 +1,9 @@
+uuid: 32aee301-41f8-4360-b72e-fd53e7c6bcea
+langcode: en
+status: true
+dependencies: {  }
+id: list
+label: List
+icon_uuid: null
+description: 'A list of content. E.g. a list of dates, or attachments'
+behavior_plugins: {  }

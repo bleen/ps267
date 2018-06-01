@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0295a481299049de1a41ff9643e2c071",
+    "content-hash": "aaf693035a2f5174060fe512619d2d10",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -891,17 +891,17 @@
         },
         {
             "name": "drupal/button_link",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/button_link",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/button_link-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "54c8bdca11d7741a8815ac2f5047affdc7d5bb9b"
+                "url": "https://ftp.drupal.org/files/projects/button_link-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "ae7af984d231c9c9838b0f756455c4bfb382fee9"
             },
             "require": {
                 "drupal/core": "*"
@@ -912,7 +912,7 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
+                    "version": "8.x-1.1",
                     "datestamp": "1526911084",
                     "security-coverage": {
                         "status": "covered",

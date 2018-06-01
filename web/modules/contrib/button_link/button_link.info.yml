@@ -7,8 +7,8 @@ package: Fields
 dependencies:
   - field
   
-# Information added by Drupal.org packaging script on 2016-11-28
-version: '8.x-1.0'
+# Information added by Drupal.org packaging script on 2018-05-21
+version: '8.x-1.1'
 core: '8.x'
 project: 'button_link'
-datestamp: 1480343886
+datestamp: 1526911091

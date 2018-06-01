@@ -1,0 +1,25 @@
+uuid: 9fb53d04-cf5f-414b-8e2e-3c274ab5d966
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_basic_text_header
+    - paragraphs.paragraphs_type.basic_text
+  module:
+    - custom_add_another
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: paragraph.basic_text.field_basic_text_header
+field_name: field_basic_text_header
+entity_type: paragraph
+bundle: basic_text
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

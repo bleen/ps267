@@ -7,6 +7,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_theme().
@@ -14,7 +15,7 @@ use Drupal\Core\Link;
 function button_link_theme() {
   return array(
     'link_formatter_button_link' => array(
-      'variables' => array('title' => NULL, 'url_title' => NULL, 'url' => NULL, 'type' => NULL, 'size' => NULL),
+      'variables' => array('title' => NULL, 'url_title' => NULL, 'url' => NULL, 'type' => NULL, 'size' => NULL, 'icon_class' => NULL),
     ),
   );
 }
@@ -40,6 +41,10 @@ function template_preprocess_link_formatter_button_link(&$variables) {
   $attributes['class'][] = 'btn';
   $attributes['class'][] = $variables['type'];
   $attributes['class'][] = $variables['size'];
+  $attributes['href'] = $url->toString();
   $url->setOption('attributes', $attributes);
   $variables['link'] = Link::fromTextAndUrl($variables['title'], $url )->toString();
+  $variables['attributes'] = new Attribute($attributes);
+  $icon_attributes['class'][] = $variables['icon_class'];
+  $variables['icon_attributes'] = new Attribute($icon_attributes);
 }
