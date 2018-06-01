@@ -22,7 +22,8 @@
         "drupal/footer_message": "^1.0",
         "drupal/bootstrap": "^3.11",
         "drupal/views_fieldsets": "^3.3",
-        "drupal/ds": "^3"
+        "drupal/ds": "^3",
+        "drupal/button_link": "1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

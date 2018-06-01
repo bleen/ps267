@@ -1,0 +1,26 @@
+uuid: 3cfc19f7-4ae2-436a-aa40-91a66a1604cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.button.field_button_click_url
+    - paragraphs.paragraphs_type.button
+  module:
+    - link
+id: paragraph.button.default
+targetEntityType: paragraph
+bundle: button
+mode: default
+content:
+  field_button_click_url:
+    weight: 0
+    settings:
+      placeholder_url: 'http://www.example.com'
+      placeholder_title: 'Click Here'
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

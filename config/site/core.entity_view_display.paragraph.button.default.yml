@@ -1,0 +1,32 @@
+uuid: 97bd6a0f-7a62-430f-8c84-79c2a25882d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.button.field_button_click_url
+    - paragraphs.paragraphs_type.button
+  module:
+    - button_link
+    - ds
+id: paragraph.button.default
+targetEntityType: paragraph
+bundle: button
+mode: default
+content:
+  field_button_click_url:
+    weight: 0
+    label: hidden
+    settings:
+      link_text: ''
+      btn_type: btn-default
+      trim_length: ''
+      url_only: false
+      url_plain: false
+      rel: 0
+      target: 0
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: button_link
+    region: content
+hidden: {  }

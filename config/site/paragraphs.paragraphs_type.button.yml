@@ -1,0 +1,9 @@
+uuid: 7ff6fd13-b166-4d15-bb3a-bd30e4e858a9
+langcode: en
+status: true
+dependencies: {  }
+id: button
+label: Button
+icon_uuid: null
+description: 'One or more buttons with configurable links.'
+behavior_plugins: {  }
