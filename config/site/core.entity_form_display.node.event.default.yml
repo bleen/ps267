@@ -8,7 +8,7 @@ dependencies:
     - field.field.node.event.field_event_image
     - field.field.node.event.field_forms_documents
     - field.field.node.event.field_important_dates
-    - image.style.thumbnail
+    - image.style.thumb
     - node.type.event
   module:
     - field_group
@@ -101,8 +101,8 @@ content:
   field_event_image:
     weight: 1
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: thumb
+      progress_indicator: bar
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }

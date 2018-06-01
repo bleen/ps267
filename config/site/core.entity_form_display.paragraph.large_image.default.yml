@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.large_image.field_large_image_image
-    - image.style.thumbnail
+    - image.style.sq
     - paragraphs.paragraphs_type.large_image
   module:
     - image
@@ -16,8 +16,8 @@ content:
   field_large_image_image:
     weight: 0
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: sq
+      progress_indicator: bar
     third_party_settings: {  }
     type: image_image
     region: content

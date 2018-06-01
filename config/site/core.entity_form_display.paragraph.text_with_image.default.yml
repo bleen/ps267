@@ -7,7 +7,7 @@ dependencies:
     - field.field.paragraph.text_with_image.field_text_with_image_image
     - field.field.paragraph.text_with_image.field_text_with_image_position
     - field.field.paragraph.text_with_image.field_text_with_image_text
-    - image.style.thumbnail
+    - image.style.thumb
     - paragraphs.paragraphs_type.text_with_image
   module:
     - focal_point
@@ -28,8 +28,8 @@ content:
   field_text_with_image_image:
     weight: 2
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: thumb
+      progress_indicator: bar
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }

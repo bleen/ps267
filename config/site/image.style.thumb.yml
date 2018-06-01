@@ -1,0 +1,15 @@
+uuid: 10137ab2-2611-4448-8597-40af2b702635
+langcode: en
+status: true
+dependencies: {  }
+name: thumb
+label: 'Thumbnail (100x100)'
+effects:
+  b2dd03b3-2ce6-4e37-8910-d5b0ca4ee9f0:
+    uuid: b2dd03b3-2ce6-4e37-8910-d5b0ca4ee9f0
+    id: image_scale
+    weight: 1
+    data:
+      width: 100
+      height: 100
+      upscale: false

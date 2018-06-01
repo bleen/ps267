@@ -6,7 +6,7 @@ dependencies:
     - field.field.node.announcement.body
     - field.field.node.announcement.field_announcement_attachment
     - field.field.node.announcement.field_announcement_image
-    - image.style.thumbnail
+    - image.style.thumb
     - node.type.announcement
   module:
     - file
@@ -37,8 +37,8 @@ content:
   field_announcement_image:
     weight: 1
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: thumb
+      progress_indicator: bar
     third_party_settings: {  }
     type: image_image
     region: content
