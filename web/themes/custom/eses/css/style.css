@@ -8019,7 +8019,7 @@ h1, h2, h3, h4, h5, .block-title {
 
 .school-name {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
-  font-size: 36px;
+  font-size: 34px;
   display: block;
   text-align: center;
 }
@@ -8130,11 +8130,17 @@ h1, h2, h3, h4, h5, .block-title {
   width: 275px;
   right: -275px;
 }
+@media screen and (max-height: 500px) {
+  .region-sidebar-first {
+    top: 70px;
+  }
+}
 @media screen and (min-width: 768px) {
   .region-sidebar-first {
     position: static;
     width: auto;
     right: unset;
+    top: 0;
   }
 }
 .region-sidebar-first section {

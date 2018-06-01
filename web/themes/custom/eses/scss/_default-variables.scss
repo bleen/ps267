@@ -10,6 +10,12 @@
  * ./THEMENAME/bootstrap/assets/stylesheets/bootstrap/_variables.scss
  */
 
+// Breakpoints
+$screen-phablet:   625px !default;
+$screen-phablet-height:   500px !default;
+$phablet:          "screen and (min-width: #{$screen-phablet})";
+$phablet-wide:     "screen and (max-height: #{$screen-phablet-height})";
+
 // Fonts
 $font-family-headers: 'Boogaloo', Helvetica, Arial, sans-serif;
 

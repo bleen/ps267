@@ -10,10 +10,15 @@ $sidebar-tab-shadow: 0px 7px 7px -5px rgba(0,0,0,0.75);
   width: $sidebar-width;
   right: -1 * $sidebar-width;
 
+  @media #{$phablet-wide} {
+    top: 70px;
+  }
+
   @media #{$tablet} {
     position: static;
     width: auto;
     right: unset;
+    top: 0;
   }
 
   section {
