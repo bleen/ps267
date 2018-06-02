@@ -3,6 +3,11 @@ h1, h2, h3, h4, h5, .block-title {
   font-family: $font-family-headers;
 }
 
+.block-title {
+  margin-top: 0;
+  font-size: 1.25em;
+}
+
 // Homepage.
 .path-frontpage {
   h1 {

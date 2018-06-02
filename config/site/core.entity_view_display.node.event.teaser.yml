@@ -5,10 +5,51 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
+    - field.field.node.event.field_calls_to_action
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_forms_documents
+    - field.field.node.event.field_important_dates
+    - image.style.sq
     - node.type.event
   module:
+    - ds
+    - image
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - node_title
+        - field_event_image
+        - body
+        - node_link
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 3
+        label: hidden
+        formatter: default
+        settings:
+          'link text': 'Read more'
+          'link class': ''
+          wrapper: ''
+          class: ''
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.event.teaser
 targetEntityType: node
 bundle: event
@@ -17,12 +58,22 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    weight: 2
     settings:
-      trim_length: 600
+      trim_length: 140
     third_party_settings: {  }
     region: content
-  links:
-    weight: 100
+  field_event_image:
+    type: image
+    weight: 1
     region: content
-hidden: {  }
+    label: hidden
+    settings:
+      image_style: sq
+      image_link: content
+    third_party_settings: {  }
+hidden:
+  field_calls_to_action: true
+  field_forms_documents: true
+  field_important_dates: true
+  links: true

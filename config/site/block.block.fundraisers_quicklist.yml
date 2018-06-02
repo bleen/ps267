@@ -1,0 +1,24 @@
+uuid: 69361a52-6981-47ae-a041-0f56c298b893
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.fundraisers
+  module:
+    - views
+  theme:
+    - eses
+id: fundraisers_quicklist
+theme: eses
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:fundraisers-quicklist'
+settings:
+  id: 'views_block:fundraisers-quicklist'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

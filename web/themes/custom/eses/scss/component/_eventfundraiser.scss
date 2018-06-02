@@ -1,0 +1,21 @@
+.view-fundraisers {
+
+  .fundraiser {
+    margin-bottom: 1em;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: .5em;
+
+    .field--name-node-link {
+      margin-top: .25em;
+      font-size: .9em;
+    }
+    .field--name-node-title {
+      display: none;
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+  }
+
+}

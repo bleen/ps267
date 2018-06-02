@@ -5,7 +5,6 @@
  * Custom Bootstrap sub-theme.
  */
 
-
 /**
  * Implements hook_page_attachments_alter().
  */
@@ -19,7 +18,7 @@ function eses_page_attachments_alter(array &$attachments) {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements hook_preprocess_block().
  */
 function eses_preprocess_block__system_branding_block(&$variables) {
   if($variables['content']['site_name']['#access']) {
@@ -28,7 +27,7 @@ function eses_preprocess_block__system_branding_block(&$variables) {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements hook_preprocess_region().
  */
 function eses_preprocess_region__sidebar_first(&$variables) {
   $variables['#attached']['library'] = "eses/eses";
