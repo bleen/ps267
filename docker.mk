@@ -5,7 +5,7 @@ include .env
 default: up
 
 up:
-	@echo "Starting up containers for for $(PROJECT_NAME)..."
+	@echo "Starting up containers for $(PROJECT_NAME)..."
 	docker-compose pull --parallel
 	docker-compose up -d --remove-orphans
 
@@ -24,3 +24,9 @@ ps:
 
 shell:
 	docker exec -ti $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") sh
+
+backup:
+	@echo "Backing up files and db for $(PROJECT_NAME)..."
+	docker-compose run --user root -w /var/www/html/web php drush sql-dump --result-file=../db.sql --gzip
+	mv db.sql.gz sql/
+	rsync -a web/sites/default/files ~/Dropbox\ \(Personal\)/Documents/Kids\ \&\ School/PS267/Helping\ out/ps267.org/backups/files
