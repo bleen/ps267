@@ -8375,6 +8375,12 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 
+.paragraph {
+  boder-bottom: 1px solid #ccc;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
 /**
  * jQuery UI autocomplete widget style overrides.
  *
@@ -8428,6 +8434,7 @@ ol, ul {
 }
 
 .page-header {
+  border-bottom: 0;
   margin: 0;
 }
 

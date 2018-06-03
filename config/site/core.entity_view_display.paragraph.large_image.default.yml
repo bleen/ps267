@@ -6,7 +6,28 @@ dependencies:
     - field.field.paragraph.large_image.field_large_image_image
     - paragraphs.paragraphs_type.large_image
   module:
+    - ds
     - image
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+          ds_hidden: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_large_image_image
 id: paragraph.large_image.default
 targetEntityType: paragraph
 bundle: large_image
@@ -14,11 +35,18 @@ mode: default
 content:
   field_large_image_image:
     weight: 0
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     type: image
-    region: content
+    region: ds_content
 hidden: {  }

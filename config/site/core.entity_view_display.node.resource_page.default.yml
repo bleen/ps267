@@ -7,32 +7,43 @@ dependencies:
     - field.field.node.resource_page.field_resource_page_section
     - node.type.resource_page
   module:
+    - ds
     - entity_reference_revisions
-    - fontawesome
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          ds_content: div
+          ds_hidden: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      ds_content:
+        - field_resource_page_section
 id: node.resource_page.default
 targetEntityType: node
 bundle: resource_page
 mode: default
 content:
-  field_resource_icon:
-    weight: 102
-    label: above
-    settings:
-      layers: false
-    third_party_settings: {  }
-    type: fontawesome_icon_formatter
-    region: content
   field_resource_page_section:
     type: entity_reference_revisions_entity_view
-    weight: 103
-    label: above
+    weight: 0
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
-  links:
-    weight: 100
-    region: content
-hidden: {  }
+    region: ds_content
+hidden:
+  field_resource_icon: true
+  links: true

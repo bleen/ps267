@@ -6,9 +6,9 @@ dependencies:
     - field.storage.node.field_resource_page_section
     - node.type.resource_page
     - paragraphs.paragraphs_type.basic_text
+    - paragraphs.paragraphs_type.button
     - paragraphs.paragraphs_type.large_image
     - paragraphs.paragraphs_type.text_with_image
-    - paragraphs.paragraphs_type.text_with_map
   module:
     - custom_add_another
     - entity_reference_revisions
@@ -34,7 +34,7 @@ settings:
       basic_text: basic_text
       large_image: large_image
       text_with_image: text_with_image
-      text_with_map: text_with_map
+      button: button
     target_bundles_drag_drop:
       attachments:
         weight: 6
@@ -52,6 +52,12 @@ settings:
         enabled: true
         weight: 9
       text_with_map:
-        enabled: true
         weight: 10
+        enabled: false
+      button:
+        enabled: true
+        weight: 11
+      list:
+        weight: 14
+        enabled: false
 field_type: entity_reference_revisions

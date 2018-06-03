@@ -27,6 +27,7 @@ $grid-breakpoint: "screen and (min-width: #{$grid-float-breakpoint})";
 @import "component/calendar";
 @import "component/announcements";
 @import "component/eventfundraiser";
+@import "component/paragraphs";
 
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";
@@ -40,6 +41,7 @@ ol, ul {
 
 // Page header.
 .page-header {
+  border-bottom: 0;
   margin: 0;
 }
 
