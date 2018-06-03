@@ -8096,7 +8096,6 @@ h1, h2, h3, h4, h5, .block-title {
   .region-sub-header {
     position: fixed;
     z-index: 1030;
-    width: 100%;
     min-height: 70px;
     background: linear-gradient(to bottom, white 0%, white 75%, rgba(255, 255, 255, 0) 100%);
   }
