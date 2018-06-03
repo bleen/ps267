@@ -19,13 +19,22 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
-      settings: {  }
+      settings:
+        wrappers:
+          ds_content: div
+          ds_hidden: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      content:
+      ds_content:
         - node_title
         - field_event_image
         - body
@@ -56,17 +65,17 @@ bundle: event
 mode: teaser
 content:
   body:
-    label: hidden
     type: text_summary_or_trimmed
     weight: 2
+    region: ds_content
+    label: hidden
     settings:
-      trim_length: 140
+      trim_length: 100
     third_party_settings: {  }
-    region: content
   field_event_image:
     type: image
     weight: 1
-    region: content
+    region: ds_content
     label: hidden
     settings:
       image_style: sq

@@ -8190,6 +8190,7 @@ h1, h2, h3, h4, h5, .block-title {
 @media screen and (min-width: 768px) {
   .region-sidebar-first section {
     margin-bottom: 1em;
+    border-radius: 4px;
   }
   .region-sidebar-first section.open {
     left: 0;
@@ -8361,11 +8362,18 @@ h1, h2, h3, h4, h5, .block-title {
   margin-top: 0.25em;
   font-size: 0.9em;
 }
-.view-fundraisers .fundraiser .field--name-node-title {
-  display: none;
-}
 .view-fundraisers .fundraiser .field--name-node-title h2 {
   margin-top: 0;
+}
+@media screen and (min-width: 768px) {
+  .view-fundraisers .fundraiser {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .view-fundraisers .fundraiser {
+    font-size: 0.9em;
+  }
 }
 
 /**

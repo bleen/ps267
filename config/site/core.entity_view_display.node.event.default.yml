@@ -25,6 +25,7 @@ third_party_settings:
       settings:
         wrappers:
           ds_content: div
+          ds_hidden: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''

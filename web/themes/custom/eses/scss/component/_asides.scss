@@ -59,6 +59,7 @@ $sidebar-tab-shadow: 0px 7px 7px -5px rgba(0,0,0,0.75);
 
     @media #{$tablet} {
       margin-bottom: 1em;
+      border-radius: 4px;
 
       &.open {
         left: 0;
@@ -104,15 +105,6 @@ $sidebar-tab-shadow: 0px 7px 7px -5px rgba(0,0,0,0.75);
       box-shadow: $sidebar-tab-shadow;
     }
   }
-  //section:after {
-  //  border-bottom-left-radius: -.25em;
-  //  border: 1px solid #999;
-  //  border-right: none;
-  //  background: #fff;
-  //  display: block;
-  //  width: .25em;
-  //  height: .25em;
-  //}
 
   @media #{$tablet} {
     position: relative;

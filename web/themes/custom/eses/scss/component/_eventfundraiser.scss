@@ -10,11 +10,16 @@
       font-size: .9em;
     }
     .field--name-node-title {
-      display: none;
-
       h2 {
         margin-top: 0;
       }
+    }
+
+    @media #{$tablet} {
+      font-size: .8em;
+    }
+    @media #{$wide} {
+      font-size: .9em;
     }
   }
 
