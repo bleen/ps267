@@ -8380,6 +8380,17 @@ h1, h2, h3, h4, h5, .block-title {
   padding-bottom: 1em;
   margin-bottom: 1em;
 }
+.paragraph.paragraph--type-text-with-image img {
+  width: 50%;
+}
+.paragraph.paragraph--type-text-with-image img.image-left {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+.paragraph.paragraph--type-text-with-image img.image-right {
+  float: right;
+  margin: 0 0 10px 10px;
+}
 
 /**
  * jQuery UI autocomplete widget style overrides.

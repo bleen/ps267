@@ -1,0 +1,14 @@
+uuid: 9373bee7-879f-4145-bb93-c3c377fae25b
+langcode: en
+status: true
+dependencies: {  }
+name: sq_lg
+label: 'Square Large (500x500)'
+effects:
+  407b67ff-772b-472f-90fd-a4c49f2a1353:
+    uuid: 407b67ff-772b-472f-90fd-a4c49f2a1353
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 500
+      height: 500

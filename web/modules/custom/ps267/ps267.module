@@ -48,6 +48,7 @@ function ps267_field_widget_entity_reference_paragraphs_form_alter(&$element, &$
  * Implements hook_ds_pre_render_alter.
  */
 function ps267_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
+
   // For event teasers, only show the title if no image exists.
   if ($context['entity_type'] == 'node' && $context['bundle'] == 'event' && $context['view_mode'] == 'teaser') {
     if ($context['entity']->get('field_event_image')->isEmpty()) {
@@ -57,4 +58,24 @@ function ps267_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
       $layout_render_array['ds_content']['node_title']['#access'] = FALSE;
     }
   }
+
+  // Modify paragraphs.
+  if ($context['entity_type'] == 'paragraph') {
+
+    switch ($context['bundle']) {
+      case 'text_with_image':
+        // Set class based on image position.
+        if ($context['entity']->hasField('field_text_with_image_position') && $context['entity']->get('field_text_with_image_position')->value == "Right") {
+          $layout_render_array['ds_content']['field_text_with_image_image'][0]['#item_attributes']['class'][] = 'image-right';
+        }
+        else {
+          $layout_render_array['ds_content']['field_text_with_image_image'][0]['#item_attributes']['class'][] = 'image-left';
+        }
+        break;
+    }
+  }
+
+
+
+
 }

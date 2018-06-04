@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.text_with_image.field_text_with_image_image
     - field.field.paragraph.text_with_image.field_text_with_image_position
     - field.field.paragraph.text_with_image.field_text_with_image_text
+    - image.style.sq_lg
     - paragraphs.paragraphs_type.text_with_image
   module:
     - ds
@@ -79,23 +80,28 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: ''
+      image_style: sq_lg
       image_link: ''
     third_party_settings:
       ds:
         ft:
-          id: default
+          id: reset
           settings:
             lb: ''
-            lb-col: false
-            classes: {  }
     type: image
     region: ds_content
   field_text_with_image_text:
     weight: 2
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     type: text_default
     region: ds_content
 hidden:

@@ -2,4 +2,19 @@
   boder-bottom: 1px solid #ccc;
   padding-bottom: 1em;
   margin-bottom: 1em;
+
+  &.paragraph--type-text-with-image {
+    img {
+      width: 50%;
+
+      &.image-left {
+        float: left;
+        margin: 0 10px 10px 0;
+      }
+      &.image-right {
+        float: right;
+        margin: 0 0 10px 10px;
+      }
+    }
+  }
 }
