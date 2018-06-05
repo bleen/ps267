@@ -7602,7 +7602,7 @@ table .checkbox.form-no-label, table .radio.form-no-label {
 }
 
 .form-actions .btn, .form-actions .btn-group {
-  margin-right: 10px;
+  margin: 10px;
 }
 .form-actions .btn-group .btn {
   margin-right: 0;
