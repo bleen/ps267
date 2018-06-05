@@ -1,0 +1,60 @@
+uuid: e42961e7-9268-4014-8916-d2b84323db57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_basic_text_button
+    - paragraphs.paragraphs_type.basic_text
+    - paragraphs.paragraphs_type.button
+  module:
+    - custom_add_another
+    - entity_reference_revisions
+third_party_settings:
+  custom_add_another:
+    custom_add_another: 'Add Another Button'
+    custom_remove: 'Remove this Button'
+id: paragraph.basic_text.field_basic_text_button
+field_name: field_basic_text_button
+entity_type: paragraph
+bundle: basic_text
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      button: button
+    target_bundles_drag_drop:
+      two_column_text:
+        weight: 10
+        enabled: false
+      attachments:
+        weight: 11
+        enabled: false
+      basic_text:
+        weight: 12
+        enabled: false
+      button:
+        enabled: true
+        weight: 13
+      important_dates:
+        weight: 14
+        enabled: false
+      large_image:
+        weight: 15
+        enabled: false
+      list:
+        weight: 16
+        enabled: false
+      text_with_image:
+        weight: 17
+        enabled: false
+      text_with_map:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

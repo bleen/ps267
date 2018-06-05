@@ -1,0 +1,8 @@
+uuid: 8e4717c0-689e-4a99-b0e9-2d2e45605345
+langcode: en
+status: true
+dependencies: {  }
+id: detailed_day
+label: 'Detailed day'
+locked: false
+pattern: 'F j, Y'

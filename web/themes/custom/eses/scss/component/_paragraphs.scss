@@ -1,7 +1,7 @@
 .paragraph {
-  boder-bottom: 1px solid #ccc;
   padding-bottom: 1em;
   margin-bottom: 1em;
+  border-bottom: 1px dotted #ccc;
 
   &.paragraph--type-text-with-image {
     img {
@@ -16,5 +16,29 @@
         margin: 0 0 10px 10px;
       }
     }
+  }
+
+  &.paragraph--type-two-column-text {
+    .field--name-field-two-column-text-formatted {
+      column-count: 2;
+    }
+    h4 {
+      margin-bottom: 0;
+      break-after: avoid;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .btn {
+    margin: 1em 0 0 1em;
+  }
+
+  .paragraph {
+    /* Nested paragraphs */
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }

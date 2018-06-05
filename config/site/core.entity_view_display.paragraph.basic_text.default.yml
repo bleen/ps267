@@ -3,12 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.basic_text.field_basic_text_columns
+    - field.field.paragraph.basic_text.field_basic_text_button
     - field.field.paragraph.basic_text.field_basic_text_formatted_text
     - field.field.paragraph.basic_text.field_basic_text_header
     - paragraphs.paragraphs_type.basic_text
   module:
     - ds
+    - entity_reference_revisions
     - text
 third_party_settings:
   ds:
@@ -31,11 +32,29 @@ third_party_settings:
       ds_content:
         - field_basic_text_header
         - field_basic_text_formatted_text
+        - field_basic_text_button
 id: paragraph.basic_text.default
 targetEntityType: paragraph
 bundle: basic_text
 mode: default
 content:
+  field_basic_text_button:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    region: ds_content
   field_basic_text_formatted_text:
     weight: 1
     label: hidden
@@ -79,5 +98,4 @@ content:
             fi-def-at: false
     type: string
     region: ds_content
-hidden:
-  field_basic_text_columns: true
+hidden: {  }

@@ -1,14 +1,14 @@
-uuid: 1dd07e98-c824-44d9-99cb-0b5244c16c28
+uuid: feb04054-a34e-420c-99d1-f5f147def3bb
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.important_dates.field_important_date_date
-    - field.field.paragraph.important_dates.field_important_date_label
-    - paragraphs.paragraphs_type.important_dates
+    - field.field.paragraph.two_column_text.field_two_column_text_formatted
+    - field.field.paragraph.two_column_text.field_two_column_text_header
+    - paragraphs.paragraphs_type.two_column_text
   module:
-    - datetime
     - ds
+    - text
 third_party_settings:
   ds:
     layout:
@@ -28,19 +28,25 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_important_date_date
-        - field_important_date_label
-id: paragraph.important_dates.default
+        - field_two_column_text_header
+        - field_two_column_text_formatted
+id: paragraph.two_column_text.default
 targetEntityType: paragraph
-bundle: important_dates
+bundle: two_column_text
 mode: default
 content:
-  field_important_date_date:
+  field_two_column_text_formatted:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: ds_content
+  field_two_column_text_header:
     weight: 0
     label: hidden
     settings:
-      timezone_override: ''
-      format_type: detailed_day
+      link_to_entity: false
     third_party_settings:
       ds:
         ft:
@@ -57,8 +63,9 @@ content:
             fis-el: ''
             fis-cl: ''
             fis-at: ''
-            fi-el: ''
-            fi-cl: ''
+            fi: true
+            fi-el: h3
+            fi-cl: header
             fi-at: ''
             suffix: ''
             lbw: false
@@ -68,16 +75,7 @@ content:
             ow-def-cl: false
             fis: false
             fis-def-at: false
-            fi: false
             fi-def-at: false
-    type: datetime_default
-    region: ds_content
-  field_important_date_label:
-    weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
     type: string
     region: ds_content
 hidden: {  }

@@ -8,7 +8,9 @@ dependencies:
     - paragraphs.paragraphs_type.basic_text
     - paragraphs.paragraphs_type.button
     - paragraphs.paragraphs_type.large_image
+    - paragraphs.paragraphs_type.list
     - paragraphs.paragraphs_type.text_with_image
+    - paragraphs.paragraphs_type.two_column_text
   module:
     - custom_add_another
     - entity_reference_revisions
@@ -33,7 +35,9 @@ settings:
     target_bundles:
       basic_text: basic_text
       large_image: large_image
+      list: list
       text_with_image: text_with_image
+      two_column_text: two_column_text
       button: button
     target_bundles_drag_drop:
       attachments:
@@ -49,11 +53,14 @@ settings:
         enabled: true
         weight: 8
       list:
+        enabled: true
         weight: 9
-        enabled: false
       text_with_image:
         enabled: true
         weight: 9
+      two_column_text:
+        enabled: true
+        weight: 10
       text_with_map:
         weight: 10
         enabled: false

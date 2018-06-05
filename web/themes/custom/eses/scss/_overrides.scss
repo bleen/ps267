@@ -45,6 +45,16 @@ ol, ul {
   margin: 0;
 }
 
+// Buttons.
+.btn-default {
+  background: lighten($brand-primary, 50%);
+
+  &:hover {
+    background: $brand-primary;
+    color: #fff;
+  }
+}
+
 // Footer.
 .footer {
   margin-top: 45px;

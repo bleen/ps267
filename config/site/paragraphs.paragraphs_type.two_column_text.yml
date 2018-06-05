@@ -1,0 +1,9 @@
+uuid: dc80af2f-0ad7-4a72-a8f5-64a44d9ced63
+langcode: en
+status: true
+dependencies: {  }
+id: two_column_text
+label: 'Two-Column Text'
+icon_uuid: null
+description: 'A section of formatted text displayed in two-columns when the screen is wide enough.'
+behavior_plugins: {  }

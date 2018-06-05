@@ -8376,9 +8376,9 @@ h1, h2, h3, h4, h5, .block-title {
 }
 
 .paragraph {
-  boder-bottom: 1px solid #ccc;
   padding-bottom: 1em;
   margin-bottom: 1em;
+  border-bottom: 1px dotted #ccc;
 }
 .paragraph.paragraph--type-text-with-image img {
   width: 50%;
@@ -8390,6 +8390,24 @@ h1, h2, h3, h4, h5, .block-title {
 .paragraph.paragraph--type-text-with-image img.image-right {
   float: right;
   margin: 0 0 10px 10px;
+}
+.paragraph.paragraph--type-two-column-text .field--name-field-two-column-text-formatted {
+  column-count: 2;
+}
+.paragraph.paragraph--type-two-column-text h4 {
+  margin-bottom: 0;
+  break-after: avoid;
+}
+.paragraph.paragraph--type-two-column-text h4:first-child {
+  margin: 0;
+}
+.paragraph .btn {
+  margin: 1em 0 0 1em;
+}
+.paragraph .paragraph {
+  /* Nested paragraphs */
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 /**
@@ -8447,6 +8465,14 @@ ol, ul {
 .page-header {
   border-bottom: 0;
   margin: 0;
+}
+
+.btn-default {
+  background: #e0d5ef;
+}
+.btn-default:hover {
+  background: #5b3590;
+  color: #fff;
 }
 
 .footer {
