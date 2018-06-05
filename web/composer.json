@@ -15,6 +15,7 @@
         "drupal/field_group": "^1.0",
         "drupal/pathauto": "^1.2",
         "drupal/paragraphs": "^1.2",
+        "drupal/draggableviews": "^1.0",
         "drupal/custom_add_another": "^1.0@beta",
         "drupal/fontawesome": "^2.1",
         "drupal/gtranslate": "^1.13",

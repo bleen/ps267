@@ -1,13 +1,13 @@
-uuid: 9dcdb24d-371a-4caa-b5bb-feaa4b3be700
+uuid: f000dc53-92d2-4e4f-bade-8d84ddad86d9
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.event
-id: node.event.title
+    - node.type.fundraiser
+id: node.fundraiser.title
 field_name: title
 entity_type: node
-bundle: event
+bundle: fundraiser
 label: Name
 description: ''
 required: true

@@ -1,16 +1,16 @@
-uuid: 58282b3f-456c-4a3d-b772-6c9638c73d3a
+uuid: e57eeaed-eeef-4118-9205-9c4e59cd7e8a
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.event.body
-    - field.field.node.event.field_calls_to_action
-    - field.field.node.event.field_event_image
-    - field.field.node.event.field_forms_documents
-    - field.field.node.event.field_important_dates
+    - field.field.node.fundraiser.body
+    - field.field.node.fundraiser.field_fundraiser_calls_to_action
+    - field.field.node.fundraiser.field_fundraiser_image
+    - field.field.node.fundraiser.field_fundraiser_important_dates
+    - field.field.node.fundraiser.field_fundriaser_forms_documents
     - image.style.sq
-    - node.type.event
+    - node.type.fundraiser
   module:
     - ds
     - image
@@ -36,7 +36,7 @@ third_party_settings:
     regions:
       ds_content:
         - node_title
-        - field_event_image
+        - field_fundraiser_image
         - body
         - node_link
     fields:
@@ -45,34 +45,42 @@ third_party_settings:
         weight: 3
         label: hidden
         formatter: default
-        settings:
-          'link text': 'Read more'
-          'link class': ''
-          wrapper: ''
-          class: ''
       node_title:
         plugin_id: node_title
         weight: 0
         label: hidden
         formatter: default
         settings:
-          link: true
-          wrapper: h2
+          wrapper: h3
           class: ''
-id: node.event.teaser
+          link: false
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.fundraiser.teaser
 targetEntityType: node
-bundle: event
+bundle: fundraiser
 mode: teaser
 content:
   body:
+    label: hidden
     type: text_summary_or_trimmed
     weight: 2
-    region: ds_content
-    label: hidden
     settings:
       trim_length: 100
-    third_party_settings: {  }
-  field_event_image:
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    region: ds_content
+  field_fundraiser_image:
     type: image
     weight: 1
     region: ds_content
@@ -80,9 +88,16 @@ content:
     settings:
       image_style: sq
       image_link: content
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
 hidden:
-  field_calls_to_action: true
-  field_forms_documents: true
-  field_important_dates: true
+  field_fundraiser_calls_to_action: true
+  field_fundraiser_important_dates: true
+  field_fundriaser_forms_documents: true
   links: true

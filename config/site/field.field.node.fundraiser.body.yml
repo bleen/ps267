@@ -1,10 +1,10 @@
-uuid: c291b3a4-f3ad-4d09-a34c-1dbea9a6e8ff
+uuid: a6b8e4d1-5f8c-4c07-b37b-62031988ae35
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.event
+    - node.type.fundraiser
   module:
     - custom_add_another
     - text
@@ -12,10 +12,10 @@ third_party_settings:
   custom_add_another:
     custom_add_another: ''
     custom_remove: ''
-id: node.event.body
+id: node.fundraiser.body
 field_name: body
 entity_type: node
-bundle: event
+bundle: fundraiser
 label: Description
 description: ''
 required: true

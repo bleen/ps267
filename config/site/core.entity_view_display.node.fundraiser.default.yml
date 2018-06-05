@@ -1,14 +1,14 @@
-uuid: 3eca6851-979d-48b4-80e8-7dd04f48ea29
+uuid: 5d91d82b-1bf4-40af-b7fc-d124767b0bc7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.body
-    - field.field.node.event.field_calls_to_action
-    - field.field.node.event.field_event_image
-    - field.field.node.event.field_forms_documents
-    - field.field.node.event.field_important_dates
-    - node.type.event
+    - field.field.node.fundraiser.body
+    - field.field.node.fundraiser.field_fundraiser_calls_to_action
+    - field.field.node.fundraiser.field_fundraiser_image
+    - field.field.node.fundraiser.field_fundraiser_important_dates
+    - field.field.node.fundraiser.field_fundriaser_forms_documents
+    - node.type.fundraiser
   module:
     - ds
     - entity_reference_revisions
@@ -34,14 +34,14 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_event_image
+        - field_fundraiser_image
         - body
-        - field_important_dates
-        - field_forms_documents
-        - field_calls_to_action
-id: node.event.default
+        - field_fundraiser_important_dates
+        - field_fundriaser_forms_documents
+        - field_fundraiser_calls_to_action
+id: node.fundraiser.default
 targetEntityType: node
-bundle: event
+bundle: fundraiser
 mode: default
 content:
   body:
@@ -51,7 +51,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: ds_content
-  field_calls_to_action:
+  field_fundraiser_calls_to_action:
     type: entity_reference_revisions_entity_view
     weight: 4
     label: hidden
@@ -60,27 +60,27 @@ content:
       link: ''
     third_party_settings: {  }
     region: ds_content
-  field_event_image:
+  field_fundraiser_image:
     weight: 0
     label: hidden
     settings:
-      image_link: ''
       image_style: ''
+      image_link: ''
     third_party_settings: {  }
     type: image
     region: ds_content
-  field_forms_documents:
+  field_fundraiser_important_dates:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: ds_content
-  field_important_dates:
+  field_fundriaser_forms_documents:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: default

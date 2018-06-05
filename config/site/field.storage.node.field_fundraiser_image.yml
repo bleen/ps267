@@ -1,4 +1,4 @@
-uuid: e2cdc45b-f05b-4e46-8cb0-fe6c2ade4bf7
+uuid: ade5ec3e-b1ca-4640-ac6a-cf3df4ea7b52
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - file
     - image
     - node
-id: node.field_event_image
-field_name: field_event_image
+id: node.field_fundraiser_image
+field_name: field_fundraiser_image
 entity_type: node
 type: image
 settings:

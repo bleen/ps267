@@ -1,10 +1,10 @@
-uuid: acceee69-ddc8-46be-9df1-91e8d643bc94
+uuid: 6dc9bd34-3ab2-4cdc-a21e-fe0c4a6beae5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_event_image
-    - node.type.event
+    - field.storage.node.field_fundraiser_image
+    - node.type.fundraiser
   module:
     - custom_add_another
     - image
@@ -12,10 +12,10 @@ third_party_settings:
   custom_add_another:
     custom_add_another: ''
     custom_remove: ''
-id: node.event.field_event_image
-field_name: field_event_image
+id: node.fundraiser.field_fundraiser_image
+field_name: field_fundraiser_image
 entity_type: node
-bundle: event
+bundle: fundraiser
 label: Image
 description: ''
 required: false
@@ -29,7 +29,7 @@ settings:
   max_resolution: ''
   min_resolution: ''
   alt_field: false
-  alt_field_required: false
+  alt_field_required: true
   title_field: false
   title_field_required: false
   default_image:

@@ -1,4 +1,4 @@
-uuid: 98296023-d865-47f6-8383-bcbe3652da3f
+uuid: eee73f5a-faa0-4d1a-b815-3f15049c6c31
 langcode: en
 status: true
 dependencies:
@@ -24,9 +24,9 @@ third_party_settings:
   hide_revision_field:
     hide: true
     personalizable: false
-name: 'Event & Fundraiser'
-type: event
-description: 'An event or fundraiser that should be displayed on the site for an extended period of time. '
+name: 'Fundraiser & Event'
+type: fundraiser
+description: 'A fundraiser that should be displayed on the site for an extended period of time.  For something quick, consider creating an "Announcement".'
 help: ''
 new_revision: true
 preview_mode: 1

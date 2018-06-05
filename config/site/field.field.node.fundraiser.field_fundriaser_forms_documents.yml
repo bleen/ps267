@@ -1,10 +1,10 @@
-uuid: dbe28fc5-7127-47aa-8c7f-3548ef534e61
+uuid: 904ed329-4e86-4eb8-8672-55e452aa59b7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_forms_documents
-    - node.type.event
+    - field.storage.node.field_fundriaser_forms_documents
+    - node.type.fundraiser
     - paragraphs.paragraphs_type.attachments
   module:
     - custom_add_another
@@ -13,10 +13,10 @@ third_party_settings:
   custom_add_another:
     custom_add_another: 'Add Another Form or Document'
     custom_remove: 'Remove this Form or Document'
-id: node.event.field_forms_documents
-field_name: field_forms_documents
+id: node.fundraiser.field_fundriaser_forms_documents
+field_name: field_fundriaser_forms_documents
 entity_type: node
-bundle: event
+bundle: fundraiser
 label: 'Forms & Documents'
 description: ''
 required: false
@@ -32,8 +32,29 @@ settings:
     target_bundles_drag_drop:
       attachments:
         enabled: true
-        weight: 3
+        weight: 10
+      basic_text:
+        weight: 11
+        enabled: false
+      button:
+        weight: 12
+        enabled: false
       important_dates:
-        weight: 4
+        weight: 13
+        enabled: false
+      large_image:
+        weight: 14
+        enabled: false
+      list:
+        weight: 15
+        enabled: false
+      text_with_image:
+        weight: 16
+        enabled: false
+      text_with_map:
+        weight: 17
+        enabled: false
+      two_column_text:
+        weight: 18
         enabled: false
 field_type: entity_reference_revisions

@@ -1,42 +1,42 @@
-uuid: 1e475c7a-3085-41b5-bea4-510feea221f5
+uuid: 7619ba93-5440-4fd6-a066-193e7ff9a292
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.body
-    - field.field.node.event.field_calls_to_action
-    - field.field.node.event.field_event_image
-    - field.field.node.event.field_forms_documents
-    - field.field.node.event.field_important_dates
+    - field.field.node.fundraiser.body
+    - field.field.node.fundraiser.field_fundraiser_calls_to_action
+    - field.field.node.fundraiser.field_fundraiser_image
+    - field.field.node.fundraiser.field_fundraiser_important_dates
+    - field.field.node.fundraiser.field_fundriaser_forms_documents
     - image.style.thumb
-    - node.type.event
+    - node.type.fundraiser
   module:
     - field_group
     - focal_point
     - paragraphs
+    - path
     - scheduler
     - text
 third_party_settings:
   field_group:
-    group_extras:
+    group_fundraiser_extras:
       children:
-        - group_dates
-        - group_attachments
-        - group_calls_to_action
+        - group_fundraiser_dates
+        - group_fundraiser_forms_and_docs
+        - group_fundraiser_calls_to_action
       parent_name: ''
-      weight: 20
+      weight: 7
       format_type: tabs
       format_settings:
-        label: Extras
-        direction: vertical
-        id: extras
+        id: ''
         classes: ''
+        direction: vertical
       label: Extras
-    group_dates:
+    group_fundraiser_dates:
       children:
-        - field_important_dates
-      parent_name: group_extras
-      weight: 22
+        - field_fundraiser_important_dates
+      parent_name: group_fundraiser_extras
+      weight: 9
       format_type: tab
       format_settings:
         id: ''
@@ -45,25 +45,24 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Dates
-    group_attachments:
+    group_fundraiser_forms_and_docs:
       children:
-        - field_forms_documents
-      parent_name: group_extras
-      weight: 23
+        - field_fundriaser_forms_documents
+      parent_name: group_fundraiser_extras
+      weight: 10
       format_type: tab
       format_settings:
-        label: 'Forms and Documents'
+        id: ''
+        classes: ''
         formatter: closed
         description: ''
         required_fields: true
-        id: ''
-        classes: ''
       label: 'Forms and Documents'
-    group_calls_to_action:
+    group_fundraiser_calls_to_action:
       children:
-        - field_calls_to_action
-      parent_name: group_extras
-      weight: 24
+        - field_fundraiser_calls_to_action
+      parent_name: group_fundraiser_extras
+      weight: 11
       format_type: tab
       format_settings:
         id: ''
@@ -72,9 +71,9 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Calls to Action'
-id: node.event.default
+id: node.fundraiser.default
 targetEntityType: node
-bundle: event
+bundle: fundraiser
 mode: default
 content:
   body:
@@ -86,9 +85,9 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  field_calls_to_action:
+  field_fundraiser_calls_to_action:
     type: entity_reference_paragraphs
-    weight: 26
+    weight: 10
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -98,7 +97,7 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  field_event_image:
+  field_fundraiser_image:
     weight: 1
     settings:
       preview_image_style: thumb
@@ -108,9 +107,9 @@ content:
     third_party_settings: {  }
     type: image_focal_point
     region: content
-  field_forms_documents:
+  field_fundraiser_important_dates:
     type: entity_reference_paragraphs
-    weight: 24
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -120,9 +119,9 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  field_important_dates:
+  field_fundriaser_forms_documents:
     type: entity_reference_paragraphs
-    weight: 23
+    weight: 11
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -132,21 +131,20 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 5
+  path:
+    type: path
+    weight: 6
     region: content
+    settings: {  }
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 7
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 6
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -160,13 +158,13 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 8
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
-  path: true
+  promote: true
   status: true
   sticky: true
   uid: true

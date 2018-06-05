@@ -50,9 +50,9 @@ function ps267_field_widget_entity_reference_paragraphs_form_alter(&$element, &$
 function ps267_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
 
   // For event teasers, only show the title if no image exists.
-  if ($context['entity_type'] == 'node' && $context['bundle'] == 'event' && $context['view_mode'] == 'teaser') {
-    if ($context['entity']->get('field_event_image')->isEmpty()) {
-      $layout_render_array['ds_content']['field_event_image']['#access'] == FALSE;
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'fundraiser' && $context['view_mode'] == 'teaser') {
+    if ($context['entity']->get('field_fundraiser_image')->isEmpty()) {
+      $layout_render_array['ds_content']['field_raiser_image']['#access'] == FALSE;
     }
     else {
       $layout_render_array['ds_content']['node_title']['#access'] = FALSE;

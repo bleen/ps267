@@ -1,0 +1,60 @@
+uuid: ae590a4f-2a87-454d-a700-c2b0fb4ba5f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fundraiser_important_dates
+    - node.type.fundraiser
+    - paragraphs.paragraphs_type.important_dates
+  module:
+    - custom_add_another
+    - entity_reference_revisions
+third_party_settings:
+  custom_add_another:
+    custom_add_another: 'Add Another Date'
+    custom_remove: 'Remove this Date'
+id: node.fundraiser.field_fundraiser_important_dates
+field_name: field_fundraiser_important_dates
+entity_type: node
+bundle: fundraiser
+label: 'Important Dates'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      important_dates: important_dates
+    target_bundles_drag_drop:
+      attachments:
+        weight: 10
+        enabled: false
+      basic_text:
+        weight: 11
+        enabled: false
+      button:
+        weight: 12
+        enabled: false
+      important_dates:
+        enabled: true
+        weight: 13
+      large_image:
+        weight: 14
+        enabled: false
+      list:
+        weight: 15
+        enabled: false
+      text_with_image:
+        weight: 16
+        enabled: false
+      text_with_map:
+        weight: 17
+        enabled: false
+      two_column_text:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions
