@@ -478,7 +478,7 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-      title: 'Mini Calendar'
+      title: Calendar
       header: {  }
       footer: {  }
       empty: {  }
@@ -505,12 +505,44 @@ display:
       display_extenders: {  }
       block_description: 'Mini Calendar'
       display_description: ''
+      use_more: true
+      defaults:
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+      use_more_always: true
+      use_more_text: more
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_calendar_event_date'
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: 'Full Calendar'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: calendar
+      pager:
+        type: none
+        options:
+          offset: 0
+      defaults:
+        pager: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags:
