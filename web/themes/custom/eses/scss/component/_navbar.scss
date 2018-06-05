@@ -97,6 +97,13 @@ body {
         padding-bottom: 10px;
         line-height: $line-height-computed - 5;
         color: white;
+        border-radius: 4px;
+        transition: background-color 250ms linear;
+
+        &:hover, &:active {
+          background: lighten($brand-primary,25%);
+          transition: background-color 500ms linear;
+        }
       }
     }
     @media #{$mobile} {

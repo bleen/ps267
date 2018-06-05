@@ -27,3 +27,7 @@ $brand-primary: rgba(91,53,144,1);
 
 // Navbar
 $navbar-height: 55px;
+$navbar-default-bg:                        $brand-primary;
+$navbar-default-link-hover-bg:             lighten($brand-primary, 30%);
+$navbar-default-link-active-color:         #FFF;
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%);
