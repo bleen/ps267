@@ -8386,16 +8386,23 @@ h1, h2, h3, h4, h5, .block-title {
   margin-bottom: 1em;
   border-bottom: 1px dotted #ccc;
 }
-.paragraph.paragraph--type-text-with-image img {
-  width: 50%;
+@media screen and (min-width: 768px) {
+  .paragraph.paragraph--type-text-with-image img {
+    width: 65%;
+  }
+  .paragraph.paragraph--type-text-with-image img.image-left {
+    float: left;
+    margin: 0 10px 10px 0;
+  }
+  .paragraph.paragraph--type-text-with-image img.image-right {
+    float: right;
+    margin: 0 0 10px 10px;
+  }
 }
-.paragraph.paragraph--type-text-with-image img.image-left {
-  float: left;
-  margin: 0 10px 10px 0;
-}
-.paragraph.paragraph--type-text-with-image img.image-right {
-  float: right;
-  margin: 0 0 10px 10px;
+@media screen and (min-width: 1200px) {
+  .paragraph.paragraph--type-text-with-image img {
+    width: 50%;
+  }
 }
 .paragraph.paragraph--type-two-column-text .field--name-field-two-column-text-formatted {
   column-count: 2;
