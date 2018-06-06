@@ -7706,6 +7706,7 @@ body.navbar-is-fixed-bottom {
     margin-top: 10px;
     padding-left: 175px;
     background-color: transparent;
+    font-size: 0.65em;
   }
   .navbar-default .navbar-nav > li > a {
     padding-top: 10px;
@@ -7739,6 +7740,7 @@ body.navbar-is-fixed-bottom {
 @media screen and (min-width: 992px) {
   .navbar-default .navbar-nav {
     padding-left: 235px;
+    font-size: 1em;
   }
 }
 @media screen and (min-width: 1200px) {

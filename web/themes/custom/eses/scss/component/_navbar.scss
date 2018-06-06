@@ -91,6 +91,7 @@ body {
       margin-top: 10px;
       padding-left: 175px;
       background-color: transparent;
+      font-size: .65em;
 
       > li > a {
         padding-top: 10px;
@@ -123,6 +124,7 @@ body {
     }
     @media #{$normal} {
       padding-left: 235px;
+      font-size: 1em;
     }
     @media #{$wide} {
       padding-left: 280px;
