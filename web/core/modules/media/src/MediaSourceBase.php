@@ -72,14 +72,7 @@ abstract class MediaSourceBase extends PluginBase implements MediaSourceInterfac
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory service.
    */
-  public function __construct(array $configuration,
-                              $plugin_id, $plugin_definition,
-                              EntityTypeManagerInterface $entity_type_manager,
-                              EntityFieldManagerInterface $entity_field_manager,
-                              FieldTypePluginManagerInterface $field_type_manager,
-                              ConfigFactoryInterface $config_factory) {
-
-
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, EntityFieldManagerInterface $entity_field_manager, FieldTypePluginManagerInterface $field_type_manager, ConfigFactoryInterface $config_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entity_type_manager;
     $this->entityFieldManager = $entity_field_manager;
