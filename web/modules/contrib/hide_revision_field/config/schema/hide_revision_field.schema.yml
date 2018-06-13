@@ -17,7 +17,7 @@ node.type.*.third_party.hide_revision_field:
           hide:
             type: boolean
             label: 'User specific version of whether to show the revision field on this node type.'
-media_entity.bundle.*.third_party.hide_revision_field:
+media.type.*.third_party.hide_revision_field:
   type: mapping
   label: 'Hide Revision Field'
   mapping:

@@ -11,7 +11,7 @@ _core:
 id: eses_branding
 theme: eses
 region: sub_header
-weight: -5
+weight: -7
 provider: null
 plugin: system_branding_block
 settings:

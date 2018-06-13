@@ -1,0 +1,17 @@
+uuid: 1ee1e66c-7fe1-415a-a5f1-7606fa3dae6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slideshow_wide
+label: 'Slideshow Wide (fp, 1000x200)'
+effects:
+  d734e5fa-4b28-4e3a-a9d6-5e865066125f:
+    uuid: d734e5fa-4b28-4e3a-a9d6-5e865066125f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1000
+      height: 200
+      crop_type: focal_point
