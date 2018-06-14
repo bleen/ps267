@@ -74,8 +74,13 @@ function ps267_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
         break;
     }
   }
+}
 
-
-
-
+/**
+ * Implements hook_page_attachments().
+ */
+function ps267_page_attachments(array &$attachments) {
+  if (\Drupal::currentUser()->isAnonymous() == FALSE) {
+    $attachments['#attached']['library'][] = 'ps267/ps267-admin';
+  }
 }

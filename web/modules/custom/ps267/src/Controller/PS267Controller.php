@@ -15,7 +15,7 @@ class PS267Controller extends ControllerBase {
    */
   public function adminDashboard() {
     $build = [];
-    $build['#attached']['library'][] = 'ps267/ps267-admin';
+    $build['#attached']['library'][] = 'ps267/ps267-dashboard';
     $build['add_content'] = $this->getBlock('ps267_add_content_block');
     $build['manage_content'] = $this->getBlock('manage_content_block');
     return $build;
