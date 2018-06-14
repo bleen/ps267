@@ -27,7 +27,8 @@
         "drupal/views_fieldsets": "^3.3",
         "drupal/ds": "^3",
         "drupal/button_link": "^1",
-        "drupal/addanother": "^1.0"
+        "drupal/addanother": "^1.0",
+        "drupal/entity_clone": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
