@@ -9,6 +9,7 @@ module:
   block_content: 0
   breakpoint: 0
   button_link: 0
+  calendar_feed_view: 0
   ckeditor: 0
   config: 0
   contact: 0

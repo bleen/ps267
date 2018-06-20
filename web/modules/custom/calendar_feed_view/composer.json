@@ -1,0 +1,9 @@
+{
+  "name": "drupal/calendar_feed_view",
+  "description": "Provides storage and API for image crops.",
+  "type": "drupal-module",
+  "require": {
+    "kigkonsult/icalcreator": "^2.24"
+  },
+  "license": "GPL-2.0+"
+}

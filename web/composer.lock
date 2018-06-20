@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eff293ef35e2644cd8ee45b9b5f61d6e",
+    "content-hash": "5a5db1cbfc8f7acf4f9041130f08bc3e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2925,6 +2925,58 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "kigkonsult/icalcreator",
+            "version": "v2.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iCalcreator/iCalcreator.git",
+                "reference": "d0eee5cf7fb86225de01756b7261456698c3388a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iCalcreator/iCalcreator/zipball/d0eee5cf7fb86225de01756b7261456698c3388a",
+                "reference": "d0eee5cf7fb86225de01756b7261456698c3388a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "kigkonsult\\iCalcreator\\": [
+                        "src/",
+                        "src/util/",
+                        "src/traits/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "(AGPLv3 or proprietary)"
+            ],
+            "authors": [
+                {
+                    "name": "Kjell-Inge Gustafsson",
+                    "email": "ical@kigkonsult.se"
+                }
+            ],
+            "description": "iCalcreator is the PHP implementation of rfc2445/rfc5545, management of iCal formatted files",
+            "homepage": "http://kigkonsult.se",
+            "keywords": [
+                "calendar",
+                "file",
+                "format",
+                "management",
+                "rfc2445",
+                "rfc5545"
+            ],
+            "time": "2017-09-04T00:00:00+00:00"
         },
         {
             "name": "masterminds/html5",

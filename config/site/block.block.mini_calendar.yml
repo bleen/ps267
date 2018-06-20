@@ -1,4 +1,4 @@
-uuid: beeeeeeb-876f-422e-aeb7-6c60f1796704
+uuid: dab0ca1a-40fa-4fcf-a422-f237d897013e
 langcode: en
 status: true
 dependencies:
@@ -11,14 +11,14 @@ dependencies:
 id: mini_calendar
 theme: eses
 region: sidebar_first
-weight: -5
+weight: -6
 provider: null
-plugin: 'views_block:calendar-block_1'
+plugin: 'views_block:calendar-mini_cal'
 settings:
-  id: 'views_block:calendar-block_1'
-  label: 'Important Dates'
+  id: 'views_block:calendar-mini_cal'
+  label: ''
   provider: views
-  label_display: visible
-  views_label: 'Important Dates'
+  label_display: '0'
+  views_label: ''
   items_per_page: none
 visibility: {  }

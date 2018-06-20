@@ -10,6 +10,8 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_FORM_ID_alter() for the node-resource-page-form form.
@@ -82,5 +84,30 @@ function ps267_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
 function ps267_page_attachments(array &$attachments) {
   if (\Drupal::currentUser()->isAnonymous() == FALSE) {
     $attachments['#attached']['library'][] = 'ps267/ps267-admin';
+  }
+}
+
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function ps267_views_post_execute(ViewExecutable $view) {
+  if ($view->id() == 'calendar' && $view->current_display == 'mini_cal') {
+    // Handle the `Subscribe` link.
+    $title = 'calendar';  //@todo make this translatable
+    $url = $view->display_handler->getUrl();
+    $url_options = [
+      'absolute' => TRUE,
+    ];
+
+    $url->setOptions($url_options);
+    $url = preg_replace('/https?/', 'webcal', $url->toString());
+
+    // Add the RSS icon to the view.
+    $view->feedIcons[] = [
+      '#theme' => 'feed_icon',
+      '#url' => $url,
+      '#title' => $title,
+    ];
   }
 }
