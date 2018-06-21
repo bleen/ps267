@@ -31,7 +31,8 @@
         "drupal/entity_clone": "^1.0",
         "kigkonsult/icalcreator": "^2.24",
         "drupal/google_analytics": "^2",
-        "drupal/views_bulk_operations": "^2"
+        "drupal/views_bulk_operations": "^2",
+        "drupal/backup_migrate": "^4"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
