@@ -56,6 +56,7 @@ module:
   toolbar: 0
   update: 0
   user: 0
+  views_bulk_operations: 0
   views_fieldsets: 0
   views_slideshow: 0
   views_slideshow_cycle: 0
