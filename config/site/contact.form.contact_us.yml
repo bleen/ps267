@@ -5,7 +5,7 @@ dependencies: {  }
 id: contact_us
 label: 'Contact Us'
 recipients:
-  - ps267.119x@bleen.net
+  - ps267pta@gmail.com
 reply: ''
 weight: -9
 message: 'Thank you for contacting us. Someone will get back to you as soon as possible. '

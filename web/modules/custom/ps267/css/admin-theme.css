@@ -2,6 +2,7 @@
   background-image: url(../../../../modules/contrib/adminimal_admin_toolbar/images/acacac/file.svg);
 }
 .adminimal-admin-toolbar .toolbar-icon-ps267-dashboard:active:before,
-.adminimal-admin-toolbar .toolbar-icon-ps267-dashboard.is-active:before {
+.adminimal-admin-toolbar .toolbar-icon-ps267-dashboard.is-active:before,
+.adminimal-admin-toolbar .toolbar-icon-ps267-dashboard:hover:before{
   background-image: url(../../../../modules/contrib/adminimal_admin_toolbar/images/ffffff/file.svg);
 }
