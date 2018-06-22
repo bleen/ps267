@@ -8253,6 +8253,8 @@ h1, h2, h3, h4, h5, .block-title {
 .mini-calendar .events {
   list-style-type: none;
   padding: 0;
+  max-height: 200px;
+  overflow: scroll;
 }
 .mini-calendar .events .event {
   border-bottom: 1px dotted #ccc;
@@ -8340,6 +8342,11 @@ h1, h2, h3, h4, h5, .block-title {
 }
 .mini-calendar .events .event:last-of-type {
   border-bottom: none;
+}
+@media screen and (min-width: 768px) {
+  .mini-calendar .events {
+    max-height: none;
+  }
 }
 
 .node--type-announcement h2 {
