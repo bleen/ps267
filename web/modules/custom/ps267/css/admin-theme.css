@@ -6,3 +6,7 @@
 .adminimal-admin-toolbar .toolbar-icon-ps267-dashboard:hover:before{
   background-image: url(../../../../modules/contrib/adminimal_admin_toolbar/images/ffffff/file.svg);
 }
+
+#edit-field-resource-icon-0-settings {
+  display: none;
+}

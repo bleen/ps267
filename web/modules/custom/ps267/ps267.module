@@ -16,19 +16,20 @@ use Drupal\Core\Url;
 /**
  * Implements hook_form_FORM_ID_alter() for the node-resource-page-form form.
  */
-function ps267_form_node_resource_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function ps267_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
 
-  $children_keys = Element::children($form['field_resource_icon']['widget']);
-  foreach ($children_keys as $key) {
-    $form['field_resource_icon']['widget'][$key]['icon_name']['#field_prefix'] = '';
-    $form['field_resource_icon']['widget'][$key]['icon_name']['#title'] = $form['field_resource_icon']['widget'][$key]['#title'];
-    // @see https://www.drupal.org/project/fontawesome/issues/2967906
-    // $form['field_resource_icon']['widget'][$key]['settings']['#access'] = FALSE;
+  if ($node->bundle() == 'resource_page') {
+    $children_keys = Element::children($form['field_resource_icon']['widget']);
+    foreach ($children_keys as $key) {
+      $form['field_resource_icon']['widget'][$key]['icon_name']['#field_prefix'] = '';
+      $form['field_resource_icon']['widget'][$key]['icon_name']['#title'] = $form['field_resource_icon']['widget'][$key]['#title'];
+    }
   }
 
 }
 
-/**
+  /**
  * Implements hook_form_FORM_ID_alter() for the user-register-form form.
  */
 function ps267_form_user_register_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
