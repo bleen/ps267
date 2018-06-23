@@ -24,6 +24,7 @@ function ps267_form_node_form_alter(&$form, FormStateInterface $form_state, $for
     foreach ($children_keys as $key) {
       $form['field_resource_icon']['widget'][$key]['icon_name']['#field_prefix'] = '';
       $form['field_resource_icon']['widget'][$key]['icon_name']['#title'] = $form['field_resource_icon']['widget'][$key]['#title'];
+
     }
   }
 

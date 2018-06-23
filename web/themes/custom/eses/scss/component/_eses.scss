@@ -56,9 +56,14 @@ h1, h2, h3, h4, h5, .block-title {
 // Branding.
 .school-name {
   font-family: $font-family-headers;
-  font-size: 34px;
+  font-size: 32px;
   display: block;
   text-align: center;
+  white-space: nowrap;
+
+  @media #{$tablet} {
+    font-size: 34px;
+  }
 
   @media #{$wide} {
     font-size: 48px;

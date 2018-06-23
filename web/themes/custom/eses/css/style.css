@@ -8039,9 +8039,15 @@ h1, h2, h3, h4, h5, .block-title {
 
 .school-name {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
-  font-size: 34px;
+  font-size: 32px;
   display: block;
   text-align: center;
+  white-space: nowrap;
+}
+@media screen and (min-width: 768px) {
+  .school-name {
+    font-size: 34px;
+  }
 }
 @media screen and (min-width: 1200px) {
   .school-name {
