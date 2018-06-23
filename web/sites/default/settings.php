@@ -751,6 +751,7 @@ $settings['trusted_host_patterns'] = [
   '^ps267\.docker\.localhost$',
   '^.+\.localhost$',
   '^.+\.ps267\.org$',
+  '^.+\.ps267.dreamhosters.com$',
 ];
 
 /**
