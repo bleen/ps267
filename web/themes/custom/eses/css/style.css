@@ -8287,7 +8287,7 @@ h1, h2, h3, h4, h5, .block-title {
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
   font-size: 0.75em;
   font-weight: bold;
-  margin: 0 1em 1em 0;
+  margin: 5px 1em 1em 5px;
 }
 .calendar .events .event .date .month {
   display: block;
@@ -8338,6 +8338,7 @@ h1, h2, h3, h4, h5, .block-title {
     font-size: 0.75em;
   }
   .calendar .events .event .date {
+    margin: 0 1em 1em 0;
     width: 30px;
   }
   .calendar .events .event .details {
@@ -8361,6 +8362,7 @@ h1, h2, h3, h4, h5, .block-title {
 @media screen and (min-width: 768px) {
   .calendar .events {
     max-height: none;
+    overflow: visible;
   }
 }
 
