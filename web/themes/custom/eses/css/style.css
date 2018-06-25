@@ -8299,6 +8299,12 @@ h1, h2, h3, h4, h5, .block-title {
   font-size: 1.5em;
   background: #fff;
 }
+.calendar .events .event .date .day-of-week {
+  width: 100%;
+  display: block;
+  color: #999;
+  margin-top: -5px;
+}
 .calendar .events .event .details {
   font-size: 0.8em;
   color: #666;
