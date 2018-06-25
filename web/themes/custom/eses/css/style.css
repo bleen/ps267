@@ -8257,23 +8257,26 @@ h1, h2, h3, h4, h5, .block-title {
 }
 
 .mini-calendar .events {
-  list-style-type: none;
-  padding: 0;
   max-height: 200px;
   overflow: scroll;
 }
-.mini-calendar .events .event {
+
+.calendar .events {
+  list-style-type: none;
+  padding: 0;
+}
+.calendar .events .event {
   border-bottom: 1px dotted #ccc;
   margin-bottom: 0.5em;
 }
-.mini-calendar .events .event:before, .mini-calendar .events .event:after {
+.calendar .events .event:before, .calendar .events .event:after {
   content: " ";
   display: table;
 }
-.mini-calendar .events .event:after {
+.calendar .events .event:after {
   clear: both;
 }
-.mini-calendar .events .event .date {
+.calendar .events .event .date {
   display: block;
   float: left;
   transform: rotate(-5deg);
@@ -8286,28 +8289,28 @@ h1, h2, h3, h4, h5, .block-title {
   font-weight: bold;
   margin: 0 1em 1em 0;
 }
-.mini-calendar .events .event .date .month {
+.calendar .events .event .date .month {
   display: block;
   color: #fff;
   background: #990000;
 }
-.mini-calendar .events .event .date .day {
+.calendar .events .event .date .day {
   display: block;
   font-size: 1.5em;
   background: #fff;
 }
-.mini-calendar .events .event .details {
+.calendar .events .event .details {
   font-size: 0.8em;
   color: #666;
   font-style: italic;
   margin: 0 0 0.5em 0;
   padding-left: 60px;
 }
-.mini-calendar .events .event .details p {
+.calendar .events .event .details p {
   margin: 0;
 }
 @media screen and (min-width: 768px) {
-  .mini-calendar .events .event .details {
+  .calendar .events .event .details {
     margin: 0;
     font-size: 0.7em;
     text-align: center;
@@ -8316,7 +8319,7 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 @media screen and (min-width: 992px) {
-  .mini-calendar .events .event .details {
+  .calendar .events .event .details {
     margin: 0 0 0.5em 0;
     font-size: 0.9em;
     text-align: left;
@@ -8325,32 +8328,32 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 @media screen and (min-width: 768px) {
-  .mini-calendar .events .event {
+  .calendar .events .event {
     font-size: 0.75em;
   }
-  .mini-calendar .events .event .date {
+  .calendar .events .event .date {
     width: 30px;
   }
-  .mini-calendar .events .event .details {
+  .calendar .events .event .details {
     font-size: 1em;
   }
 }
 @media screen and (min-width: 992px) {
-  .mini-calendar .events .event {
+  .calendar .events .event {
     font-size: 1em;
   }
-  .mini-calendar .events .event .date {
+  .calendar .events .event .date {
     width: 40px;
   }
-  .mini-calendar .events .event .details {
+  .calendar .events .event .details {
     font-size: 0.8em;
   }
 }
-.mini-calendar .events .event:last-of-type {
+.calendar .events .event:last-of-type {
   border-bottom: none;
 }
 @media screen and (min-width: 768px) {
-  .mini-calendar .events {
+  .calendar .events {
     max-height: none;
   }
 }
