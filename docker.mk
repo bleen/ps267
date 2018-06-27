@@ -30,3 +30,18 @@ backup:
 	docker-compose run --user root -w /var/www/html/web php drush sql-dump --result-file=../db.sql --gzip
 	mv db.sql.gz sql/
 	rsync -a web/sites/default/files ~/Dropbox\ \(Personal\)/Documents/Kids\ \&\ School/PS267/Helping\ out/ps267.org/backups/files
+
+reset:
+	@echo "Getting DB and files from 'Live' and using them to reset the local DB and files"
+	docker-compose run --user root -w /var/www/html/web php drush sql:sync --structure-tables-list=watchdog,cache_\*,semaphore,sessions @ps267.live @ps267.container -y
+	docker-compose run --user root -w /var/www/html/web php drush core:rsync @ps267.live:%files @ps267.container:%files -y
+
+deploy:
+	@echo "Deploying 'live' site"
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live state:set system.maintenance_mode 1
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live ssh git pull bleen master
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live updb -y
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live config:import --partial
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live state:set system.maintenance_mode 0
+	docker-compose run --user root -w /var/www/html/web php drush @ps267.live cr
+	@echo "Deployment complete"
