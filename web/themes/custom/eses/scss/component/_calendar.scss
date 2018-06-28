@@ -5,6 +5,10 @@ $calendar_shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
     max-height: 200px;
     overflow: scroll;
   }
+
+  @media #{$normal} {
+    padding-top: 15px;
+  }
 }
 
 .calendar {

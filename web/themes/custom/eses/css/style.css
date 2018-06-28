@@ -8260,6 +8260,11 @@ h1, h2, h3, h4, h5, .block-title {
   max-height: 200px;
   overflow: scroll;
 }
+@media screen and (min-width: 992px) {
+  .mini-calendar {
+    padding-top: 15px;
+  }
+}
 
 .calendar .events {
   list-style-type: none;
