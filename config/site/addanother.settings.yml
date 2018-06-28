@@ -1,5 +1,5 @@
 default_button: true
-default_message: true
+default_message: false
 default_tab: false
 default_tab_edit: false
 _core:
