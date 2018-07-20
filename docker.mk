@@ -25,6 +25,10 @@ ps:
 shell:
 	docker exec -ti $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") sh
 
+export-config:
+	@echo "Exporting configs to $(PROJECT_CONFIG_LOCATION)"
+    docker-compose run --user root -w /var/www/html/web php drush config-export --destination=$(PROJECT_CONFIG_LOCATION) -y
+
 backup:
 	@echo "Backing up files and db for $(PROJECT_NAME)..."
 	docker-compose run --user root -w /var/www/html/web php drush sql-dump --result-file=../db.sql --gzip
