@@ -8371,6 +8371,49 @@ h1, h2, h3, h4, h5, .block-title {
   }
 }
 
+.grid-calendar {
+  border: 1px solid #000;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.grid-calendar caption {
+  color: #fff;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: #990000;
+}
+.grid-calendar .day {
+  width: 14.25%;
+  font-size: 0.75em;
+  position: relative;
+  height: 100px;
+}
+.grid-calendar .day ul {
+  list-style: none;
+}
+.grid-calendar .day li {
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 992px) {
+  .grid-calendar .day {
+    font-size: 0.9em;
+  }
+}
+
+#block-calendargrid {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  #block-calendargrid {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .full-calendar {
+    display: none;
+  }
+}
+
 .node--type-announcement h2 {
   margin: 0;
 }

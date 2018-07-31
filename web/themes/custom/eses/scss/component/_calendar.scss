@@ -117,3 +117,46 @@ $calendar_shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
     }
   }
 }
+
+.grid-calendar {
+  border: 1px solid #000;
+  box-shadow: $calendar_shadow;
+
+  caption {
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: #990000;
+  }
+  .day {
+    width: 14.25%;
+    font-size: .75em;
+    position: relative;
+    height: 100px;
+
+    ul {
+      list-style: none;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+
+    @media #{$normal} {
+      font-size: .9em;
+    }
+  }
+
+}
+
+#block-calendargrid {
+  display: none;
+
+  @media #{$tablet} {
+    display: block;
+  }
+}
+.full-calendar {
+  @media #{$tablet} {
+    display: none;
+  }
+}

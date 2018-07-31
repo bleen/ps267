@@ -7,7 +7,7 @@ dependencies:
 id: tabs
 theme: eses
 region: content
-weight: -6
+weight: -7
 provider: null
 plugin: local_tasks_block
 settings:

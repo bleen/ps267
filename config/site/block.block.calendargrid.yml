@@ -1,0 +1,26 @@
+uuid: 7d06722e-5996-4a6c-8e81-5a51ebf23f67
+langcode: en
+status: true
+dependencies:
+  module:
+    - ps267
+    - system
+  theme:
+    - eses
+id: calendargrid
+theme: eses
+region: content
+weight: -3
+provider: null
+plugin: ps267_grid_calendar_block
+settings:
+  id: ps267_grid_calendar_block
+  label: 'Calendar Grid'
+  provider: ps267
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /calendar
+    negate: false
+    context_mapping: {  }
