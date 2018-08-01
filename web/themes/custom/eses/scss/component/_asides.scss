@@ -57,6 +57,18 @@ $sidebar-tab-shadow: 0px 7px 7px -5px rgba(0,0,0,0.75);
       }
     }
 
+    .testimonials {
+      background: top left no-repeat url(../images/icon_testimonials.png);
+      background-size: 25%;
+      padding-left: 26%;
+      font-size: .8em;
+
+      .attribution {
+        margin-top: .5em;
+        font-style: italic;
+      }
+    }
+
     @media #{$tablet} {
       margin-bottom: 1em;
       border-radius: 4px;

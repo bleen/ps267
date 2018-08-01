@@ -8200,6 +8200,16 @@ h1, h2, h3, h4, h5, .block-title {
 .region-sidebar-first section .resource-list svg {
   min-width: 1em;
 }
+.region-sidebar-first section .testimonials {
+  background: top left no-repeat url(../images/icon_testimonials.png);
+  background-size: 25%;
+  padding-left: 26%;
+  font-size: 0.8em;
+}
+.region-sidebar-first section .testimonials .attribution {
+  margin-top: 0.5em;
+  font-style: italic;
+}
 @media screen and (min-width: 768px) {
   .region-sidebar-first section {
     margin-bottom: 1em;

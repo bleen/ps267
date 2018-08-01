@@ -1,0 +1,33 @@
+uuid: 0c20811a-02e8-4751-962f-179dfc60f8da
+langcode: en
+status: true
+dependencies:
+  module:
+    - hide_revision_field
+    - menu_ui
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
+  hide_revision_field:
+    hide: true
+    personalizable: false
+name: Testimonial
+type: testimonial
+description: 'Use Testimonial to include a quote from a community memeber.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

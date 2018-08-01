@@ -10,21 +10,25 @@ button:
   fundraiser: true
   page: true
   resource_page: true
+  testimonial: true
 message:
-  announcement: true
+  announcement: false
   calendar_event: true
   fundraiser: true
   page: true
   resource_page: true
+  testimonial: false
 tab:
   announcement: false
   calendar_event: false
   fundraiser: false
   page: false
   resource_page: false
+  testimonial: false
 tab_edit:
   announcement: false
   calendar_event: false
   fundraiser: false
   page: false
   resource_page: false
+  testimonial: false

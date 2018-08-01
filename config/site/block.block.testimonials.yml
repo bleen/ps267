@@ -1,0 +1,24 @@
+uuid: 37a6c5bf-79fb-4543-96fc-8a418676c21f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.testimonials
+  module:
+    - views
+  theme:
+    - eses
+id: testimonials
+theme: eses
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:testimonials-testimonials'
+settings:
+  id: 'views_block:testimonials-testimonials'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }
