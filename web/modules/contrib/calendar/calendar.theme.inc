@@ -8,6 +8,7 @@ use Drupal\calendar\CalendarHelper;
 use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Core\Datetime\Entity\DateFormat;
 use Drupal\views\Views;
+use Drupal\Core\Link;
 
 /**
  * Display a month view.
@@ -100,6 +101,10 @@ function template_preprocess_calendar_year(&$vars) {
   $rows = $vars['rows'];
   $months = [];
   foreach ($rows as $month => $month_rows) {
+    // Set the month name.
+    $month_format = ($vars['options']['month_name_size'] == 1) ? "M" : "F";
+    $vars['options']['month_name'] = t(date($month_format, mktime(0, 0, 0, $month, 10)));
+    
     $view->dateInfo->setMinMonth($month);
     $view->dateInfo->setGranularity('month');
     $view->styleInfo->setMini(TRUE);
@@ -598,7 +603,7 @@ function template_preprocess_calendar_datebox(&$vars) {
   $day_url = CalendarHelper::getURLForGranularity($view, 'day', [$full_date_arg]);
 //  $vars['url'] = str_replace([$month_path, $year_path], $day_path, date_pager_url($view, NULL, $date, $force_view_url));
   if ($day_url) {
-    $vars['link'] = \Drupal::l($vars['day'],$day_url);
+    $vars['link'] = Link::fromTextAndUrl($vars['day'],$day_url)->toString();
   }
   else {
     $vars['link'] = $vars['day'];

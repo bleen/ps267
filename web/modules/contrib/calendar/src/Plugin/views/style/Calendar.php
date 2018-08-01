@@ -164,6 +164,7 @@ class Calendar extends StylePluginBase {
 
     $options['calendar_type'] = ['default' => 'month'];
     $options['name_size'] = ['default' => 3];
+    $options['month_name_size'] = ['default' => 99];
     $options['mini'] = ['default' => 0];
     $options['with_weekno'] = ['default' => 0];
     $options['multiday_theme'] = ['default' => 1];
@@ -210,6 +211,21 @@ class Calendar extends StylePluginBase {
       '#states' => [
         'visible' => [
           ':input[name="style_options[calendar_type]"]' => ['value' => 'month'],
+        ],
+      ],
+    ];
+    $form['month_name_size'] = [
+      '#title' => $this->t('Calendar month names'),
+      '#default_value' => $this->options['month_name_size'],
+      '#type' => 'radios',
+      '#options' => [
+        1 => $this->t('Abbreviated name'),
+        99 => $this->t('Full name'),
+      ],
+      '#description' => $this->t('The way month names should be displayed in a year calendar.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="style_options[calendar_type]"]' => ['value' => 'year'],
         ],
       ],
     ];
@@ -452,7 +468,7 @@ class Calendar extends StylePluginBase {
       return;
     }
     if (!$argument = CalendarHelper::getDateArgumentHandler($this->view)) {
-      debug('\Drupal\calendar\Plugin\views\style\CalendarStyle: A calendar date argument is required when using the calendar style, but it is missing or is not using the default date.');
+      debug('\Drupal\calendar\Plugin\views\style\CalendarStyle: A calendar date argument is required when using the calendar style, to add a date argument in a view, please go to Advanced > Contextual Filters on the views configuration panel.');
       return;
     }
 
@@ -493,6 +509,7 @@ class Calendar extends StylePluginBase {
 
     // Add calendar style information to the view.
     $this->styleInfo->setCalendarPopup($this->displayHandler->getOption('calendar_popup'));
+    $this->styleInfo->setMonthNameSize($this->options['month_name_size']);
     $this->styleInfo->setNameSize($this->options['name_size']);
     $this->styleInfo->setMini($this->options['mini']);
     $this->styleInfo->setShowWeekNumbers($this->options['with_weekno']);
@@ -691,6 +708,12 @@ class Calendar extends StylePluginBase {
             $item['class'] .= ($current_day_date == $today && $in_month ? ' today' : '') .
               ($current_day_date < $today ? ' past' : '') .
               ($current_day_date > $today ? ' future' : '');
+
+            if (count($singleday_buckets[$week_day]) == 0) {
+              if ($max_multirow_count == 0 ) {
+                $item['class'] .= ' no-entry';
+              }
+            }
           }
           else {
             $index = $i - 1;
@@ -1291,7 +1314,7 @@ class Calendar extends StylePluginBase {
     // @todo Validate row plugin
     $argument = CalendarHelper::getDateArgumentHandler($this->view, $display_id);
     if (empty($argument)) {
-      $errors[] = $this->t('\Drupal\calendar\Plugin\views\style\CalendarStyle: A calendar date argument is required when using the calendar style, but it is missing or is not using the default date.');
+      $errors[] = $this->t('\Drupal\calendar\Plugin\views\style\CalendarStyle: A calendar date argument is required when using the calendar style, to add a date argument in a view, please go to Advanced > Contextual Filters on the views configuration panel.');
     }
     return $errors;
 
