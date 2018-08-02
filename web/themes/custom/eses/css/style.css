@@ -8191,6 +8191,13 @@ h1, h2, h3, h4, h5, .block-title {
 .region-sidebar-first section#block-views-block-resources-resources-block::before {
   background-image: url(../images/icon_resources.png);
 }
+.region-sidebar-first section#block-testimonials {
+  top: 148px;
+  z-index: 4;
+}
+.region-sidebar-first section#block-testimonials::before {
+  background-image: url(../images/icon_testimonials.png);
+}
 .region-sidebar-first section .resource-list {
   list-style-type: none;
   padding-left: 1.5em;
@@ -8201,14 +8208,21 @@ h1, h2, h3, h4, h5, .block-title {
   min-width: 1em;
 }
 .region-sidebar-first section .testimonials {
-  background: top left no-repeat url(../images/icon_testimonials.png);
-  background-size: 25%;
-  padding-left: 26%;
   font-size: 0.8em;
 }
 .region-sidebar-first section .testimonials .attribution {
-  margin-top: 0.5em;
+  margin-top: 1em;
   font-style: italic;
+}
+.region-sidebar-first section .testimonials .attribution::before {
+  content: " - ";
+}
+@media screen and (min-width: 768px) {
+  .region-sidebar-first section .testimonials {
+    background: top left no-repeat url(../images/icon_testimonials.png);
+    background-size: 25%;
+    padding-left: 26%;
+  }
 }
 @media screen and (min-width: 768px) {
   .region-sidebar-first section {
