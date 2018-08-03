@@ -8004,6 +8004,15 @@ h1, h2, h3, h4, h5, .block-title {
   font-family: "Boogaloo", Helvetica, Arial, sans-serif;
 }
 
+@media screen and (min-width: 768px) {
+  body {
+    background: top center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("/sites/default/files/classroom.jpg");
+  }
+}
+
 .block-title {
   margin-top: 0;
   font-size: 1.25em;
@@ -8022,12 +8031,17 @@ h1, h2, h3, h4, h5, .block-title {
 @media screen and (min-width: 768px) {
   .main-container {
     padding-top: 70px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 99%, rgba(255, 255, 255, 0) 100%);
   }
 }
 @media screen and (min-width: 1200px) {
   .main-container {
     padding-top: 90px;
   }
+}
+
+.sub-header {
+  padding: 0;
 }
 
 .field--name-node-changed-date {
@@ -8137,6 +8151,15 @@ h1, h2, h3, h4, h5, .block-title {
 @media screen and (max-width: 767px) {
   .region-content {
     padding-right: 42px;
+  }
+}
+
+.footer {
+  background: #fff;
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    background: rgba(255, 255, 255, 0.85);
   }
 }
 
