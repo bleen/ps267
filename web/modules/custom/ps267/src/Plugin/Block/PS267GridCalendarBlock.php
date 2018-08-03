@@ -165,7 +165,12 @@ class PS267GridCalendarBlock extends BlockBase implements ContainerFactoryPlugin
 
       /** @var /Drupal/entity/node $event */
       foreach ($events as $event) {
-        $items[] = $event->get('title')->value;
+        $e = $event->get('title')->value;
+        if (!empty($event->get('body')->value)) {
+          $e .= ' (' . trim(strip_tags($event->get('body')->value)) . ')';
+        }
+
+        $items[] = $e;
       }
 
       $day = [
