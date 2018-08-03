@@ -2,7 +2,20 @@ include .env
 
 .PHONY: up down stop prune ps shell
 
-default: up
+default: list
+
+list:
+	@echo "list"
+	@echo "up"
+	@echo "down"
+	@echo "stop"
+	@echo "prune"
+	@echo "ps"
+	@echo "shell"
+	@echo "export-config"
+	@echo "backup"
+	@echo "reset"
+	@echo "deploy"
 
 up:
 	@echo "Starting up containers for $(PROJECT_NAME)..."
