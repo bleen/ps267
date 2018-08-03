@@ -8255,10 +8255,7 @@ h1, h2, h3, h4, h5, .block-title {
   .region-sidebar-first section.open {
     left: 0;
   }
-  .region-sidebar-first section#block-mini-calendar {
-    top: 0;
-  }
-  .region-sidebar-first section#block-views-block-resources-resources-block {
+  .region-sidebar-first section#block-mini-calendar, .region-sidebar-first section#block-views-block-resources-resources-block, .region-sidebar-first section#block-testimonials {
     top: 0;
   }
 }

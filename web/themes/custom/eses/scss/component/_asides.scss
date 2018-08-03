@@ -91,10 +91,9 @@ $sidebar-tab-shadow: 0px 7px 7px -5px rgba(0,0,0,0.75);
         left: 0;
       }
 
-      &#block-mini-calendar {
-        top: 0;
-      }
-      &#block-views-block-resources-resources-block {
+      &#block-mini-calendar,
+      &#block-views-block-resources-resources-block,
+      &#block-testimonials {
         top: 0;
       }
     }
