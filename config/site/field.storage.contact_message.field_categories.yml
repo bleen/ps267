@@ -1,0 +1,30 @@
+uuid: fa27ea18-9b21-494c-9cab-a614cc4eaad0
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+    - options
+id: contact_message.field_categories
+field_name: field_categories
+entity_type: contact_message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bgendron@schools.nyc.gov
+      label: 'Student Registration Inquiries'
+    -
+      value: kpanglee@schools.nyc.gov
+      label: 'Employment Inquiries'
+    -
+      value: ps267pta@gmail.com
+      label: 'General Inquiries'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

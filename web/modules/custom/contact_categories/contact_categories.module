@@ -1,0 +1,27 @@
+<?php
+
+
+/**
+ * @file
+ * Contains Contact Form D8 module.
+ */
+
+/**
+ * Implements hook_mail_alter().
+ */
+function contact_categories_mail_alter(&$message) {
+    // Check that the message isn't a copy sent to the sender (page_copy).
+    if (($message['key'] == 'page_mail') && isset($message['params']['contact_message'])) {
+        $contact_message = $message['params']['contact_message'];
+        foreach ($contact_message->getFields() as $field) {
+            if ($field->getName() === 'field_categories' ) {
+                // Add the category's recipient to the message.
+                foreach ($field as $delta => $item) {
+                    $email = $item->value;
+                    $message['to'] .= ',' . $email;
+                }
+            }
+        }
+    }
+}
+

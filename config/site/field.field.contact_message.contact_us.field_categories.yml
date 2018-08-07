@@ -1,0 +1,26 @@
+uuid: 65a7ec32-6a03-41a0-9b38-9e73226abddd
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact_us
+    - field.storage.contact_message.field_categories
+  module:
+    - custom_add_another
+    - options
+third_party_settings:
+  custom_add_another:
+    custom_add_another: ''
+    custom_remove: ''
+id: contact_message.contact_us.field_categories
+field_name: field_categories
+entity_type: contact_message
+bundle: contact_us
+label: 'Type of inquiry'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

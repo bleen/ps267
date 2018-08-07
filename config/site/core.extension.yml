@@ -15,6 +15,7 @@ module:
   ckeditor: 0
   config: 0
   contact: 0
+  contact_categories: 0
   contextual: 0
   crop: 0
   ctools: 0

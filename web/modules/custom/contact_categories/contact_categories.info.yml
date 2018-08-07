@@ -1,0 +1,6 @@
+name: Contact Form Categories
+type: module
+description: "Provide single site wide contact form with multi categories & send email by the selected category email value."
+
+version: '8.x-1.0'
+core: 8.x
