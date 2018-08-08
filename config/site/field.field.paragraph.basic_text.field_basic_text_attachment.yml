@@ -1,0 +1,60 @@
+uuid: 00afee02-484b-4596-8806-fb134e31c8d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_basic_text_attachment
+    - paragraphs.paragraphs_type.attachments
+    - paragraphs.paragraphs_type.basic_text
+  module:
+    - custom_add_another
+    - entity_reference_revisions
+third_party_settings:
+  custom_add_another:
+    custom_add_another: 'Add Another Attachment'
+    custom_remove: 'Remove this Attachment'
+id: paragraph.basic_text.field_basic_text_attachment
+field_name: field_basic_text_attachment
+entity_type: paragraph
+bundle: basic_text
+label: Attachment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      attachments: attachments
+    target_bundles_drag_drop:
+      attachments:
+        enabled: true
+        weight: 10
+      basic_text:
+        weight: 11
+        enabled: false
+      button:
+        weight: 12
+        enabled: false
+      important_dates:
+        weight: 13
+        enabled: false
+      large_image:
+        weight: 14
+        enabled: false
+      list:
+        weight: 15
+        enabled: false
+      text_with_image:
+        weight: 16
+        enabled: false
+      text_with_map:
+        weight: 17
+        enabled: false
+      two_column_text:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

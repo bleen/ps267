@@ -1,0 +1,20 @@
+uuid: c3c08a15-47ec-4c72-8319-93452e7ac7b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_basic_text_attachment
+field_name: field_basic_text_attachment
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
