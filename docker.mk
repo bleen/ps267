@@ -52,6 +52,7 @@ reset:
 	@echo "Getting DB and files from 'Live' and using them to reset the local DB and files"
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush sql:sync --structure-tables-list=watchdog,cache_\*,semaphore,sessions @ps267.live @ps267.container -y
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush core:rsync @ps267.live:%files @ps267.container:%files -y
+	docker exec -ti --user root $(shell docker ps --filter name='$(PROJECT_NAME)_php' --format "{{ .ID }}") chmod -R 777 ${PROJECT_ROOT}/sites/default/files
 
 deploy:
 	@echo "Deploying 'live' site"
