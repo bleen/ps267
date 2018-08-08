@@ -59,7 +59,7 @@ deploy:
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live state:set system.maintenance_mode 1
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live ssh git pull bleen master
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live updb -y
-	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live config:import --partial -y
+	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live config:import -y
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live state:set system.maintenance_mode 0
 	docker-compose run --user root -w ${PROJECT_ROOT} php drush @ps267.live cr
 	@echo "Deployment complete"
