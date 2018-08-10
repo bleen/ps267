@@ -27,6 +27,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  created:
+    type: datetime_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_announcement_attachment:
     weight: 3
     settings:
@@ -42,21 +48,14 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 4
-    region: content
-    third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -70,13 +69,13 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 7
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  created: true
   path: true
+  promote: true
   status: true
   sticky: true
   uid: true
