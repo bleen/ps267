@@ -24,6 +24,7 @@ module:
   custom_add_another: 0
   datetime: 0
   dblog: 0
+  devel: 0
   draggableviews: 0
   dynamic_page_cache: 0
   editor: 0
@@ -64,6 +65,7 @@ module:
   views_fieldsets: 0
   views_slideshow: 0
   views_slideshow_cycle: 0
+  views_ui: 0
   ds: 1
   menu_link_content: 1
   pathauto: 1

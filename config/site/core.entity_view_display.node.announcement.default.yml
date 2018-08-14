@@ -16,13 +16,21 @@ dependencies:
 third_party_settings:
   ds:
     layout:
-      id: layout_onecol
-      library: layout_discovery/onecol
+      id: ds_1col
+      library: null
       disable_css: false
       entity_classes: all_classes
-      settings: {  }
+      settings:
+        wrappers: null
+        outer_wrapper: null
+        attributes: ''
+        link_attribute: null
+        link_custom: null
+        classes:
+          layout_class: {  }
     regions:
-      content:
+      ds_content:
+        - node_title
         - node_changed_date
         - field_announcement_image
         - body
@@ -30,9 +38,14 @@ third_party_settings:
     fields:
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 0
+        weight: 1
         label: hidden
         formatter: ds_post_date_detailed_medium_date
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
 id: node.announcement.default
 targetEntityType: node
 bundle: announcement
@@ -41,26 +54,26 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: ds_content
   field_announcement_attachment:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
-    region: content
+    region: ds_content
   field_announcement_image:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
     type: image
-    region: content
+    region: ds_content
 hidden:
   links: true

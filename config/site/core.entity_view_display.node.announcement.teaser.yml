@@ -24,6 +24,7 @@ third_party_settings:
       settings:
         wrappers:
           ds_content: div
+          ds_hidden: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
@@ -36,13 +37,7 @@ third_party_settings:
         - node_changed_date
         - field_announcement_image
         - body
-        - node_link
     fields:
-      node_link:
-        plugin_id: node_link
-        weight: 4
-        label: hidden
-        formatter: default
       node_changed_date:
         plugin_id: node_changed_date
         weight: 1
