@@ -86,14 +86,9 @@ class CalendarFeed extends StylePluginBase {
     $feed = str_replace('\;', ';', $feed);
 
     // These steps shouldn't be run during Preview on the View page.
-    $http_headers = [];
     if (empty($this->view->live_preview)) {
       // Prevent devel module from appending queries to ical export.
       $GLOBALS['devel_shutdown'] = FALSE;
-      $http_headers = [
-        'Content-Type' => 'text/calendar; charset=UTF-8',
-        'Cache-Control' => 'no-cache, must-revalidate',
-      ];
     }
 
     $build = [
@@ -101,10 +96,9 @@ class CalendarFeed extends StylePluginBase {
       '#view' => $this->view,
       '#options' => $this->options,
       '#markup' => $feed,
-      '#attached' => [
-        'http_header' => $http_headers,
-      ],
     ];
+
+    $this->view->getResponse()->headers->set('Content-Type', 'text/calendar; charset=UTF-8');
 
     return $build;
   }
