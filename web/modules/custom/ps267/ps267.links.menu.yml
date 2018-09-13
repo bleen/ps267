@@ -4,3 +4,4 @@ ps267.dashboard:
   route_name: ps267.dashboard
   parent: system.admin
   weight: -20
+  enabled: 0

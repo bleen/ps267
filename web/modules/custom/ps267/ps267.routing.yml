@@ -5,4 +5,5 @@ ps267.dashboard:
     link_id: 'ps267.admin_content'
     _title: 'Dashboard'
   requirements:
-    _permission: 'access administration pages'
+    # No one should be using this (for now; if we improve it in the future then we can restore access).
+    _access: 'FALSE'
