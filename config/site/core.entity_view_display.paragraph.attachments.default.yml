@@ -14,7 +14,7 @@ mode: default
 content:
   field_attachment_file:
     weight: 0
-    label: above
+    label: hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
