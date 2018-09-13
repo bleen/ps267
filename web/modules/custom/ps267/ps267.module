@@ -96,7 +96,11 @@ function ps267_views_post_execute(ViewExecutable $view) {
   if ($view->id() == 'calendar' && $view->current_display == 'mini_cal') {
     // Handle the `Subscribe` link.
     $title = 'calendar';  //@todo make this translatable
-    $url = $view->display_handler->getUrl();
+
+    $calendar_view = clone $view;
+    $calendar_view->setDisplay('feed_1');
+    $url = $calendar_view->display_handler->getUrl();
+
     $url_options = [
       'absolute' => TRUE,
     ];
