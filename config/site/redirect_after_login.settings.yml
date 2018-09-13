@@ -1,0 +1,7 @@
+login_redirection:
+  anonymous: null
+  authenticated: /
+  administrator: /admin/content
+  pta_board_member: /admin/content
+  school_employee: /admin/content
+  volunteer: /admin/content
