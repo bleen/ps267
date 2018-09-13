@@ -29,6 +29,13 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -42,7 +49,6 @@ hidden:
   path: true
   promote: true
   publish_on: true
-  status: true
   sticky: true
   uid: true
   unpublish_on: true
