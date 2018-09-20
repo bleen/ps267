@@ -219,6 +219,8 @@ class PS267GridCalendarBlock extends BlockBase implements ContainerFactoryPlugin
     $query->condition($and);
     $query->sort('field_calendar_event_date.value', 'ASC');
 
+    $query->addTag('handy_cache_tags:node:' . $bundle);
+
     $entity_ids = $query->execute();
 
     $events = $this->entityTypeManager->getStorage('node')->loadMultiple($entity_ids);
