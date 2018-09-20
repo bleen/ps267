@@ -6,6 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Cache\Cache;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
@@ -219,11 +220,9 @@ class PS267GridCalendarBlock extends BlockBase implements ContainerFactoryPlugin
     $query->condition($and);
     $query->sort('field_calendar_event_date.value', 'ASC');
 
-    $query->addTag('handy_cache_tags:node:' . $bundle);
+    $events = $this->entityTypeManager->getStorage('node')->loadMultiple($query->execute());
 
-    $entity_ids = $query->execute();
-
-    $events = $this->entityTypeManager->getStorage('node')->loadMultiple($entity_ids);
+    \Drupal::cache()->set('ps267:full_calendar', $events, Cache::PERMANENT, array('handy_cache_tags:node:' . $bundle));
 
     return $events;
   }
