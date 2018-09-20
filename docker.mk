@@ -40,7 +40,7 @@ shell:
 
 export-config:
 	@echo "Exporting configs to $(PROJECT_CONFIG_LOCATION)"
-	docker-compose run --user root -wy ${PROJECT_ROOT} php drush config-export --destination=${PROJECT_CONFIG_LOCATION}
+	docker-compose run --user root -w ${PROJECT_ROOT} php drush config-export -y --destination=${PROJECT_CONFIG_LOCATION}
 
 backup:
 	@echo "Backing up files and db for $(PROJECT_NAME)..."
