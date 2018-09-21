@@ -80,6 +80,13 @@ class PS267GridCalendarBlock extends BlockBase implements ContainerFactoryPlugin
   /**
    * {@inheritdoc}
    */
+  public function getCacheTags() {
+    return Cache::mergeTags(parent::getCacheTags(), array('handy_cache_tags:node:calendar_event'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function build() {
     $calendar = [];
     $current_month = date('n') < 7 || date('n') > 8 ? date('n') : 9;
@@ -220,11 +227,10 @@ class PS267GridCalendarBlock extends BlockBase implements ContainerFactoryPlugin
     $query->condition($and);
     $query->sort('field_calendar_event_date.value', 'ASC');
 
-    $events = $this->entityTypeManager->getStorage('node')->loadMultiple($query->execute());
+    $entity_ids = $query->execute();
 
-    \Drupal::cache()->set('ps267:full_calendar', $events, Cache::PERMANENT, array('handy_cache_tags:node:' . $bundle));
+    $events = $this->entityTypeManager->getStorage('node')->loadMultiple($entity_ids);
 
     return $events;
   }
-
 }
