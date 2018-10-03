@@ -19,7 +19,7 @@ list:
 
 up:
 	@echo "Starting up containers for $(PROJECT_NAME)..."
-	docker-compose pull --parallel
+	docker-compose pull
 	docker-compose up -d
 
 down: stop
