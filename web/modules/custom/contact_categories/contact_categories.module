@@ -17,7 +17,7 @@ function contact_categories_mail_alter(&$message) {
             if ($field->getName() === 'field_categories' ) {
                 // Add the category's recipient to the message.
                 foreach ($field as $delta => $item) {
-                    $email = $item->value;
+                    $email = contact_categories_strip_comment($item->value);
                     $message['to'] .= ',' . $email;
                 }
             }
@@ -25,3 +25,21 @@ function contact_categories_mail_alter(&$message) {
     }
 }
 
+/**
+ * Strips the "comment" from an email address.
+ *
+ * According to the spec, email addresses can have a comment string inside
+ * parenthesis before or after the main part of the address (the string before
+ * the '@'). Remove that comment since this module uses it to allow multiple
+ * categories to send to the same address. E.g. jane(1)@gmail.com and
+ * jane(2)@gmail.com should both ultimately send to jane@gmail.com. Note: we can
+ * assume that there will be no nested parentheses since that violates the spec
+ * and our general use-case.
+ *
+ * @param string $email
+ *
+ * @return string
+ */
+function contact_categories_strip_comment($email) {
+  return preg_replace('/\(.*\)/', '', $email);
+}
