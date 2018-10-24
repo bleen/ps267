@@ -175,6 +175,27 @@ class FilteredStorageTest extends CachedStorageTest {
   }
 
   /**
+   * Test that when a filter removes config on a readMultiple it is not set.
+   */
+  public function testReadMultipleWithEmptyResults() {
+    $names = [$this->randomString(), $this->randomString()];
+    $source = $this->prophesize(StorageInterface::class);
+    $data = [$this->randomArray(), $this->randomArray()];
+    $source->readMultiple($names)->willReturn($data);
+    $source = $source->reveal();
+
+    foreach ([0, [], NULL] as $none) {
+      $filtered = $data;
+      $filtered[1] = $none;
+      $filter = $this->prophesizeFilter();
+      $filter->filterReadMultiple($names, $data)->willReturn($filtered);
+
+      $storage = new FilteredStorage($source, [$filter->reveal()]);
+      $this->assertEquals([$data[0]], $storage->readMultiple($names));
+    }
+  }
+
+  /**
    * Test the write method invokes the filterWrite in filters.
    *
    * @dataProvider writeFilterProvider

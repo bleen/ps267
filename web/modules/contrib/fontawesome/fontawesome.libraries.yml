@@ -1,10 +1,10 @@
 fontawesome.svg:
-  remote: https://use.fontawesome.com/releases/v5.1.1/fontawesome-free-5.1.1-web.zip
+  remote: https://use.fontawesome.com/releases/v5.3.1/fontawesome-free-5.3.1-web.zip
   license: &fontawesome_svg_license
     name: CC BY 4.0
     url: https://fontawesome.com/license
     gpl-compatible: true
-  version: &fontawesome_version "5.1.1"
+  version: &fontawesome_version "5.4.1"
   js:
     /libraries/fontawesome/js/all.js: { minified: true }
 
@@ -17,7 +17,7 @@ fontawesome.svg.shim:
     - fontawesome/fontawesome.svg
 
 fontawesome.webfonts:
-  remote: https://use.fontawesome.com/releases/v5.1.1/fontawesome-free-5.1.1-web.zip
+  remote: https://use.fontawesome.com/releases/v5.4.1/fontawesome-free-5.4.1-web.zip
   license: &fontawesome_webfonts_license
     name: SIL OFL 1.1
     url: https://fontawesome.com/license
@@ -35,9 +35,3 @@ fontawesome.webfonts.shim:
       /libraries/fontawesome/css/v4-shims.css: { minified: true }
   dependencies:
     - fontawesome/fontawesome.webfonts
-
-fontawesome.svg.pseudoElements:
-  version: *fontawesome_version
-  license: *fontawesome_svg_license
-  js:
-    js/enablePseudoElements.js: { }

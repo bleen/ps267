@@ -10,6 +10,7 @@ use Drupal\Core\Link;
 use Symfony\Component\Yaml\Yaml;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\TypedData\Plugin\DataType\ItemList;
 
 /**
  * Implements hook_help().
@@ -53,7 +54,6 @@ function fontawesome_library_info_alter(&$libraries, $extension) {
         ];
       }
 
-
       // Modify the shim as well.
       if ($configuration_settings->get('use_shim')) {
         // Handle SVG method.
@@ -71,6 +71,18 @@ function fontawesome_library_info_alter(&$libraries, $extension) {
           ];
         }
       }
+    }
+
+    // Allow pseudo-elements in JS if selected.
+    if ($configuration_settings->get('allow_pseudo_elements')) {
+      // Modify the library.
+      $librarySettings = reset($libraries['fontawesome.svg']['js']);
+      $librarySource = key($libraries['fontawesome.svg']['js']);
+      // Font Awesome requires this script tag to enable pseudo elements.
+      $librarySettings['attributes'] = [
+        'data-search-pseudo-elements' => TRUE,
+      ];
+      $libraries['fontawesome.svg']['js'][$librarySource] = $librarySettings;
     }
   }
 }
@@ -133,9 +145,9 @@ function fontawesome_page_attachments(array &$page) {
 
   // Throw error if library file not found.
   if (!fontawesome_check_installed()) {
-    drupal_set_message(t('The Font Awesome library could not be found. Please verify Font Awesome is installed correctly or that the CDN has been activated and properly configured. Please see the @adminPage and the Font Awesome module README file for more details.', [
+    \Drupal::messenger()->addWarning(t('The Font Awesome library could not be found. Please verify Font Awesome is installed correctly or that the CDN has been activated and properly configured. Please see the @adminPage and the Font Awesome module README file for more details.', [
       '@adminPage' => Link::createFromRoute(t('admin page'), 'fontawesome.admin_settings')->toString(),
-    ]), 'warning');
+    ]));
     return;
   }
 
@@ -150,11 +162,6 @@ function fontawesome_page_attachments(array &$page) {
     }
   }
   else {
-    // Allow pseudo-elements in JS if selected.
-    if ($configuration_settings->get('allow_pseudo_elements')) {
-      $page['#attached']['library'][] = 'fontawesome/fontawesome.svg.pseudoElements';
-    }
-
     // SVG method.
     $page['#attached']['library'][] = 'fontawesome/fontawesome.svg';
 
@@ -331,27 +338,36 @@ function fontawesome_get_metadata_filepath() {
  *   Array containing icons.
  */
 function fontawesome_extract_icons() {
-  $icons = [];
+  // Check for cached icons.
+  if (!$icons = \Drupal::cache('data')->get('fontawesome.iconlist')) {
 
-  // Parse the metadata file and use it to generate the icon list.
-  foreach (Yaml::parse(file_get_contents(fontawesome_get_metadata_filepath())) as $name => $icon) {
-    // Determine the icon type - brands behave differently.
-    $type = 'solid';
-    foreach ($icon['styles'] as $style) {
-      if ($style == 'brands') {
-        $type = 'brands';
-        break;
+    // Parse the metadata file and use it to generate the icon list.
+    $icons = [];
+    foreach (Yaml::parse(file_get_contents(fontawesome_get_metadata_filepath())) as $name => $icon) {
+      // Determine the icon type - brands behave differently.
+      $type = 'solid';
+      foreach ($icon['styles'] as $style) {
+        if ($style == 'brands') {
+          $type = 'brands';
+          break;
+        }
       }
+      $icons[$name] = [
+        'name' => $name,
+        'type' => $type,
+        'label' => $icon['label'],
+        'styles' => $icon['styles'],
+      ];
     }
-    $icons[$name] = [
-      'name' => $name,
-      'type' => $type,
-      'label' => $icon['label'],
-      'styles' => $icon['styles'],
-    ];
+
+    // Cache the icons array.
+    \Drupal::cache('data')->set('fontawesome.iconlist', $icons, strtotime('+1 week'), ['fontawesome', 'iconlist']);
+  }
+  else {
+    $icons = $icons->data;
   }
 
-  return $icons;
+  return (array) $icons;
 }
 
 /**
@@ -394,17 +410,19 @@ function fontawesome_entity_presave(EntityInterface $entity) {
   if ($entity instanceof ContentEntityInterface) {
     // Loop over the fields.
     foreach ($entity->getFields() as $fields) {
-      // If this is a text field (uses an editor).
-      if (in_array($fields->getFieldDefinition()->getType(), [
-        'text',
-        'text_long',
-        'text_with_summary',
-      ])) {
-        foreach ($fields as $field) {
-          // Find and replace SVG strings with original icon HTML.
-          $fieldValue = $field->getValue();
-          $fieldValue['value'] = preg_replace('%<svg .*?class="svg-inline--fa.*?<\/svg><!--\s?(.*?)\s?-->%', '$1', $fieldValue['value']);
-          $field->setValue($fieldValue);
+      if ($fields instanceof ItemList) {
+        // If this is a text field (uses an editor).
+        if (in_array($fields->getFieldDefinition()->getType(), [
+          'text',
+          'text_long',
+          'text_with_summary',
+        ])) {
+          foreach ($fields as $field) {
+            // Find and replace SVG strings with original icon HTML.
+            $fieldValue = $field->getValue();
+            $fieldValue['value'] = preg_replace('%<svg .*?class="svg-inline--fa.*?<\/svg><!--\s?(.*?)\s?-->%', '$1', $fieldValue['value']);
+            $field->setValue($fieldValue);
+          }
         }
       }
     }

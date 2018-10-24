@@ -41,5 +41,7 @@ function contact_categories_mail_alter(&$message) {
  * @return string
  */
 function contact_categories_strip_comment($email) {
+  $foo = preg_replace('/\(.*\)/', '', $email);
+
   return preg_replace('/\(.*\)/', '', $email);
 }

@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "composer/installers": "^1.0.24",
-        "drupal/core": "^8.5",
+        "drupal/core": "^8",
         "wikimedia/composer-merge-plugin": "^1.4",
         "drupal/focal_point": "^1.0@beta",
         "drupal/scheduler": "^1.0",

@@ -85,7 +85,7 @@ class FilteredStorage implements FilteredStorageInterface {
       $data = $filter->filterReadMultiple($names, $data);
     }
     ksort($data);
-    return $data;
+    return array_filter($data);
   }
 
   /**
