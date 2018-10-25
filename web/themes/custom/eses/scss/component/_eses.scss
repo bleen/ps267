@@ -166,3 +166,21 @@ a {
     margin: 3px 0;
   }
 }
+
+// Maintenance Page
+.maintenance-page {
+  .header {
+    @include clearfix;
+  }
+  .logo img {
+    width: 70px;
+  }
+  .navbar-brand {
+    color: #fff;
+    font-size: 20px;
+    float: left;
+    display: block;
+    width: 70%;
+  }
+
+}

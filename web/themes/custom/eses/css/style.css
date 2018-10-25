@@ -8175,6 +8175,24 @@ a {
   margin: 3px 0;
 }
 
+.maintenance-page .header:before, .maintenance-page .header:after {
+  content: " ";
+  display: table;
+}
+.maintenance-page .header:after {
+  clear: both;
+}
+.maintenance-page .logo img {
+  width: 70px;
+}
+.maintenance-page .navbar-brand {
+  color: #fff;
+  font-size: 20px;
+  float: left;
+  display: block;
+  width: 70%;
+}
+
 .region-sidebar-first {
   margin-top: 0;
   position: fixed;
