@@ -18,7 +18,7 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
  * information field if it is disabled for the bundle.
  */
 function hide_revision_field_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if (in_array($form_id, ['node_type_edit_form', 'media_type_edit_form'])) {
+  if (in_array($form_id, ['node_type_edit_form', 'media_bundle_edit_form'])) {
     $entity = $form_state->getFormObject()->getEntity();
     $form['workflow']['hide_revision_fieldset'] = [
       '#type' => 'fieldset',
@@ -50,7 +50,7 @@ function hide_revision_field_form_alter(&$form, FormStateInterface $form_state, 
         $type = 'node_type';
         break;
       case 'media_form':
-        $type = 'media_type';
+        $type = 'media_bundle';
         break;
     }
     $bundle = entity_load($type, $form_state->getFormObject()->getEntity()->bundle());
@@ -105,7 +105,7 @@ function hide_revision_field_form_user_form_alter(&$form, FormStateInterface $fo
       'title' => t('Content'),
       'access' => 'node',
     ],
-    'media_type' => [
+    'media_bundle' => [
       'title' => t('Media'),
       'access' => 'media',
     ],

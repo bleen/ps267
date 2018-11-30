@@ -224,7 +224,9 @@ class FilteredStorage implements FilteredStorageInterface {
     foreach ($this->filters as $filter) {
       $collections = $filter->filterGetAllCollectionNames($collections);
     }
+    $collections = array_unique($collections);
     sort($collections);
+
     return $collections;
   }
 

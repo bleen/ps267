@@ -131,28 +131,14 @@ function custom_add_another_field_widget_form_alter(&$element, FormStateInterfac
 function custom_add_another_preprocess_field_multiple_value_form(&$variables) {
   foreach (Element::children($variables['element']) as $child) {
     $child_element = &$variables['element'][$child];
-
-    if (isset($child_element['#custom_add_another_value'])) {
-      if (isset($variables['element']['add_more'])) {
-        if (isset($variables['element']['add_more']['#value'])) {
-          $variables['element']['add_more']['#value'] = t($child_element['#custom_add_another_value']);
-        }
-        else {
-          // This module has been hacked to work with paragraphs. See
-          // https://www.drupal.org/project/custom_add_another/issues/2931737
-          $buttons = array_filter($variables['element']['add_more'], function($k) {
-            return strpos($k, "add_more") === 0;
-          }, ARRAY_FILTER_USE_KEY);
-          $variables['button'][key($buttons)]['#value'] = t($child_element['#custom_add_another_value']);
-        }
+    if (isset($child_element['#custom_add_another_value']) || isset($child_element['#custom_remove'])) {
+      if (isset($child_element['#custom_add_another_value']) && isset($variables['element']['add_more']['#value']) && $variables['element']['add_more']['#value'] != t($child_element['#custom_add_another_value'])) {
+        $variables['element']['add_more']['#value'] = t($child_element['#custom_add_another_value']);
       }
-      elseif (isset($variables['button']['#value'])) {
+      if (isset($child_element['#custom_add_another_value']) && isset($variables['button']['#value']) && $variables['button']['#value'] != t($child_element['#custom_add_another_value'])) {
         $variables['button']['#value'] = t($child_element['#custom_add_another_value']);
       }
-    }
-
-    if (isset($child_element['#custom_remove'])) {
-      if (isset($child_element['remove_button']['#value'])) {
+      if (isset($child_element['#custom_remove']) && isset($child_element['remove_button']['#value'])) {
         $child_element['remove_button']['#value'] = t($child_element['#custom_remove']);
       }
     }

@@ -115,6 +115,21 @@ class FilteredStorageTest extends CachedStorageTest {
   }
 
   /**
+   * Test collection names from FilteredStorage::getAllCollectionNames().
+   */
+  public function testGetAllCollectionNamesFilter() {
+    $source = $this->prophesize(StorageInterface::class);
+    $source->getAllCollectionNames()->willReturn(['a', 'b']);
+
+    $filter = $this->prophesizeFilter();
+    $filter->filterGetAllCollectionNames(['a', 'b'])->willReturn(['b', 'b', 'c']);
+
+    $storage = new FilteredStorage($source->reveal(), [$filter->reveal()]);
+
+    $this->assertEquals(['b', 'c'], $storage->getAllCollectionNames());
+  }
+
+  /**
    * Test the read methods invokes the correct filter methods.
    *
    * @dataProvider readFilterProvider

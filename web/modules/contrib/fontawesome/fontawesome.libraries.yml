@@ -4,7 +4,7 @@ fontawesome.svg:
     name: CC BY 4.0
     url: https://fontawesome.com/license
     gpl-compatible: true
-  version: &fontawesome_version "5.4.1"
+  version: &fontawesome_version "5.5.0"
   js:
     /libraries/fontawesome/js/all.js: { minified: true }
 
@@ -17,7 +17,7 @@ fontawesome.svg.shim:
     - fontawesome/fontawesome.svg
 
 fontawesome.webfonts:
-  remote: https://use.fontawesome.com/releases/v5.4.1/fontawesome-free-5.4.1-web.zip
+  remote: https://use.fontawesome.com/releases/v5.5.0/fontawesome-free-5.5.0-web.zip
   license: &fontawesome_webfonts_license
     name: SIL OFL 1.1
     url: https://fontawesome.com/license

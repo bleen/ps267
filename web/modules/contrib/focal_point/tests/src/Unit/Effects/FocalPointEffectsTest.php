@@ -181,7 +181,7 @@ class FocalPointEffectsTest extends FocalPointUnitTestCase {
     $effect_reflection = new \ReflectionClass(TestFocalPointEffectBase::class);
     $method = $effect_reflection->getMethod('constrainCropArea');
     $method->setAccessible(TRUE);
-      
+
     $args = [$anchor, $image, $crop->reveal()];
     $this->assertSame($expected, $method->invokeArgs($effect, $args));
   }
