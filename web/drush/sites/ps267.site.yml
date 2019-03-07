@@ -209,26 +209,12 @@
 # @endcode
 #
 
-container:
-  root: /var/www/html/web
-  uri: http://ps267.docker.localhost:8002
-  paths:
-        drush-script: '/var/www/html/web/vendor/bin/drush'
-        files: '/var/www/html/web/sites/default/files'
-
-local:
-  root: /Users/bleen/Sites/ps267.org/web
-  uri: http://ps267.docker.localhost:8002
-  paths:
-      drush-script: '/Users/bleen/Sites/ps267.org/web/vendor/bin/drush'
-      files: '/Users/bleen/Sites/ps267.org/web/sites/default/files'
-
 live:
   host: bleen.net
   user: alexross
   root: /home/alexross/sites/ps267.org/web
-#  uri: http://www.ps267.org
-  uri: http://www.ps267.dreamhosters.com
+  uri: http://www.ps267.org
+#  uri: http://www.ps267.dreamhosters.com
   paths:
     drush-script: '/home/alexross/sites/ps267.org/web/vendor/bin/drush'
     files: '/home/alexross/sites/ps267.org/web/sites/default/files'
