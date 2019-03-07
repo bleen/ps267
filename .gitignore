@@ -1,6 +1,6 @@
 .idea/
 .docker-sync/
-.env
+.local.env
 
 *.sql
 sql

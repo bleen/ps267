@@ -1,0 +1,26 @@
+name: ps267
+recipe: drupal8
+env_file:
+  - .env
+config:
+  webroot: ./web
+  php: '7.2'
+  drush: '*'
+  xdebug: false
+proxy:
+  pma:
+    - pma-d8-contrib.lndo.site
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+tooling:
+  phpunit:
+    service: appserver
+    cmd: vendor/bin/phpunit
+  make:
+    service: appserver
+  drush:
+    service: appserver
+    cmd: "drush --root=/app/web"

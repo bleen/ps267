@@ -1,4 +1,4 @@
-include docker.mk
+include lando.mk
 
 .PHONY: test
 
