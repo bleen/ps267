@@ -7,7 +7,7 @@ namespace Drupal\Tests\ds\Functional;
  *
  * @group ds
  */
-class EntitiesTest extends FastTestBase {
+class EntitiesTest extends TestBase {
 
   /**
    * Modules to install.
@@ -73,12 +73,11 @@ class EntitiesTest extends FastTestBase {
     $this->assertSession()->responseContains('group-left');
     $this->assertSession()->responseContains('group-right');
     $this->assertSession()->responseContains('<div class="field field--name-node-submitted-by field--type-ds field--label-hidden field__item">');
-    $elements = $this->xpath('//div[@class="field field--name-node-submitted-by field--type-ds field--label-hidden field__item"]');
-    $this->assertSession()->pageTextContains('Submitted by ' . $elements[0]->find('xpath', 'a')->find('xpath', 'span')->getText() . ' on', 'Submitted by line found');
+    $this->assertSession()->pageTextContains('Submitted by ' . $this->adminUser->getUsername());
 
     // Configure teaser layout.
     $teaser = [
-      'layout' => 'ds_2col',
+      'ds_layout' => 'ds_2col',
     ];
     $teaser_assert = [
       'regions' => [
@@ -97,7 +96,7 @@ class EntitiesTest extends FastTestBase {
 
     // Switch view mode on full node page.
     $edit = ['ds_switch' => 'teaser'];
-    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save and keep published');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save');
     $this->assertSession()->responseContains('node--view-mode-teaser', 'Switched to teaser mode');
     $this->assertSession()->responseContains('group-left');
     $this->assertSession()->responseContains('group-right');
@@ -105,7 +104,7 @@ class EntitiesTest extends FastTestBase {
     $this->assertSession()->responseNotContains('group-footer');
 
     $edit = ['ds_switch' => ''];
-    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save and keep published');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save');
     $this->assertSession()->responseContains('node--view-mode-full');
 
     // Test all options of a block field.
@@ -138,7 +137,7 @@ class EntitiesTest extends FastTestBase {
 
     // Select layout and configure fields.
     $edit = [
-      'layout' => 'ds_2col',
+      'ds_layout' => 'ds_2col',
     ];
     $assert = [
       'regions' => [
@@ -159,7 +158,7 @@ class EntitiesTest extends FastTestBase {
       'revision' => TRUE,
       'revision_log[0][value]' => 'Test revision',
     ];
-    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save and keep published');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save');
 
     // Verify the revision is created.
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($node->id());
@@ -180,7 +179,7 @@ class EntitiesTest extends FastTestBase {
       'field_tags[0][target_id]' => 'Tag 1',
       'field_tags[1][target_id]' => 'Tag 2',
     ];
-    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save and keep published');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit,'Save');
     $edit = [
       'fields[field_tags][region]' => 'right',
       'fields[field_tags][type]' => 'entity_reference_label',
@@ -207,7 +206,7 @@ class EntitiesTest extends FastTestBase {
     $edit = [
       'title[0][value]' => 'Hi, I am an article <script>alert(\'with a javascript tag in the title\');</script>',
     ];
-    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save and keep published'));
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
     $this->drupalGet('node/' . $node->id());
     $elements = $this->xpath('//div[@class="field field--name-node-title field--type-ds field--label-hidden field__item"]/h2');
     $this->assertTrimEqual($elements[0]->getText(), 'Hi, I am an article <script>alert(\'with a javascript tag in the title\');</script>');
@@ -221,7 +220,7 @@ class EntitiesTest extends FastTestBase {
     // Convert layout from test theme.
     // Configure teaser layout.
     $test_theme_template = [
-      'layout' => 'ds_test_layout_theme',
+      'ds_layout' => 'ds_test_layout_theme',
     ];
     $test_theme_template_assert = [
       'regions' => [

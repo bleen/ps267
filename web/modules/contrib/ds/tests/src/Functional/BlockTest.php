@@ -10,7 +10,7 @@ use Drupal\user\Entity\User;
  *
  * @group ds
  */
-class BlockTest extends FastTestBase {
+class BlockTest extends TestBase {
 
   use DsTestTrait;
 
@@ -85,7 +85,7 @@ class BlockTest extends FastTestBase {
 
     // Change to a DS layout.
     $url = 'admin/structure/block/block-content/manage/basic/display';
-    $edit = ['layout' => 'ds_2col'];
+    $edit = ['ds_layout' => 'ds_2col'];
     $this->drupalPostForm($url, $edit, t('Save'), []);
 
     $fields = [

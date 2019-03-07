@@ -19,9 +19,9 @@ interface EntityCloneInterface {
    * @param array $properties
    *   All new properties to replace old.
    *
-   * @return \Drupal\Core\Entity\EntityInterface The new saved entity.
-   * The new saved entity.
+   * @return \Drupal\Core\Entity\EntityInterface
+   *   The new saved entity.
    */
-  public function cloneEntity(EntityInterface $entity, EntityInterface $cloned_entity, $properties = []);
+  public function cloneEntity(EntityInterface $entity, EntityInterface $cloned_entity, array $properties = []);
 
 }

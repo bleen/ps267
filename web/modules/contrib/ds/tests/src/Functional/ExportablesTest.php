@@ -9,7 +9,7 @@ use Drupal\Core\Entity\Entity\EntityViewDisplay;
  *
  * @group ds
  */
-class ExportablesTest extends FastTestBase {
+class ExportablesTest extends TestBase {
 
   /**
    * Enables the exportables module.
@@ -54,7 +54,7 @@ class ExportablesTest extends FastTestBase {
 
     // Override default layout.
     $layout = [
-      'layout' => 'ds_2col_stacked',
+      'ds_layout' => 'ds_2col_stacked',
     ];
 
     $assert = [

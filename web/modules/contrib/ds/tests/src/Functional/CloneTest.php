@@ -7,7 +7,7 @@ namespace Drupal\Tests\ds\Functional;
  *
  * @group ds
  */
-class CloneTest extends FastTestBase {
+class CloneTest extends TestBase {
 
   use DsTestTrait;
 
@@ -44,7 +44,7 @@ class CloneTest extends FastTestBase {
     $this->assertSession()->pageTextContains('The layout has been cloned.');
 
     // Check that this now also has the expected region layout.
-    $option_field = $this->assertSession()->optionExists('edit-layout', 'ds_2col_stacked');
+    $option_field = $this->assertSession()->optionExists('edit-ds-layout', 'ds_2col_stacked');
     $this->assertTrue($option_field->hasAttribute('selected'));
   }
 

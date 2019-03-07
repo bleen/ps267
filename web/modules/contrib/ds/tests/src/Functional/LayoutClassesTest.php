@@ -9,7 +9,7 @@ use Drupal\Core\Entity\Entity\EntityViewDisplay;
  *
  * @group ds
  */
-class LayoutClassesTest extends FastTestBase {
+class LayoutClassesTest extends TestBase {
 
   /**
    * {@inheritdoc}
@@ -41,7 +41,7 @@ class LayoutClassesTest extends FastTestBase {
     $this->dsCreateBlockField();
 
     $layout = [
-      'layout' => 'ds_2col_stacked',
+      'ds_layout' => 'ds_2col_stacked',
     ];
 
     $assert = [
@@ -156,7 +156,7 @@ class LayoutClassesTest extends FastTestBase {
 
     // Select layout.
     $layout = [
-      'layout' => 'ds_2col',
+      'ds_layout' => 'ds_2col',
     ];
 
     $assert = [
@@ -216,7 +216,7 @@ class LayoutClassesTest extends FastTestBase {
     // Test that a default view mode with no layout is not affected by a
     // disabled view mode.
     $edit = [
-      'layout' => '_none',
+      'ds_layout' => '_none',
       'display_modes_custom[full]' => FALSE,
     ];
     $this->drupalPostForm('admin/structure/types/manage/article/display', $edit,'Save');

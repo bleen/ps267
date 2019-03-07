@@ -12,7 +12,9 @@
 # core
 
 # Core's dependencies are managed with Composer.
-vendor
+# For ps267.org this is only true locally because prod is hosted on a shared
+# server and there is not enough memory to run composer (sigh).
+#vendor
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings.*.php

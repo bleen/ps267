@@ -10,7 +10,7 @@ use Drupal\simpletest\NodeCreationTrait;
  *
  * @group ds
  */
-class DsFieldCacheTest extends FastTestBase {
+class DsFieldCacheTest extends TestBase {
 
   use NodeCreationTrait;
   use DsTestTrait;
@@ -33,7 +33,7 @@ class DsFieldCacheTest extends FastTestBase {
       'fields[test_caching_field][region]' => 'left',
       'fields[test_caching_field][label]' => 'above',
     ];
-    $this->drupalPostForm('admin/structure/types/manage/article/display', ['layout' => 'ds_2col'], t('Save'));
+    $this->drupalPostForm('admin/structure/types/manage/article/display', ['ds_layout' => 'ds_2col'], t('Save'));
     $this->dsConfigureUi($fields);
 
     // Create and visit the node so that it is cached as empty, ensure the title

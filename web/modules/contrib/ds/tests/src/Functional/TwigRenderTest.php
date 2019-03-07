@@ -7,7 +7,7 @@ namespace Drupal\Tests\ds\Functional;
  *
  * @group ds
  */
-class TwigRenderTest extends FastTestBase {
+class TwigRenderTest extends TestBase {
 
   /**
    * Tests targeting the field in a twig template.
@@ -20,7 +20,7 @@ class TwigRenderTest extends FastTestBase {
 
     // Configure layout.
     $layout = [
-      'layout' => 'dstest_1col_title',
+      'ds_layout' => 'dstest_1col_title',
     ];
     $layout_assert = [
       'regions' => [

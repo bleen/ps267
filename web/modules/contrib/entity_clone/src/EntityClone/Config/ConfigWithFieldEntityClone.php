@@ -13,7 +13,7 @@ class ConfigWithFieldEntityClone extends ConfigEntityCloneBase {
   /**
    * {@inheritdoc}
    */
-  public function cloneEntity(EntityInterface $entity, EntityInterface $cloned_entity, $properties = []) {
+  public function cloneEntity(EntityInterface $entity, EntityInterface $cloned_entity, array $properties = []) {
     $cloned_entity = parent::cloneEntity($entity, $cloned_entity, $properties);
     $bundle_of = $cloned_entity->getEntityType()->getBundleOf();
     if ($bundle_of) {
@@ -40,16 +40,16 @@ class ConfigWithFieldEntityClone extends ConfigEntityCloneBase {
    *
    * @param string $entity_id
    *   The base entity ID.
-   * @param $cloned_entity_id
+   * @param string $cloned_entity_id
    *   The cloned entity ID.
-   * @param $bundle_of
+   * @param string $bundle_of
    *   The bundle of the cloned entity.
    */
   protected function cloneFields($entity_id, $cloned_entity_id, $bundle_of) {
     /** @var \Drupal\Core\Entity\EntityFieldManager $field_manager */
     $field_manager = \Drupal::service('entity_field.manager');
     $fields = $field_manager->getFieldDefinitions($bundle_of, $entity_id);
-    foreach ($fields as $field_id => $field_definition) {
+    foreach ($fields as $field_definition) {
       if ($field_definition instanceof FieldConfigInterface) {
         if ($this->entityTypeManager->hasHandler($this->entityTypeManager->getDefinition($field_definition->getEntityTypeId())
           ->id(), 'entity_clone')
@@ -77,14 +77,14 @@ class ConfigWithFieldEntityClone extends ConfigEntityCloneBase {
    *   The type of display (view or form).
    * @param string $entity_id
    *   The base entity ID.
-   * @param $cloned_entity_id
+   * @param string $cloned_entity_id
    *   The cloned entity ID.
    * @param array $view_displays
    *   All view available display for this type.
-   * @param $bundle_of
+   * @param string $bundle_of
    *   The bundle of the cloned entity.
    */
-  protected function cloneDisplays($type, $entity_id, $cloned_entity_id, $view_displays, $bundle_of) {
+  protected function cloneDisplays($type, $entity_id, $cloned_entity_id, array $view_displays, $bundle_of) {
     foreach ($view_displays as $view_display_id => $view_display) {
       /** @var \Drupal\Core\Entity\Display\EntityDisplayInterface $display */
       $display = $this->entityTypeManager->getStorage('entity_' . $type . '_display')->load($bundle_of . '.' . $entity_id . '.' . $view_display_id);

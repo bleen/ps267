@@ -7,7 +7,7 @@ namespace Drupal\Tests\ds\Functional;
  *
  * @group ds
  */
-class LayoutPluginTest extends FastTestBase {
+class LayoutPluginTest extends TestBase {
 
   /**
    * Test basic Display Suite layout plugins.
@@ -19,7 +19,7 @@ class LayoutPluginTest extends FastTestBase {
     $this->assertSession()->responseContains('Test Two column');
 
     $layout = [
-      'layout' => 'dstest_2col',
+      'ds_layout' => 'dstest_2col',
     ];
 
     $assert = [
@@ -62,7 +62,7 @@ class LayoutPluginTest extends FastTestBase {
    */
   public function testResetLayout() {
     $layout = [
-      'layout' => 'ds_reset',
+      'ds_layout' => 'ds_reset',
     ];
 
     $assert = [
@@ -108,7 +108,7 @@ class LayoutPluginTest extends FastTestBase {
         'ds_content' => '<td colspan="8">' . t('Content') . '</td>',
       ],
     ];
-    $this->dsSelectLayout(['layout' => 'ds_1col'], $assert);
+    $this->dsSelectLayout(['ds_layout' => 'ds_1col'], $assert);
 
     // Go to the node.
     $this->drupalGet('node/' . $node->id());

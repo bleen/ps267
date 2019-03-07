@@ -61,13 +61,23 @@ class RouteSubscriber extends RouteSubscriberBase {
           '_title' => 'Clone ' . $entity_type->getLabel(),
         ])
         ->addRequirements([
-          '_permission' => 'clone ' . $entity_type->id() . ' entity',
+          '_entity_access' => $entity_type_id . '.clone',
         ])
         ->setOption('_entity_clone_entity_type_id', $entity_type_id)
         ->setOption('_admin_route', TRUE)
         ->setOption('parameters', [
           $entity_type_id => ['type' => 'entity:' . $entity_type_id],
         ]);
+
+      // Special case for menu link content.
+      // Menu link content does not work properly with custom operation.
+      // This case must be removed when issue #3016038
+      // (https://www.drupal.org/project/drupal/issues/3016038) was closed.
+      if ($entity_type_id === 'menu_link_content') {
+        $route->setRequirements([
+          '_permission' => 'clone ' . $entity_type_id . ' entity',
+        ]);
+      }
 
       return $route;
     }

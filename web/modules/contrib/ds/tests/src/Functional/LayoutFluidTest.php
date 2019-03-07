@@ -7,7 +7,7 @@ namespace Drupal\Tests\ds\Functional;
  *
  * @group ds
  */
-class LayoutFluidTest extends FastTestBase {
+class LayoutFluidTest extends TestBase {
 
   /**
    * Test fluid Display Suite layouts.
@@ -18,7 +18,7 @@ class LayoutFluidTest extends FastTestBase {
     $this->assertSession()->responseContains('Test Fluid two column');
 
     $layout = [
-      'layout' => 'dstest_2col_fluid',
+      'ds_layout' => 'dstest_2col_fluid',
     ];
 
     $assert = [

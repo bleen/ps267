@@ -15,11 +15,13 @@ interface EntityCloneFormInterface {
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity.
+   * @param bool $parent
+   *   Is the parent form element.
    *
    * @return array
    *   The form elements.
    */
-  public function formElement(EntityInterface $entity);
+  public function formElement(EntityInterface $entity, $parent = TRUE);
 
   /**
    * Get all new values provided by the specific form element.
@@ -30,6 +32,6 @@ interface EntityCloneFormInterface {
    * @return array
    *   An array containing all new values.
    */
-  public function getNewValues(FormStateInterface $form_state);
+  public function getValues(FormStateInterface $form_state);
 
 }

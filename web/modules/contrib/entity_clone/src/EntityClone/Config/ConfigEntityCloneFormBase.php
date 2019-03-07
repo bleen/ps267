@@ -56,24 +56,24 @@ class ConfigEntityCloneFormBase implements EntityHandlerInterface, EntityCloneFo
   /**
    * {@inheritdoc}
    */
-  public function formElement(EntityInterface $entity) {
+  public function formElement(EntityInterface $entity, $parent = TRUE) {
     $form = [];
 
     if ($this->entityTypeManager->getDefinition($entity->getEntityTypeId())->getKey('label')) {
-      $form['label'] = array(
+      $form['label'] = [
         '#type' => 'textfield',
         '#title' => $this->translationManager->translate('New Label'),
         '#maxlength' => 255,
         '#required' => TRUE,
-      );
+      ];
     }
 
-    $form['id'] = array(
+    $form['id'] = [
       '#type' => 'machine_name',
       '#title' => $this->translationManager->translate('New Id'),
       '#maxlength' => 255,
       '#required' => TRUE,
-    );
+    ];
 
     // If entity must have a prefix
     // (e.g. entity_form_mode, entity_view_mode, ...).
@@ -93,7 +93,7 @@ class ConfigEntityCloneFormBase implements EntityHandlerInterface, EntityCloneFo
   /**
    * {@inheritdoc}
    */
-  public function getNewValues(FormStateInterface $form_state) {
+  public function getValues(FormStateInterface $form_state) {
     // If entity must have a prefix
     // (e.g. entity_form_mode, entity_view_mode, ...).
     $field_prefix = '';

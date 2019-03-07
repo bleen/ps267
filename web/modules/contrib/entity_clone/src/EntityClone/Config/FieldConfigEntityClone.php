@@ -12,7 +12,7 @@ class FieldConfigEntityClone extends ConfigEntityCloneBase {
   /**
    * {@inheritdoc}
    */
-  public function cloneEntity(EntityInterface $field_config, EntityInterface $cloned_field_config, $properties = []) {
+  public function cloneEntity(EntityInterface $field_config, EntityInterface $cloned_field_config, array $properties = []) {
     /** @var \Drupal\field\Entity\FieldConfig $field_config */
     /** @var \Drupal\field\Entity\FieldConfig $cloned_field_config */
     /** @var \Drupal\field\Entity\FieldStorageConfig $cloned_field_storage */

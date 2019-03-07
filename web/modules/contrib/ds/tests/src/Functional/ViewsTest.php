@@ -10,7 +10,7 @@ use Drupal\views\ViewExecutable;
  *
  * @group ds
  */
-class ViewsTest extends FastTestBase {
+class ViewsTest extends TestBase {
 
   /**
    * Modules to install.
@@ -70,25 +70,25 @@ class ViewsTest extends FastTestBase {
       'created' => \Drupal::time()->getRequestTime(),
     ];
     $node_1 = $this->drupalCreateNode($settings_1);
-    $this->drupalPostForm('node/' . $node_1->id() . '/edit', $edit_tag_1, t('Save and keep published'));
+    $this->drupalPostForm('node/' . $node_1->id() . '/edit', $edit_tag_1, t('Save'));
     $settings_2 = [
       'type' => 'article',
       'title' => 'Article 2',
       'created' => \Drupal::time()->getRequestTime() + 3600,
     ];
     $node_2 = $this->drupalCreateNode($settings_2);
-    $this->drupalPostForm('node/' . $node_2->id() . '/edit', $edit_tag_1, t('Save and keep published'));
+    $this->drupalPostForm('node/' . $node_2->id() . '/edit', $edit_tag_1, t('Save'));
     $settings_3 = [
       'type' => 'article',
       'title' => 'Article 3',
       'created' => \Drupal::time()->getRequestTime() + 7200,
     ];
     $node_3 = $this->drupalCreateNode($settings_3);
-    $this->drupalPostForm('node/' . $node_3->id() . '/edit', $edit_tag_2, t('Save and keep published'));
+    $this->drupalPostForm('node/' . $node_3->id() . '/edit', $edit_tag_2, t('Save'));
 
     // Configure teaser and full layout.
     $layout = [
-      'layout' => 'ds_2col',
+      'ds_layout' => 'ds_2col',
     ];
     $fields = [
       'fields[node_title][region]' => 'left',
@@ -103,7 +103,7 @@ class ViewsTest extends FastTestBase {
     $this->dsSelectLayout($layout, $assert, 'admin/structure/types/manage/article/display/teaser');
     $this->dsConfigureUi($fields, 'admin/structure/types/manage/article/display/teaser');
     $layout = [
-      'layout' => 'ds_4col',
+      'ds_layout' => 'ds_4col',
     ];
     $fields = [
       'fields[node_post_date][region]' => 'first',
