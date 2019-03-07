@@ -25,4 +25,5 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_calendar_event_date: true
