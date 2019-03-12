@@ -1,0 +1,15 @@
+uuid: 062c32b0-d743-43dd-82d9-f9181d9ec487
+langcode: en
+status: true
+dependencies: {  }
+name: tiny_thumbnail
+label: 'Tiny Thumbnail (65 x 65)'
+effects:
+  f4c21a4f-93e9-4cac-ab60-779fbe5a0750:
+    uuid: f4c21a4f-93e9-4cac-ab60-779fbe5a0750
+    id: image_scale
+    weight: 3
+    data:
+      width: 65
+      height: 65
+      upscale: true
