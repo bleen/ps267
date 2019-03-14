@@ -1,6 +1,6 @@
 include .env
 
-.PHONY: up down stop prune ps shell
+.PHONY: list export-config backup reset update deploy-to-prod
 
 default: list
 
@@ -10,7 +10,7 @@ list:
 	@echo "backup"
 	@echo "reset"
 	@echo "update"
-	@echo "deploy"
+	@echo "deploy-to-prod"
 
 export-config:
 	@echo "Exporting configs to $(PROJECT_CONFIG_LOCATION)"
@@ -32,9 +32,9 @@ update:
 	@echo "Updating Drupal (and modules) based on changes to composer.json"
 	lando composer update
 	lando drush updb -y
-	make export-config
+	export-config
 
-deploy:
+deploy-to-prod:
 	@echo "Deploying 'live' site"
 	lando drush @ps267.live state:set system.maintenance_mode 1
 	lando drush @ps267.live ssh git pull bleen master
