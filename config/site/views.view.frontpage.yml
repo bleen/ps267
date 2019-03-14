@@ -9,6 +9,12 @@ dependencies:
     - image.style.tiny_thumbnail
     - node.type.announcement
     - system.menu.admin
+    - user.role.administrator
+    - user.role.anonymous
+    - user.role.authenticated
+    - user.role.pta_board_member
+    - user.role.school_employee
+    - user.role.volunteer
   module:
     - draggableviews
     - image
@@ -28,9 +34,15 @@ display:
   default:
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'create announcement content'
+          role:
+            anonymous: anonymous
+            authenticated: authenticated
+            administrator: administrator
+            pta_board_member: pta_board_member
+            school_employee: school_employee
+            volunteer: volunteer
       cache:
         type: tag
         options: {  }
@@ -259,7 +271,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }
   feed_1:
@@ -295,7 +307,7 @@ display:
       contexts:
         - 'languages:language_interface'
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }
   page_1:
@@ -326,7 +338,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       max-age: -1
       tags: {  }
   reorder_table:
@@ -345,6 +357,7 @@ display:
         sorts: false
         pager: false
         use_ajax: false
+        access: false
       path: admin/content/reorder/frontpage
       menu:
         type: normal
@@ -750,6 +763,10 @@ display:
         options:
           offset: 0
       use_ajax: true
+      access:
+        type: perm
+        options:
+          perm: 'administer nodes'
     cache_metadata:
       max-age: 0
       contexts:
