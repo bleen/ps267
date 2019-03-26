@@ -27,6 +27,7 @@ reset:
 	lando drush sql:sync --structure-tables-list=watchdog,cache_\*,semaphore,sessions @ps267.live @self -y
 	lando drush core:rsync @ps267.live:%files @self:%files -y
 	lando ssh -c "chmod -R 777 ${PROJECT_DOCROOT}/sites/default/files"
+	git pull bleen master
 
 update:
 	@echo "Updating Drupal (and modules) based on changes to composer.json"
