@@ -12,6 +12,7 @@ permissions:
   - 'access contextual links'
   - 'access draggableviews'
   - 'access toolbar'
+  - 'administer nodes'
   - 'change own username'
   - 'clone node entity'
   - 'create announcement content'

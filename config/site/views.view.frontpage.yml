@@ -329,8 +329,9 @@ display:
           plugin_id: standard
       defaults:
         sorts: false
+      display_description: ''
     display_plugin: page
-    display_title: Page
+    display_title: Homepage
     id: page_1
     position: 1
     cache_metadata:
@@ -344,7 +345,7 @@ display:
   reorder_table:
     display_plugin: page
     id: reorder_table
-    display_title: 'Page 2'
+    display_title: 'Reorder Table'
     position: 3
     display_options:
       display_extenders: {  }
@@ -767,6 +768,7 @@ display:
         type: perm
         options:
           perm: 'administer nodes'
+      display_description: ''
     cache_metadata:
       max-age: 0
       contexts:
