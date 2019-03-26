@@ -28,7 +28,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'administer nodes'
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -257,6 +257,7 @@ display:
         row: false
         fields: false
         use_ajax: false
+        access: false
       row:
         type: 'entity:node'
         options:
@@ -509,6 +510,10 @@ display:
         weight: 10
         context: '0'
         menu_name: admin
+      access:
+        type: perm
+        options:
+          perm: 'administer nodes'
     cache_metadata:
       max-age: 0
       contexts:
