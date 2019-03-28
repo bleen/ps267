@@ -32,6 +32,7 @@ content:
         duplicate: duplicate
         collapse_edit_all: collapse_edit_all
         add_above: '0'
+      closed_mode_threshold: 0
     third_party_settings: {  }
   path:
     type: path
@@ -58,6 +59,7 @@ hidden:
   created: true
   promote: true
   publish_on: true
+  revision_log: true
   sticky: true
   uid: true
   unpublish_on: true

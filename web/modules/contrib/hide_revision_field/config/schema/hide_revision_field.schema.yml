@@ -1,38 +1,22 @@
-node.type.*.third_party.hide_revision_field:
+field.widget.settings.hide_revision_field_log_widget:
   type: mapping
-  label: 'Hide Revision Field'
+  label: 'Revision Log Widget settings.'
   mapping:
-    hide:
+    rows:
+      type: integer
+      label: 'Rows'
+    placeholder:
+      type: label
+      label: 'Placeholder'
+    show:
       type: boolean
-      label: 'Whether to show the revision field on this node type.'
-    personalizable:
+      label: 'Show/hide the revision log widget.'
+    default:
+      type: label
+      label: 'Default value'
+    permission_based:
       type: boolean
-      label: 'Whether to enable users to personalize this setting (via their user page).'
-    personalization:
-      type: sequence
-      label: 'User specific personalization of revision vield visibiity.'
-      sequence:
-        type: mapping
-        mapping:
-          hide:
-            type: boolean
-            label: 'User specific version of whether to show the revision field on this node type.'
-media_entity.bundle.*.third_party.hide_revision_field:
-  type: mapping
-  label: 'Hide Revision Field'
-  mapping:
-    hide:
+      label: 'Show field based on permissions.'
+    allow_user_settings:
       type: boolean
-      label: 'Whether to show the revision field on this media bundle.'
-    personalizable:
-      type: boolean
-      label: 'Whether to enable users to personalize this setting (via their user page).'
-    personalization:
-      type: sequence
-      label: 'User specific personalization of revision vield visibiity.'
-      sequence:
-        type: mapping
-        mapping:
-          hide:
-            type: boolean
-            label: 'User specific version of whether to show the revision field on this media bundle.'
+      label: 'Allow users to alter their own settings for field.'

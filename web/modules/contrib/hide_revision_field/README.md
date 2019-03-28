@@ -1,21 +1,71 @@
-Hide Revision Field
-===================
+# Hide Revision Field
 
-Hide Revision Field provides an option on each supported revisionable entity bundle form to hide the revision field on add/edit forms. This allows you to create revisions but hide reduces noise for your content editors/site owners. Supported entity types currently are Node and Media Entity, extending to support other entities is very simple. You can also control visibility through permissions on roles and per user (if personalization is enabled on the entity).
+## ABOUT
+Hide Revision Field provides a configurable field formatter for the revision log
+field for revisionable entities. This allows you to create revisions but reduces
+noise for your content editors/site owners. All revisionable content entity
+types are supported including module added.
+
+The widget has 4 settings for each instance:
+
+  - `Default`: Provide a default log message.
+  - `Show` (TRUE): Whether to show the field. If enabled the two other options
+  will override this.
+  - `Permission Based` (FALSE): Show if the user has the
+  `access revision field` permission.
+  - `Allow user specific configuration` (TRUE): Enables users to customize this
+  field's visibility via their profile page if they have the
+  `administer revision field personalization` permission.
 
 ## REQUIREMENTS
+Drupal 8 is required, Drupal 8.6.x or higher is suggested.
 
-Drupal 8 is required, Drupal 8.1.x or higher is suggested.
+## VERSIONS
+* 8.x-2.x (Supported): (This version) Use for all new projects. There is a
+ partial upgrade path from 8.x-1.x; user customization will have to be reset.
+
+* 8.x-1.x (Deprecated): Use for Drupal 8.3 and under if necessary.
 
 ## INSTALLATION
-Install as you would normally install a contributed Drupal module. See the <a href='http://drupal.org/documentation/install/modules-themes/modules-8'>Drupal 8 instructions </a> if required in the Drupal documentation for further information. If also using <a href='https://drupal.org/project/entity_redirect'>Entity Redirect</a> ensure that you are using version 8.x-1.2 or higher.
+Install as you would normally install a contributed Drupal module. See the
+[install
+docs](https://drupal.org/documentation/install/modules-themes/modules-8)
+if required in the Drupal documentation for further information.
+
+### UPGRADING FROM 8.x-1.x to 8.x-2.x
+**Note:** Perform update separately from core updates (especially 8.5->8.6).
+
+  * Update code:
+
+    * If using Composer adjust your version constraint to update to `^2.1` or
+     similar.
+
+    * Otherwise, delete the module folder and extract the new version there.
+
+  * Run `update.php` or `drush updb` (Drush) or `drupal update:execute` (Drupal
+    Console).
+
+  * If you had changed any user specific settings, they will need to be reset (
+    See [Configuration](#configuration)).
+
 
 ## CONFIGURATION
-Configuration can be accessed for each supported entity bundle on the edit page for that entity type. For example for the Node type Article that would be at /admin/structure/types/manage/article. With sufficient permissions personalization can done per user on their profile edit page.
+* The primary configuration can be accessed for each supported entity bundle on
+  the form display edit page for the entity type. For example for the Node type
+  Article that would be at `/admin/structure/types/manage/article/form-display`.
 
-## FAQ<
-Any questions? Ask away on the issue queue or email: design@briarmoon.ca.
+  *Note:* the `Fields UI` module must be installed for that page to exist; if it
+  isn't installed you can use the Drupal 8 CIM workflow to edit it like any
+  other field in the `core.entity_form_display.ENTITY_TYPE.ENTITY_BUNDLE.yml`
 
-This project has been sponsored by:
-### <a href="http://design.briarmoon.ca">BriarMoon Design</a>
-   Full service web development and design studio. Specializing in responsive, secure, optimized Drupal sites. BriarMoon Design can help you with all your Drupal needs including installation, module creation or debugging, themeing, customization, and hosting.
+* The module provides 2 new permissions (`access revision field` and `administer
+  revision field personalization`). These can be configured with the standard
+  Drupal permissions manager.
+
+* The module also allows user specific settings - which can be disabled/enabled
+  at the field display settings level. If enabled, that can be configured for
+  each user on their user profile form (ie `/user/1/edit`).
+
+## FAQ
+Any questions? Ask away on the issue queue or contact the maintainer
+[Nick Wilde](https://drupal.org/u/nickwilde).

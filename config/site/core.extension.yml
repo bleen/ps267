@@ -43,7 +43,6 @@ module:
   gtranslate: 0
   handy_cache_tags: 0
   help: 0
-  hide_revision_field: 0
   image: 0
   layout_discovery: 0
   link: 0
@@ -69,6 +68,7 @@ module:
   views_slideshow_cycle: 0
   views_ui: 0
   ds: 1
+  hide_revision_field: 1
   menu_link_content: 1
   pathauto: 1
   ds_extras: 2

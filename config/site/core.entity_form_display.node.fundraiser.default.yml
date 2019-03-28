@@ -172,5 +172,6 @@ content:
 hidden:
   created: true
   promote: true
+  revision_log: true
   sticky: true
   uid: true

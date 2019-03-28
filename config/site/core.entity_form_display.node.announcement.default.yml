@@ -90,4 +90,5 @@ content:
 hidden:
   path: true
   promote: true
+  revision_log: true
   uid: true
