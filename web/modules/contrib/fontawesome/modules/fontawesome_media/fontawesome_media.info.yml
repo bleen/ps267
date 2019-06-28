@@ -1,9 +1,11 @@
-name: 'Font Awesome'
+name: 'Font Awesome Media Entity'
 type: module
-description: 'The most popular icon set and toolkit on the web.'
+description: 'Adds a Font Awesome Media Entity Type.'
 
 # core: 8.x
-configure: fontawesome.admin_settings
+dependencies:
+  - fontawesome:fontawesome
+  - drupal:svg_image
 
 # Information added by Drupal.org packaging script on 2019-05-11
 version: '8.x-2.13'
