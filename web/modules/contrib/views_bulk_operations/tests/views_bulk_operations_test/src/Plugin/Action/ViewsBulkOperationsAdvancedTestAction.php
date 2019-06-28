@@ -2,6 +2,7 @@
 
 namespace Drupal\views_bulk_operations_test\Plugin\Action;
 
+use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\views_bulk_operations\Action\ViewsBulkOperationsActionBase;
 use Drupal\views_bulk_operations\Action\ViewsBulkOperationsPreconfigurationInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -23,6 +24,7 @@ use Drupal\views\ViewExecutable;
  * )
  */
 class ViewsBulkOperationsAdvancedTestAction extends ViewsBulkOperationsActionBase implements ViewsBulkOperationsPreconfigurationInterface, PluginFormInterface {
+  use MessengerTrait;
 
   /**
    * {@inheritdoc}
@@ -38,7 +40,7 @@ class ViewsBulkOperationsAdvancedTestAction extends ViewsBulkOperationsActionBas
       throw new \Exception('Context array empty in action object.');
     }
 
-    drupal_set_message(sprintf('Test action (preconfig: %s, config: %s, label: %s)',
+    $this->messenger()->addMessage(sprintf('Test action (preconfig: %s, config: %s, label: %s)',
       $this->configuration['test_preconfig'],
       $this->configuration['test_config'],
       $entity->label()

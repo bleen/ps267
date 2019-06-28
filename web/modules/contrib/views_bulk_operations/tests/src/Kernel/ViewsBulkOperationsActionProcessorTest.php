@@ -24,6 +24,48 @@ class ViewsBulkOperationsActionProcessorTest extends ViewsBulkOperationsKernelTe
   }
 
   /**
+   * Helper function to assert if node statuses have expected values.
+   *
+   * @param array $list
+   *   VBO processing list.
+   * @param bool $exclude
+   *   Exclude mode enabled?
+   */
+  protected function assertNodeStatuses(array $list, $exclude = FALSE) {
+    $nodeStorage = $this->container->get('entity_type.manager')->getStorage('node');
+
+    $expected = [
+      $exclude ? NodeInterface::PUBLISHED : NodeInterface::NOT_PUBLISHED,
+      $exclude ? NodeInterface::NOT_PUBLISHED : NodeInterface::PUBLISHED,
+    ];
+
+    $statuses = [];
+
+    foreach ($this->testNodesData as $id => $lang_data) {
+      $node = $nodeStorage->load($id);
+      $statuses[$id] = intval($node->status->value);
+
+      // Reset node status.
+      $node->status->value = 1;
+      $node->save();
+    }
+
+    foreach ($statuses as $id => $status) {
+      $asserted = FALSE;
+      foreach ($list as $item) {
+        if ($item[3] == $id) {
+          $this->assertEquals($expected[0], $status);
+          $asserted = TRUE;
+          break;
+        }
+      }
+      if (!$asserted) {
+        $this->assertEquals($expected[1], $status);
+      }
+    }
+  }
+
+  /**
    * Tests general functionality of ViewsBulkOperationsActionProcessor.
    *
    * @covers ::getPageList
@@ -66,24 +108,36 @@ class ViewsBulkOperationsActionProcessorTest extends ViewsBulkOperationsKernelTe
     // Execute the action.
     $results = $this->executeAction($vbo_data);
 
-    $nodeStorage = $this->container->get('entity_type.manager')->getStorage('node');
+    $this->assertNodeStatuses($vbo_data['list']);
+  }
 
-    $statuses = [];
+  /**
+   * Tests exclude mode of ViewsBulkOperationsActionProcessor.
+   *
+   * @covers ::getPageList
+   * @covers ::populateQueue
+   * @covers ::process
+   * @covers ::initialize
+   */
+  public function testViewsbulkOperationsActionProcessorExclude() {
+    $vbo_data = [
+      'view_id' => 'views_bulk_operations_test',
+      'action_id' => 'views_bulk_operations_advanced_test_action',
+      'exclude_mode' => TRUE,
+      'preconfiguration' => [
+        'test_preconfig' => 'test',
+        'test_config' => 'unpublish',
+      ],
+    ];
 
-    foreach ($this->testNodesData as $id => $lang_data) {
-      $node = $nodeStorage->load($id);
-      $statuses[$id] = intval($node->status->value);
-    }
+    // Get list of rows to process from different view pages.
+    $selection = [1, 2, 4, 18];
+    $vbo_data['list'] = $this->getResultsList($vbo_data, $selection);
 
-    foreach ($statuses as $id => $status) {
-      foreach ($vbo_data['list'] as $item) {
-        if ($item[3] == $id) {
-          $this->assertEquals(NodeInterface::NOT_PUBLISHED, $status);
-          break 2;
-        }
-      }
-      $this->assertEquals(NodeInterface::PUBLISHED, $status);
-    }
+    // Execute the action.
+    $results = $this->executeAction($vbo_data);
+
+    $this->assertNodeStatuses($vbo_data['list'], $vbo_data['exclude_mode']);
   }
 
 }

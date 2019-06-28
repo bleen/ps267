@@ -162,16 +162,34 @@ class ViewsBulkOperationsViewData implements ViewsBulkOperationsViewDataInterfac
   /**
    * Get the total count of results on all pages.
    *
+   * @param bool $clear_on_exposed
+   *   Are we clearing selection on exposed filters change?
+   *
    * @return int
    *   The total number of results this view displays.
    */
-  public function getTotalResults() {
+  public function getTotalResults($clear_on_exposed = FALSE) {
     $total_results = NULL;
-    if (!empty($this->view->pager->total_items)) {
-      $total_results = $this->view->pager->total_items;
+    if (!$clear_on_exposed && !empty($this->view->getExposedInput())) {
+      // Execute the view without exposed input set.
+      $view = Views::getView($this->view->id());
+      $view->setDisplay($this->view->current_display);
+      $view->get_total_rows = TRUE;
+
+      // We have to set exposed input to some value here, empty
+      // value will be overwritten with query params by Views so
+      // setting an empty array wouldn't work.
+      $view->setExposedInput(['_views_bulk_operations_override' => TRUE]);
+      $view->execute();
     }
-    elseif (!empty($this->view->total_rows)) {
-      $total_results = $this->view->total_rows;
+    else {
+      $view = $this->view;
+    }
+    if (!empty($view->pager->total_items)) {
+      $total_results = $view->pager->total_items;
+    }
+    elseif (!empty($view->total_rows)) {
+      $total_results = $view->total_rows;
     }
 
     return $total_results;

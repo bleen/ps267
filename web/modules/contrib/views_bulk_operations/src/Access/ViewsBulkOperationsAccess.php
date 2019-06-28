@@ -3,7 +3,7 @@
 namespace Drupal\views_bulk_operations\Access;
 
 use Drupal\Core\Routing\Access\AccessInterface;
-use Drupal\user\PrivateTempStoreFactory;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Access\AccessResult;
@@ -15,9 +15,9 @@ use Drupal\views\Views;
 class ViewsBulkOperationsAccess implements AccessInterface {
 
   /**
-   * Temporary user storage object.
+   * The tempstore service.
    *
-   * @var \Drupal\user\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
 

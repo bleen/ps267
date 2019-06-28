@@ -5,7 +5,7 @@ namespace Drupal\views_bulk_operations\Form;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\user\PrivateTempStoreFactory;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionManager;
 use Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionProcessorInterface;
 
@@ -17,9 +17,9 @@ class ConfigureAction extends FormBase {
   use ViewsBulkOperationsFormTrait;
 
   /**
-   * User private temporary storage factory.
+   * The tempstore service.
    *
-   * @var \Drupal\user\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
 
@@ -40,7 +40,7 @@ class ConfigureAction extends FormBase {
   /**
    * Constructor.
    *
-   * @param \Drupal\user\PrivateTempStoreFactory $tempStoreFactory
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $tempStoreFactory
    *   User private temporary storage factory.
    * @param \Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionManager $actionManager
    *   Extended action manager object.
@@ -62,7 +62,7 @@ class ConfigureAction extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('user.private_tempstore'),
+      $container->get('tempstore.private'),
       $container->get('plugin.manager.views_bulk_operations_action'),
       $container->get('views_bulk_operations.processor')
     );
@@ -89,20 +89,7 @@ class ConfigureAction extends FormBase {
 
     $form['#title'] = $this->t('Configure "%action" action applied to the selection', ['%action' => $form_data['action_label']]);
 
-    $selection = [];
-    if (!empty($form_data['entity_labels'])) {
-      $form['list'] = [
-        '#theme' => 'item_list',
-        '#items' => $form_data['entity_labels'],
-      ];
-    }
-    else {
-      $form['list'] = [
-        '#type' => 'item',
-        '#markup' => $this->t('All view results'),
-      ];
-    }
-    $form['list']['#title'] = $this->t('Selected @count entities:', ['@count' => $form_data['selected_count']]);
+    $form['list'] = $this->getListRenderable($form_data);
 
     // :D Make sure the submit button is at the bottom of the form
     // and is editale from the action buildConfigurationForm method.

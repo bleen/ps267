@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ba8e5a3559c7d9500edaea658946dbc",
+    "content-hash": "02a974b628eb3bb7d68159812e2dc5f8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3965,29 +3965,29 @@
         },
         {
             "name": "drupal/views_bulk_operations",
-            "version": "2.5.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_bulk_operations.git",
-                "reference": "8.x-2.5"
+                "reference": "8.x-3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_bulk_operations-8.x-2.5.zip",
-                "reference": "8.x-2.5",
-                "shasum": "3ec848b4f235720d05cb9713ea80a86415b6909f"
+                "url": "https://ftp.drupal.org/files/projects/views_bulk_operations-8.x-3.2.zip",
+                "reference": "8.x-3.2",
+                "shasum": "8648525ff00f32aa0b3682c104630cc392d08dbc"
             },
             "require": {
-                "drupal/core": "^8.4"
+                "drupal/core": "~8.5"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.5",
-                    "datestamp": "1550740384",
+                    "version": "8.x-3.2",
+                    "datestamp": "1559040784",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4028,7 +4028,7 @@
             "description": "Adds an ability to perform bulk operations on selected entities from view results. Provides an API to create such operations.",
             "homepage": "https://www.drupal.org/project/views_bulk_operations",
             "support": {
-                "source": "http://cgit.drupalcode.org/views_bulk_operations",
+                "source": "https://git.drupalcode.org/project/views_bulk_operations",
                 "issues": "https://www.drupal.org/project/issues/views_bulk_operations?version=8.x",
                 "docs": "https://www.drupal.org/docs/8/modules/views-bulk-operations-vbo"
             }

@@ -17,6 +17,11 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
   use StringTranslationTrait;
 
   /**
+   * Maximum number of labels fetched for informational purposes.
+   */
+  const MAX_LIST_COUNT = 50;
+
+  /**
    * View data provider service.
    *
    * @var \Drupal\views_bulk_operations\Service\ViewsbulkOperationsViewDataInterface
@@ -50,6 +55,13 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
    * @var bool
    */
   protected $initialized = FALSE;
+
+  /**
+   * Are we operating in exclude mode?
+   *
+   * @var bool
+   */
+  protected $excludeMode = FALSE;
 
   /**
    * The processed action object.
@@ -115,18 +127,22 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
       $this->queue = [];
     }
 
-    if (!isset($view_data['configuration'])) {
-      $view_data['configuration'] = [];
-    }
-    if (!empty($view_data['preconfiguration'])) {
-      $view_data['configuration'] += $view_data['preconfiguration'];
-    }
+    $this->excludeMode = $view_data['exclude_mode'];
 
-    // Initialize action object.
-    $this->action = $this->actionManager->createInstance($view_data['action_id'], $view_data['configuration']);
+    if (isset($view_data['action_id'])) {
+      if (!isset($view_data['configuration'])) {
+        $view_data['configuration'] = [];
+      }
+      if (!empty($view_data['preconfiguration'])) {
+        $view_data['configuration'] += $view_data['preconfiguration'];
+      }
 
-    // Set action context.
-    $this->setActionContext($view_data);
+      // Initialize action object.
+      $this->action = $this->actionManager->createInstance($view_data['action_id'], $view_data['configuration']);
+
+      // Set action context.
+      $this->setActionContext($view_data);
+    }
 
     // Set entire view data as object parameter for future reference.
     $this->bulkFormData = $view_data;
@@ -161,15 +177,39 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
   /**
    * {@inheritdoc}
    */
+  public function getLabels(array $view_data) {
+    $this->initialize($view_data);
+
+    // We don't want to load too many entities here due to performance reasons.
+    if (count($view_data['list']) > self::MAX_LIST_COUNT) {
+      $view_data['list'] = array_slice($view_data['list'], 0, self::MAX_LIST_COUNT);
+    }
+
+    $this->populateQueue($view_data);
+
+    $labels = [];
+    foreach ($this->queue as $entity) {
+      $labels[] = $entity->label();
+    }
+    return $labels;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getPageList($page) {
     $list = [];
 
     $this->viewDataService->init($this->view, $this->view->getDisplay(), $this->bulkFormData['relationship_id']);
 
     // Set exposed filters and pager parameters.
-    if (!empty($this->bulkFormData['exposed_input'])) {
+    if (!empty($this->bulkFormData['clear_on_exposed']) && !empty($this->bulkFormData['exposed_input'])) {
       $this->view->setExposedInput($this->bulkFormData['exposed_input']);
     }
+    else {
+      $this->view->setExposedInput(['_views_bulk_operations_override' => TRUE]);
+    }
+
     $this->view->setItemsPerPage($this->bulkFormData['batch_size']);
     $this->view->setCurrentPage($page);
     $this->view->build();
@@ -189,13 +229,25 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
     foreach ($this->view->result as $row) {
       $entity = $this->viewDataService->getEntity($row);
 
-      // We don't need entity label here.
-      $list[] = [
-        $row->{$base_field},
-        $entity->language()->getId(),
-        $entity->getEntityTypeId(),
-        $entity->id(),
-      ];
+      $exclude = FALSE;
+      if ($this->excludeMode) {
+        // Filter out excluded results basing on base field ID and language.
+        foreach ($this->bulkFormData['exclude_list'] as $key => $item) {
+          if ($row->{$base_field} === $item[0] && $entity->language()->getId() === $item[1]) {
+            $exclude = TRUE;
+            break;
+          }
+        }
+      }
+
+      if (!$exclude) {
+        $list[] = [
+          $row->{$base_field},
+          $entity->language()->getId(),
+          $entity->getEntityTypeId(),
+          $entity->id(),
+        ];
+      }
     }
 
     return $list;
@@ -204,10 +256,14 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
   /**
    * {@inheritdoc}
    */
-  public function populateQueue(array $list, array &$context = []) {
+  public function populateQueue(array $data, array &$context = []) {
+    $list = $data['list'];
+    $base_field = $this->view->storage->get('base_field');
+    $this->queue = [];
+
     // Determine batch size and offset.
     if (!empty($context)) {
-      $batch_size = $this->bulkFormData['batch_size'];
+      $batch_size = $data['batch_size'];
       if (!isset($context['sandbox']['current_batch'])) {
         $context['sandbox']['current_batch'] = 0;
       }
@@ -227,18 +283,11 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
       $batch_list = $list;
     }
 
-    $base_field_values = [];
-    foreach ($batch_list as $item) {
-      $base_field_values[] = $item[0];
-    }
-    if (empty($base_field_values)) {
-      return 0;
-    }
-
     $this->view->setItemsPerPage(0);
     $this->view->setCurrentPage(0);
     $this->view->setOffset(0);
     $this->view->initHandlers();
+    $this->view->setExposedInput(['_views_bulk_operations_override' => TRUE]);
 
     // Remove all exposed filters so we don't have any default filter
     // values that could make the actual selection out of range.
@@ -254,13 +303,21 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
     $this->view->build();
 
     // Modify the view query: determine and apply the base field condition.
-    $base_field = $this->view->storage->get('base_field');
+    $base_field_values = [];
+    foreach ($batch_list as $item) {
+      $base_field_values[] = $item[0];
+    }
+    if (empty($base_field_values)) {
+      return 0;
+    }
+
     if (isset($this->view->query->fields[$base_field])) {
       $base_field_alias = $this->view->query->fields[$base_field]['table'] . '.' . $this->view->query->fields[$base_field]['alias'];
     }
     else {
       $base_field_alias = $base_field;
     }
+
     $this->view->query->addWhere(0, $base_field_alias, $base_field_values, 'IN');
 
     // Rebuild the view query.
@@ -272,6 +329,7 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
 
     // Get entities.
     $this->viewDataService->init($this->view, $this->view->getDisplay(), $this->bulkFormData['relationship_id']);
+
     foreach ($this->view->result as $row_index => $row) {
       // This may return rows for all possible languages.
       // Check if the current language is on the list.
@@ -294,7 +352,7 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
     if (!empty($context)) {
       if (!isset($context['sandbox']['total'])) {
         if (empty($list)) {
-          $context['sandbox']['total'] = $this->viewDataService->getTotalResults();
+          $context['sandbox']['total'] = $this->viewDataService->getTotalResults($data['clear_on_exposed']);
         }
         else {
           $context['sandbox']['total'] = count($list);
@@ -390,21 +448,21 @@ class ViewsBulkOperationsActionProcessor implements ViewsBulkOperationsActionPro
    * {@inheritdoc}
    */
   public function executeProcessing(array &$data, $view = NULL) {
+    if ($data['exclude_mode'] && empty($data['exclude_list'])) {
+      $data['exclude_list'] = $data['list'];
+      $data['list'] = [];
+    }
     if ($data['batch']) {
       $batch = ViewsBulkOperationsBatch::getBatch($data);
       batch_set($batch);
     }
     else {
-      $list = $data['list'];
-
       // Populate and process queue.
-      if (!$this->initialized) {
-        $this->initialize($data, $view);
+      $this->initialize($data, $view);
+      if (empty($data['list'])) {
+        $data['list'] = $this->getPageList(0);
       }
-      if (empty($list)) {
-        $list = $this->getPageList(0);
-      }
-      if ($this->populateQueue($list)) {
+      if ($this->populateQueue($data)) {
         $batch_results = $this->process();
       }
 

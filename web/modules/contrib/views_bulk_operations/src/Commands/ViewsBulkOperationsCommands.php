@@ -25,7 +25,7 @@ class ViewsBulkOperationsCommands extends DrushCommands {
   /**
    * Object that gets the current view data.
    *
-   * @var \Drupal\views_bulk_operations\ViewsbulkOperationsViewDataInterface
+   * @var \Drupal\views_bulk_operations\Service\ViewsbulkOperationsViewDataInterface
    */
   protected $viewData;
 
@@ -41,7 +41,7 @@ class ViewsBulkOperationsCommands extends DrushCommands {
    *
    * @param \Drupal\Core\Session\AccountInterface $currentUser
    *   The current user object.
-   * @param \Drupal\views_bulk_operations\ViewsbulkOperationsViewDataInterface $viewData
+   * @param \Drupal\views_bulk_operations\Service\ViewsbulkOperationsViewDataInterface $viewData
    *   VBO View data service.
    * @param \Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionManager $actionManager
    *   VBO Action manager service.

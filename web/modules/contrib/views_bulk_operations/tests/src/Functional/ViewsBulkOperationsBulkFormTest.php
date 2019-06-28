@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\views_bulk_operations\Functional;
 
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -9,6 +10,8 @@ use Drupal\Tests\BrowserTestBase;
  * @group views_bulk_operations
  */
 class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
+
+  const TEST_NODE_COUNT = 15;
 
   /**
    * Modules to install.
@@ -33,7 +36,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
     $this->testNodes = [];
     $time = $this->container->get('datetime.time')->getRequestTime();
-    for ($i = 0; $i < 15; $i++) {
+    for ($i = 0; $i < self::TEST_NODE_COUNT; $i++) {
       // Ensure nodes are sorted in the same order they are inserted in the
       // array.
       $time -= $i;
@@ -105,7 +108,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     // Make sure a checkbox appears on all rows.
     $edit = [];
     for ($i = 0; $i < 4; $i++) {
-      $assertSession->fieldExists('edit-views-bulk-operations-bulk-form-' . $i, NULL, format_string('The checkbox on row @row appears.', ['@row' => $i]));
+      $assertSession->fieldExists('edit-views-bulk-operations-bulk-form-' . $i, NULL, new FormattableMarkup('The checkbox on row @row appears.', ['@row' => $i]));
     }
 
     // The advanced action should not be shown on the form - no permission.
@@ -146,11 +149,18 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     $edit = [
       'select_all' => 1,
     ];
+    // With the exclude mode, we also have to select all rows of the
+    // view, otherwise those will be treated as excluded. In the UI
+    // this is handled by JS.
+    foreach ([0, 1, 2, 3] as $index) {
+      $edit["views_bulk_operations_bulk_form[$index]"] = TRUE;
+    }
+
     $this->drupalPostForm(NULL, $edit, t('Simple test action'));
 
     $assertSession->pageTextContains(
-      sprintf('Action processing results: Test (%d).', count($this->testNodes)),
-      sprintf('Action has been executed on %d nodes.', count($this->testNodes))
+      sprintf('Action processing results: Test (%d).', self::TEST_NODE_COUNT),
+      sprintf('Action has been executed on %d nodes.', self::TEST_NODE_COUNT)
     );
 
   }
@@ -232,21 +242,26 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
       ));
     }
 
-    // Test the select all functionality with batching and entity
+    // Test the exclude functionality with batching and entity
     // property changes affecting view query results.
     $edit = [
       'action' => 'views_bulk_operations_advanced_test_action',
       'select_all' => 1,
     ];
+    // Let's leave two checkboxes unchecked to test the exclude mode.
+    foreach ([0, 2] as $index) {
+      $edit["views_bulk_operations_bulk_form[$index]"] = TRUE;
+    }
     $this->drupalPostForm(NULL, $edit, t('Apply to selected items'));
     $this->drupalPostForm(NULL, ['test_config' => 'unpublish'], t('Apply'));
     $this->drupalPostForm(NULL, [], t('Execute action'));
-    // Again, take offset into account (-1).
+    // Again, take offset into account (-1), also take 2 excluded
+    // rows into account (-2).
     $assertSession->pageTextContains(
-      sprintf('Action processing results: Test (%d).', (count($this->testNodes) - 1)),
-      sprintf('Action has been executed on all %d nodes.', (count($this->testNodes) - 1))
+      sprintf('Action processing results: Test (%d).', (count($this->testNodes) - 3)),
+      sprintf('Action has been executed on all %d nodes.', (count($this->testNodes) - 3))
     );
-    $this->assertTrue(empty($this->cssSelect('table.views-table tr')), t("The view doesn't show any results."));
+    $this->assertTrue((count($this->cssSelect('table.views-table tbody tr')) === 2), t("The view shows only excluded results."));
   }
 
   /**
@@ -280,9 +295,10 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
     $testViewConfig = \Drupal::service('config.factory')->getEditable('views.view.views_bulk_operations_test_advanced');
     $configData = $testViewConfig->getRawData();
-    $configData['display']['default']['display_options']['pager']['options']['items_per_page'] = 5;
+    $items_per_page = 5;
 
     foreach ($cases as $case) {
+      $items_per_page++;
 
       // Populate form values.
       $edit = [
@@ -295,10 +311,14 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
       }
       else {
         $edit['select_all'] = 1;
+        // So we don't cause exclude mode.
+        for ($i = 0; $i < $items_per_page; $i++) {
+          $edit["views_bulk_operations_bulk_form[$i]"] = TRUE;
+        }
       }
 
       // Update test view configuration.
-      $configData['display']['default']['display_options']['pager']['options']['items_per_page']++;
+      $configData['display']['default']['display_options']['pager']['options']['items_per_page'] = $items_per_page;
       $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['batch'] = $case['batch'];
       if (isset($case['batch_size'])) {
         $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['batch_size'] = $case['batch_size'];

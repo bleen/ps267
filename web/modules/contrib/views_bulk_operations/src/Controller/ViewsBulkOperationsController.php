@@ -4,10 +4,10 @@ namespace Drupal\views_bulk_operations\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\views_bulk_operations\Form\ViewsBulkOperationsFormTrait;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionProcessorInterface;
-use Drupal\user\PrivateTempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,9 +21,9 @@ class ViewsBulkOperationsController extends ControllerBase implements ContainerI
   use ViewsBulkOperationsFormTrait;
 
   /**
-   * User private temporary storage factory.
+   * The tempstore service.
    *
-   * @var \Drupal\user\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStoreFactory;
 
@@ -37,8 +37,8 @@ class ViewsBulkOperationsController extends ControllerBase implements ContainerI
   /**
    * Constructs a new controller object.
    *
-   * @param \Drupal\user\PrivateTempStoreFactory $tempStoreFactory
-   *   User private temporary storage factory.
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $tempStoreFactory
+   *   Private temporary storage factory.
    * @param \Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionProcessorInterface $actionProcessor
    *   Views Bulk Operations action processor.
    */
@@ -55,7 +55,7 @@ class ViewsBulkOperationsController extends ControllerBase implements ContainerI
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('user.private_tempstore'),
+      $container->get('tempstore.private'),
       $container->get('views_bulk_operations.processor')
     );
   }
@@ -102,29 +102,51 @@ class ViewsBulkOperationsController extends ControllerBase implements ContainerI
 
     $list = $request->request->get('list');
 
-    $op = $request->request->get('op', 'add');
-    $change = 0;
+    $op = $request->request->get('op', 'check');
+    // Reverse operation when in exclude mode.
+    if (!empty($view_data['exclude_mode'])) {
+      if ($op === 'add') {
+        $op = 'remove';
+      }
+      elseif ($op === 'remove') {
+        $op = 'add';
+      }
+    }
 
-    if ($op === 'add') {
-      foreach ($list as $bulkFormKey => $label) {
-        if (!isset($view_data['list'][$bulkFormKey])) {
-          $view_data['list'][$bulkFormKey] = $this->getListItem($bulkFormKey, $label);
-          $change++;
+    switch ($op) {
+      case 'add':
+        foreach ($list as $bulkFormKey) {
+          if (!isset($view_data['list'][$bulkFormKey])) {
+            $view_data['list'][$bulkFormKey] = $this->getListItem($bulkFormKey);
+          }
         }
-      }
-    }
-    elseif ($op === 'remove') {
-      foreach ($list as $bulkFormKey => $label) {
-        if (isset($view_data['list'][$bulkFormKey])) {
-          unset($view_data['list'][$bulkFormKey]);
-          $change--;
+        break;
+
+      case 'remove':
+        foreach ($list as $bulkFormKey) {
+          if (isset($view_data['list'][$bulkFormKey])) {
+            unset($view_data['list'][$bulkFormKey]);
+          }
         }
-      }
+        break;
+
+      case 'method_include':
+        unset($view_data['exclude_mode']);
+        $view_data['list'] = [];
+        break;
+
+      case 'method_exclude':
+        $view_data['exclude_mode'] = TRUE;
+        $view_data['list'] = [];
+        break;
     }
+
     $this->setTempstoreData($view_data);
 
+    $count = empty($view_data['exclude_mode']) ? count($view_data['list']) : $view_data['total_results'] - count($view_data['list']);
+
     $response = new AjaxResponse();
-    $response->setData(['change' => $change]);
+    $response->setData(['count' => $count]);
     return $response;
   }
 

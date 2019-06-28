@@ -94,7 +94,7 @@ class ViewsBulkOperationsBatchTest extends UnitTestCase {
       ->with('test_view')
       ->will($this->returnValue($view));
 
-    $entity_manager = $this->getMock('Drupal\Core\Entity\EntityManagerInterface');
+    $entity_manager = $this->createMock('Drupal\Core\Entity\EntityManagerInterface');
     $entity_manager->expects($this->any())
       ->method('getStorage')
       ->with('view')
@@ -133,6 +133,8 @@ class ViewsBulkOperationsBatchTest extends UnitTestCase {
       'sandbox' => [
         'processed' => 0,
         'total' => $entities_count,
+        'page' => 0,
+        'npages' => ceil($entities_count / $batch_size),
       ],
     ];
 

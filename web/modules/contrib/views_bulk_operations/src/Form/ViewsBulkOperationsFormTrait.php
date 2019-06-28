@@ -4,11 +4,13 @@ namespace Drupal\views_bulk_operations\Form;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerTrait;
 
 /**
  * Defines common methods for Views Bulk Operations forms.
  */
 trait ViewsBulkOperationsFormTrait {
+  use MessengerTrait;
 
   /**
    * The tempstore object associated with the current view.
@@ -41,22 +43,72 @@ trait ViewsBulkOperationsFormTrait {
     $form_data = $this->getTempstoreData($view_id, $display_id);
 
     // Get data needed for selected entities list.
-    if (!empty($form_data['list'])) {
-      $form_data['entity_labels'] = [];
-      $form_data['selected_count'] = 0;
-      foreach ($form_data['list'] as $item) {
-        $form_data['selected_count']++;
-        $form_data['entity_labels'][] = $item[4];
-      }
-    }
-    elseif ($form_data['total_results']) {
-      $form_data['selected_count'] = $form_data['total_results'];
-    }
-    else {
-      $form_data['selected_count'] = (string) $this->t('all');
-    }
+    $this->addListData($form_data);
 
     return $form_data;
+  }
+
+  /**
+   * Add data needed for entity list rendering.
+   */
+  protected function addListData(&$form_data) {
+    $form_data['entity_labels'] = [];
+    if (!empty($form_data['list'])) {
+      $form_data['selected_count'] = count($form_data['list']);
+      if (!empty($form_data['exclude_mode'])) {
+        $form_data['selected_count'] = $form_data['total_results'] - $form_data['selected_count'];
+      }
+
+      // In case of exclude mode we still get excluded labels
+      // so we temporarily switch off exclude mode.
+      $modified_form_data = $form_data;
+      $modified_form_data['exclude_mode'] = FALSE;
+      $form_data['entity_labels'] = $this->actionProcessor->getLabels($modified_form_data);
+    }
+    else {
+      $form_data['selected_count'] = $form_data['total_results'];
+    }
+  }
+
+  /**
+   * Build selected entities list renderable.
+   *
+   * @param array $form_data
+   *   Data needed for this form.
+   *
+   * @return array
+   *   Renderable list array.
+   */
+  protected function getListRenderable(array $form_data) {
+    if (!empty($form_data['entity_labels'])) {
+      $renderable = [
+        '#theme' => 'item_list',
+        '#items' => $form_data['entity_labels'],
+      ];
+      $more = count($form_data['list']) - count($form_data['entity_labels']);
+      if ($more > 0) {
+        $renderable['#items'][] = [
+          '#children' => $this->t('..plus @count more..', [
+            '@count' => $more,
+          ]),
+          '#wrapper_attributes' => ['class' => ['more']],
+        ];
+      }
+    }
+    else {
+      $renderable = [
+        '#type' => 'item',
+        '#markup' => $this->t('All view results'),
+      ];
+    }
+    if (!empty($form_data['exclude_mode'])) {
+      $renderable['#title'] = $this->t('Selected @count entities - all in the view except:', ['@count' => $form_data['selected_count']]);
+    }
+    else {
+      $renderable['#title'] = $this->t('Selected @count entities:', ['@count' => $form_data['selected_count']]);
+    }
+
+    return $renderable;
   }
 
   /**
@@ -99,16 +151,12 @@ trait ViewsBulkOperationsFormTrait {
    *
    * @param string $bulkFormKey
    *   A bulk form key.
-   * @param mixed $label
-   *   Entity label, string or
-   *   \Drupal\Core\StringTranslation\TranslatableMarkup.
    *
    * @return array
    *   Entity list item.
    */
-  protected function getListItem($bulkFormKey, $label) {
+  protected function getListItem($bulkFormKey) {
     $item = json_decode(base64_decode($bulkFormKey));
-    $item[] = $label;
     return $item;
   }
 
@@ -190,7 +238,7 @@ trait ViewsBulkOperationsFormTrait {
    */
   public function cancelForm(array &$form, FormStateInterface $form_state) {
     $form_data = $form_state->get('views_bulk_operations');
-    drupal_set_message($this->t('Canceled "%action".', ['%action' => $form_data['action_label']]));
+    $this->messenger()->addMessage($this->t('Canceled "%action".', ['%action' => $form_data['action_label']]));
     $form_state->setRedirectUrl($form_data['redirect_url']);
   }
 

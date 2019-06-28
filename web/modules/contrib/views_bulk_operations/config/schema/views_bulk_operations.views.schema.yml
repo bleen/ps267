@@ -25,4 +25,4 @@ views.field.views_bulk_operations_bulk_form:
       label: 'Preliminary configuration array'
     clear_on_exposed:
       type: boolean
-      label: 'Clear on exposed'
+      label: 'Clear selection when exposed filters change'
