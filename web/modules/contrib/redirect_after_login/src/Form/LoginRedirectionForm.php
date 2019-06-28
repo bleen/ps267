@@ -1,21 +1,16 @@
 <?php
 
-/**
-
- * @file
-
- * Contains \Drupal\redirect_after_login\Form\LoginRedirectionForm.
-
- */
-
 namespace Drupal\redirect_after_login\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Class LoginRedirectionForm.
+ *
+ * @package Drupal\redirect_after_login\Form
+ */
 class LoginRedirectionForm extends ConfigFormBase {
-
-  public $allUser = [];
 
   /**
    * {@inheritdoc}
@@ -28,33 +23,41 @@ class LoginRedirectionForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $savedPathRoles = \Drupal::config('redirect_after_login.settings')->get('login_redirection');
-    $this->allUser = user_role_names();
-    $form['roles'] = array(
-        '#type' => 'fieldset',
-        '#title' => t('All roles'),
-    );
-    foreach ($this->allUser as $user => $name) {
+    $config = $this->config('redirect_after_login.settings');
+    $savedPathRoles = $config->get('login_redirection');
+
+    $form['roles'] = [
+      '#type' => 'fieldset',
+      '#title' => t('All roles'),
+    ];
+    foreach (user_role_names() as $user => $name) {
       if ($user != "anonymous") {
         $form['roles'][$user] = [
-            '#type' => 'textfield',
-            '#title' => t($name),
-            '#size' => 60,
-            '#maxlength' => 128,
-            '#description' => t('Add a valid url or &ltfront> for main page'),
-            '#required' => TRUE,
-            '#default_value' => $savedPathRoles[$user],
+          '#type' => 'textfield',
+          '#title' => $name,
+          '#size' => 60,
+          '#maxlength' => 128,
+          '#description' => $this->t('Add a valid url or &ltfront> for main page'),
+          '#required' => TRUE,
+          '#default_value' => isset($savedPathRoles[$user]) ? $savedPathRoles[$user] : '',
         ];
       }
     }
+
+    $form['exclude_urls'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Exclude url from redirection'),
+      '#description' => $this->t('One url per line. Redirection on this urls will be skipped. You can use wildcard "*".'),
+      '#default_value' => $config->get('exclude_urls'),
+    ];
+
     $form['actions']['#type'] = 'actions';
     $form['actions']['submit'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Save'),
-        '#button_type' => 'primary',
+      '#type' => 'submit',
+      '#value' => $this->t('Save'),
+      '#button_type' => 'primary',
     ];
-    // Disable caching
-    $form['#cache']['max-age'] = 0;
+
     return $form;
   }
 
@@ -62,13 +65,16 @@ class LoginRedirectionForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    $path = '';
-    foreach ($this->allUser as $user => $name) {
+
+    foreach (user_role_names() as $user => $name) {
       if ($user == "anonymous") {
         continue;
       }
-      if (!(preg_match('/^[#?\/]+/', $form_state->getValue($user)) || $form_state->getValue($user) == '<front>' )) {
-        $form_state->setErrorByName($user, t('This URL %url is not valid for role %role.', array('%url' => $form_state->getValue($user), '%role' => $name)));
+      if (!(preg_match('/^[#?\/]+/', $form_state->getValue($user)) || $form_state->getValue($user) == '<front>')) {
+        $form_state->setErrorByName($user, t('This URL %url is not valid for role %role.', [
+          '%url' => $form_state->getValue($user),
+          '%role' => $name,
+        ]));
       }
       $path = $form_state->getValue($user);
       $is_valid = \Drupal::service('path.validator')->isValid($path);
@@ -83,15 +89,19 @@ class LoginRedirectionForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $loginUrls = [];
-    foreach ($this->allUser as $user => $name) {
+    foreach (user_role_names() as $user => $name) {
       if ($form_state->getValue($user) == '<front>') {
         $loginUrls[$user] = '/';
-      } else {
+      }
+      else {
         $loginUrls[$user] = $form_state->getValue($user);
         $form_state->getValue($user);
       }
     }
-    $this->config('redirect_after_login.settings')->set('login_redirection', $loginUrls)->save();
+    $this->config('redirect_after_login.settings')
+      ->set('login_redirection', $loginUrls)
+      ->set('exclude_urls', $form_state->getValue('exclude_urls'))
+      ->save();
 
     parent::submitForm($form, $form_state);
   }

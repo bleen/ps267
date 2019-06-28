@@ -3778,17 +3778,17 @@
         },
         {
             "name": "drupal/redirect_after_login",
-            "version": "2.3.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/redirect_after_login.git",
-                "reference": "8.x-2.3"
+                "reference": "8.x-2.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/redirect_after_login-8.x-2.3.zip",
-                "reference": "8.x-2.3",
-                "shasum": "a85beee201c2502abe3c971c3aabb6619200139a"
+                "url": "https://ftp.drupal.org/files/projects/redirect_after_login-8.x-2.5.zip",
+                "reference": "8.x-2.5",
+                "shasum": "66c0e1823581bb4bb6087d43e964132c9434bda0"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3799,8 +3799,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.3",
-                    "datestamp": "1532504881",
+                    "version": "8.x-2.5",
+                    "datestamp": "1552929184",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3825,7 +3825,7 @@
             "description": "Redirect user after login to a configured url",
             "homepage": "https://drupal.org/project/redirect_after_login",
             "support": {
-                "source": "http://cgit.drupalcode.org/redirect_after_login"
+                "source": "https://git.drupalcode.org/project/redirect_after_login"
             }
         },
         {
