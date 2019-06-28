@@ -11,7 +11,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Descriptor\JsonDescriptor;
 use Symfony\Component\Console\Descriptor\XmlDescriptor;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ListCommands extends DrushCommands
@@ -215,6 +214,11 @@ class ListCommands extends DrushCommands
         }
 
         ksort($namespaced);
+
+        // Sort inside namespaces.
+        foreach ($namespaced as $key => &$items) {
+            ksort($items);
+        }
         return $namespaced;
     }
 }

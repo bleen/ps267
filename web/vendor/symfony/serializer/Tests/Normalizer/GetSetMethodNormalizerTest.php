@@ -63,7 +63,7 @@ class GetSetMethodNormalizerTest extends TestCase
             ->expects($this->once())
             ->method('normalize')
             ->with($object, 'any')
-            ->will($this->returnValue('string_object'))
+            ->willReturn('string_object')
         ;
 
         $this->assertEquals(
@@ -89,6 +89,23 @@ class GetSetMethodNormalizerTest extends TestCase
         $this->assertEquals('foo', $obj->getFoo());
         $this->assertEquals('bar', $obj->getBar());
         $this->assertTrue($obj->isBaz());
+    }
+
+    public function testIgnoredAttributesInContext()
+    {
+        $ignoredAttributes = ['foo', 'bar', 'baz', 'object'];
+        $this->normalizer->setIgnoredAttributes($ignoredAttributes);
+        $obj = new GetSetDummy();
+        $obj->setFoo('foo');
+        $obj->setBar('bar');
+        $obj->setCamelCase(true);
+        $this->assertEquals(
+            [
+                'fooBar' => 'foobar',
+                'camelCase' => true,
+            ],
+            $this->normalizer->normalize($obj, 'any')
+        );
     }
 
     public function testDenormalizeWithObject()

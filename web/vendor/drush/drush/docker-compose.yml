@@ -10,6 +10,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - mariadb-datavolume:/var/lib/mysql
+    ports:
+      - '3006:3306'
 
   # More info at https://github.com/wodby/php
   # We don't want their drupal-php image as that ships with a Drush inside.
@@ -19,9 +21,8 @@ services:
     environment:
       PHP_SENDMAIL_PATH: /dev/null
       UNISH_DB_URL: ${UNISH_DB_URL-mysql://root:password@mariadb}
-      UNISH_NO_TIMEOUTS: y
       COLUMNS: ${COLUMNS-80} # Set 80 columns for docker exec -it.
-    ## Read instructions at https://wodby.com/stacks/drupal/docs/local/xdebug/
+    ## Read instructions at https://wodby.com/docs/stacks/drupal/local/#debugging-cli-requests
       PHP_XDEBUG:
       PHP_XDEBUG_DEFAULT_ENABLE:
       PHP_IDE_CONFIG:
@@ -41,6 +42,8 @@ services:
       POSTGRES_USER: unish
     volumes:
       - postgres-datavolume:/var/lib/postgresql/data
+    ports:
+      - '5532:5432'
 
 #data volumes https://docs.docker.com/storage/volumes/
 volumes:

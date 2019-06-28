@@ -4,11 +4,11 @@ namespace Drush\Drupal\Commands\core;
 
 use Drush\Commands\DrushCommands;
 use Drush\Drush;
-use Drush\Log\LogLevel;
 use Drush\Psysh\DrushCommand;
 use Drush\Psysh\DrushHelpCommand;
 use Drupal\Component\Assertion\Handle;
 use Drush\Psysh\Shell;
+use Drush\Runtime\Runtime;
 use Psy\Configuration;
 use Psy\VersionUpdater\Checker;
 use Webmozart\PathUtil\Path;
@@ -68,7 +68,7 @@ class CliCommands extends DrushCommands
         // PsySH will never return control to us, but our shutdown handler will still
         // run after the user presses ^D.  Mark this command as completed to avoid a
         // spurious error message.
-        drush_set_context('DRUSH_EXECUTION_COMPLETED', true);
+        Runtime::setCompleted();
 
         // Run the terminate event before the shell is run. Otherwise, if the shell
         // is forking processes (the default), any child processes will close the
@@ -177,13 +177,13 @@ class CliCommands extends DrushCommands
         // @todo Could use a global file within drush?
         if (!$drupal_major_version) {
             $file_name = 'global-' . md5($this->getConfig()->cwd());
-        } // If only the Drupal version is being used for the history.
-        else if ($options['version-history']) {
+        } elseif ($options['version-history']) {
+            // If only the Drupal version is being used for the history.
             $file_name = "drupal-$drupal_major_version";
-        } // If there is an alias, use that in the site specific name. Otherwise,
-        // use a hash of the root path.
-        else {
-             $aliasRecord = Drush::aliasManager()->getSelf();
+        } else {
+            // If there is an alias, use that in the site specific name. Otherwise,
+            // use a hash of the root path.
+            $aliasRecord = Drush::aliasManager()->getSelf();
 
             if ($aliasRecord->name()) {
                 $site_suffix = ltrim($aliasRecord->name(), '@');
