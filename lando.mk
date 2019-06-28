@@ -10,6 +10,7 @@ list:
 	@echo "backup"
 	@echo "reset"
 	@echo "update"
+	@echo "outdated"
 	@echo "deploy-to-prod"
 
 export-config:
@@ -34,6 +35,11 @@ update:
 	lando composer update
 	lando drush updb -y
 	export-config
+
+outdated:
+	@echo "Listing outdated packages"
+	@echo "Only displaying drupal packages; for all packages run `composer outdated --direct`"
+	cd ./web && composer outdated --direct | grep drupal
 
 deploy-to-prod:
 	@echo "Deploying 'live' site"
