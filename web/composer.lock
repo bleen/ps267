@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ce4b7c595c22879323daf9fe7e53c75",
+    "content-hash": "66bca15d246cd229ba50bd52ef8aeabc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5054,26 +5054,20 @@
         },
         {
             "name": "kigkonsult/icalcreator",
-            "version": "v2.27.21",
+            "version": "v2.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iCalcreator/iCalcreator.git",
-                "reference": "d3bcc3b0438b96952ef61ab3310e0c84ad610d11"
+                "reference": "eb296c7cc448fe2f206f5b0cad941331e68aa348"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iCalcreator/iCalcreator/zipball/d3bcc3b0438b96952ef61ab3310e0c84ad610d11",
-                "reference": "d3bcc3b0438b96952ef61ab3310e0c84ad610d11",
+                "url": "https://api.github.com/repos/iCalcreator/iCalcreator/zipball/eb296c7cc448fe2f206f5b0cad941331e68aa348",
+                "reference": "eb296c7cc448fe2f206f5b0cad941331e68aa348",
                 "shasum": ""
             },
             "require": {
-                "ext-openssl": "*",
-                "ext-simplexml": "*",
-                "ext-zlib": "*",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "6.5.13"
+                "php": ">=5.4"
             },
             "type": "library",
             "autoload": {
@@ -5081,16 +5075,16 @@
                     "autoload.php"
                 ],
                 "psr-4": {
-                    "Kigkonsult\\Icalcreator\\": [
+                    "kigkonsult\\iCalcreator\\": [
                         "src/",
-                        "src/Util/",
-                        "src/Traits/"
+                        "src/util/",
+                        "src/traits/"
                     ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "(AGPLv3 or proprietary)"
             ],
             "authors": [
                 {
@@ -5098,11 +5092,12 @@
                     "email": "ical@kigkonsult.se"
                 }
             ],
-            "description": "iCalcreator is the PHP implementation of rfc2445/rfc5545, management of calendar information",
-            "homepage": "https://kigkonsult.se",
+            "description": "iCalcreator is the PHP implementation of rfc2445/rfc5545, management of iCal formatted files",
+            "homepage": "http://kigkonsult.se",
             "keywords": [
                 "calendar",
                 "daylight",
+                "file",
                 "management",
                 "rfc2445",
                 "rfc5545",
@@ -5116,7 +5111,7 @@
                 "vtimezone",
                 "vtodo"
             ],
-            "time": "2019-05-25T00:00:00+00:00"
+            "time": "2018-10-31T00:00:00+00:00"
         },
         {
             "name": "league/container",

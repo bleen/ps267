@@ -29,7 +29,7 @@
         "drupal/button_link": "^1",
         "drupal/addanother": "^1.0",
         "drupal/entity_clone": "^1.0",
-        "kigkonsult/icalcreator": "^2.24",
+        "kigkonsult/icalcreator": "2.24.2",
         "drupal/google_analytics": "^3",
         "drupal/views_bulk_operations": "^3",
         "drupal/backup_migrate": "^4",

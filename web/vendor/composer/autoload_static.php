@@ -38,6 +38,10 @@ class ComposerStaticInitDrupal8
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'k' => 
+        array (
+            'kigkonsult\\iCalcreator\\' => 23,
+        ),
         'Z' => 
         array (
             'Zumba\\Mink\\Driver\\' => 18,
@@ -113,10 +117,6 @@ class ComposerStaticInitDrupal8
         'L' => 
         array (
             'League\\Container\\' => 17,
-        ),
-        'K' => 
-        array (
-            'Kigkonsult\\Icalcreator\\' => 23,
         ),
         'J' => 
         array (
@@ -211,6 +211,12 @@ class ComposerStaticInitDrupal8
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'kigkonsult\\iCalcreator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src',
+            1 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/util',
+            2 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/traits',
         ),
         'Zumba\\Mink\\Driver\\' => 
         array (
@@ -407,12 +413,6 @@ class ComposerStaticInitDrupal8
         'League\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
-        ),
-        'Kigkonsult\\Icalcreator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src',
-            1 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util',
-            2 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits',
         ),
         'JsonSchema\\' => 
         array (
