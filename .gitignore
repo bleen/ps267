@@ -3,6 +3,6 @@
 .local.env
 
 *.sql
-sql
+/sql
 
 salt.txt
