@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.calendar_event.body
+    - field.field.node.calendar_event.field_calendar_event_date
     - node.type.calendar_event
   module:
     - text
