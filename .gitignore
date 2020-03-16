@@ -6,4 +6,6 @@
 *.sql
 /sql
 
+backups/files
+
 salt.txt

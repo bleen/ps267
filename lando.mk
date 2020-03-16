@@ -1,5 +1,8 @@
 include .env
 
+DUMPFILE=db_$(shell date +%FT%T%Z).sql
+DUMPFILE_PATH=../${DUMPFILE}
+
 .PHONY: list export-config backup reset update deploy-to-prod
 
 default: list
@@ -19,9 +22,9 @@ export-config:
 
 backup:
 	@echo "Backing up files and db for $(PROJECT_NAME)..."
-	lando drush sql-dump --result-file=../db.sql --gzip
-	lando ssh -c "mv db.sql.gz $(PROJECT_ROOT)/sql/"
-	rsync -a $(PROJECT_LOCAL_ROOT)/web/sites/default/files /Users/bleen/Documents/Kids\ \&\ School/PS267/Helping\ out/ps267.org/backups/files
+	lando drush sql-dump --result-file=$(DUMPFILE_PATH) --gzip
+	lando ssh -c "mv $(DUMPFILE).gz $(PROJECT_ROOT)/sql/"
+	rsync -a $(PROJECT_LOCAL_ROOT)/web/sites/default/files /Users/bleen/sites/ps267.org/backups/files
 
 reset:
 	@echo "Getting DB and files from 'Live' and using them to reset the local DB and files"
