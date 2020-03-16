@@ -32,6 +32,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: Extras
+      region: content
     group_fundraiser_dates:
       children:
         - field_fundraiser_important_dates
@@ -45,6 +46,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Dates
+      region: content
     group_fundraiser_forms_and_docs:
       children:
         - field_fundriaser_forms_documents
@@ -58,6 +60,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Forms and Documents'
+      region: content
     group_fundraiser_calls_to_action:
       children:
         - field_fundraiser_calls_to_action
@@ -71,6 +74,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Calls to Action'
+      region: content
 id: node.fundraiser.default
 targetEntityType: node
 bundle: fundraiser
@@ -83,6 +87,7 @@ content:
       rows: 9
       summary_rows: 3
       placeholder: ''
+      show_summary: false
     third_party_settings: {  }
     region: content
   field_fundraiser_calls_to_action:
