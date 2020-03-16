@@ -2,8 +2,6 @@
 
 namespace Drupal\Tests\views_bulk_operations\Kernel;
 
-use Drupal\node\NodeInterface;
-
 /**
  * @coversDefaultClass \Drupal\views_bulk_operations\Service\ViewsBulkOperationsActionProcessor
  * @group views_bulk_operations
@@ -34,19 +32,14 @@ class ViewsBulkOperationsActionProcessorTest extends ViewsBulkOperationsKernelTe
   protected function assertNodeStatuses(array $list, $exclude = FALSE) {
     $nodeStorage = $this->container->get('entity_type.manager')->getStorage('node');
 
-    $expected = [
-      $exclude ? NodeInterface::PUBLISHED : NodeInterface::NOT_PUBLISHED,
-      $exclude ? NodeInterface::NOT_PUBLISHED : NodeInterface::PUBLISHED,
-    ];
-
     $statuses = [];
 
     foreach ($this->testNodesData as $id => $lang_data) {
       $node = $nodeStorage->load($id);
-      $statuses[$id] = intval($node->status->value);
+      $statuses[$id] = $node->isPublished();
 
       // Reset node status.
-      $node->status->value = 1;
+      $node->setPublished();
       $node->save();
     }
 
@@ -54,13 +47,13 @@ class ViewsBulkOperationsActionProcessorTest extends ViewsBulkOperationsKernelTe
       $asserted = FALSE;
       foreach ($list as $item) {
         if ($item[3] == $id) {
-          $this->assertEquals($expected[0], $status);
+          $this->assertEquals((bool) $exclude, $status);
           $asserted = TRUE;
           break;
         }
       }
       if (!$asserted) {
-        $this->assertEquals($expected[1], $status);
+        $this->assertEquals(!(bool) $exclude, $status);
       }
     }
   }

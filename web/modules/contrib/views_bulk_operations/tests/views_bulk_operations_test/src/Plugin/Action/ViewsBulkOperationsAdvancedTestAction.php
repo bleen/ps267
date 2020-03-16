@@ -51,7 +51,7 @@ class ViewsBulkOperationsAdvancedTestAction extends ViewsBulkOperationsActionBas
       if (!$entity->isDefaultTranslation()) {
         $entity = \Drupal::service('entity_type.manager')->getStorage('node')->load($entity->id());
       }
-      $entity->setPublished(FALSE);
+      $entity->setUnpublished();
       $entity->save();
     }
 

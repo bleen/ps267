@@ -18,11 +18,17 @@ views.field.views_bulk_operations_bulk_form:
       type: string
       label: 'Title of the action selector form element'
     selected_actions:
-      type: ignore
-      label: 'Selected actions array'
-    preconfiguration:
-      type: ignore
-      label: 'Preliminary configuration array'
+      type: sequence
+      label: 'Selected actions data array'
+      sequence:
+        type: mapping
+        mapping:
+          action_id:
+            type: string
+            label: 'Action plugin ID'
+          preconfiguration:
+            label: 'Preliminary configuration array for the plugin'
+            type: ignore
     clear_on_exposed:
       type: boolean
       label: 'Clear selection when exposed filters change'

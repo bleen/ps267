@@ -2,8 +2,8 @@
 
 namespace Drupal\views_bulk_operations\Action;
 
+use Drupal\Component\Plugin\ConfigurableInterface;
 use Drupal\Core\Action\ActionBase;
-use Drupal\Component\Plugin\ConfigurablePluginInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Session\AccountInterface;
@@ -14,7 +14,7 @@ use Drupal\Core\Session\AccountInterface;
  * Provides a base implementation for a configurable
  * and preconfigurable VBO Action plugin.
  */
-abstract class ViewsBulkOperationsActionBase extends ActionBase implements ViewsBulkOperationsActionInterface, ConfigurablePluginInterface {
+abstract class ViewsBulkOperationsActionBase extends ActionBase implements ViewsBulkOperationsActionInterface, ConfigurableInterface {
 
   /**
    * Action context.
@@ -122,13 +122,6 @@ abstract class ViewsBulkOperationsActionBase extends ActionBase implements Views
    */
   public function setConfiguration(array $configuration) {
     $this->configuration = $configuration;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function calculateDependencies() {
-    return [];
   }
 
   /**

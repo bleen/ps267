@@ -3,6 +3,7 @@
 namespace Drupal\views_bulk_operations\Service;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Drupal\Core\Pager\PagerManagerInterface;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Views;
@@ -21,6 +22,13 @@ class ViewsBulkOperationsViewData implements ViewsBulkOperationsViewDataInterfac
    * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
    */
   protected $eventDispatcher;
+
+  /**
+   * Pager manager service.
+   *
+   * @var \Drupal\Core\Pager\PagerManagerInterface
+   */
+  protected $pagerManager;
 
   /**
    * The current view.
@@ -62,9 +70,15 @@ class ViewsBulkOperationsViewData implements ViewsBulkOperationsViewDataInterfac
    *
    * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
    *   The event dispatcher service.
+   * @param \Drupal\Core\Pager\PagerManagerInterface $pagerManager
+   *   Pager manager service.
    */
-  public function __construct(EventDispatcherInterface $eventDispatcher) {
+  public function __construct(
+    EventDispatcherInterface $eventDispatcher,
+    PagerManagerInterface $pagerManager
+  ) {
     $this->eventDispatcher = $eventDispatcher;
+    $this->pagerManager = $pagerManager;
   }
 
   /**
@@ -170,26 +184,44 @@ class ViewsBulkOperationsViewData implements ViewsBulkOperationsViewDataInterfac
    */
   public function getTotalResults($clear_on_exposed = FALSE) {
     $total_results = NULL;
+
     if (!$clear_on_exposed && !empty($this->view->getExposedInput())) {
+      if ($pager = $this->view->getPager()) {
+        $pager_options = $pager->options;
+        $pager_options['total_items'] = $pager->getTotalItems();
+      }
+
       // Execute the view without exposed input set.
       $view = Views::getView($this->view->id());
       $view->setDisplay($this->view->current_display);
+      // If there are any arguments, pass them through.
+      if (!empty($this->view->args)) {
+        $view->setArguments($this->view->args);
+      }
       $view->get_total_rows = TRUE;
 
       // We have to set exposed input to some value here, empty
       // value will be overwritten with query params by Views so
       // setting an empty array wouldn't work.
+      $pager = $view->getPager();
       $view->setExposedInput(['_views_bulk_operations_override' => TRUE]);
-      $view->execute();
     }
     else {
       $view = $this->view;
     }
+
+    // Execute the view if not already executed.
+    $view->execute();
+
     if (!empty($view->pager->total_items)) {
       $total_results = $view->pager->total_items;
     }
     elseif (!empty($view->total_rows)) {
       $total_results = $view->total_rows;
+    }
+
+    if (!empty($pager_options)) {
+      $this->pagerManager->createPager($pager_options['total_items'], $pager_options['items_per_page'], $pager_options['id']);
     }
 
     return $total_results;

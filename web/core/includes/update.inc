@@ -48,7 +48,7 @@ function update_check_incompatibility($name, $type = 'module') {
     // code changes that were made in the filesystem before the update script
     // was initiated.
     $themes = \Drupal::service('theme_handler')->rebuildThemeData();
-    $modules = system_rebuild_module_data();
+    $modules = \Drupal::service('extension.list.module')->reset()->getList();
   }
 
   if ($type == 'module' && isset($modules[$name])) {
@@ -58,8 +58,7 @@ function update_check_incompatibility($name, $type = 'module') {
     $file = $themes[$name];
   }
   if (!isset($file)
-      || !isset($file->info['core'])
-      || $file->info['core'] != \Drupal::CORE_COMPATIBILITY
+      || $file->info['core_incompatible']
       || version_compare(phpversion(), $file->info['php']) < 0) {
     return TRUE;
   }
@@ -608,7 +607,7 @@ function update_retrieve_dependencies() {
   $return = [];
   // Get a list of installed modules, arranged so that we invoke their hooks in
   // the same order that \Drupal::moduleHandler()->invokeAll() does.
-  foreach (\Drupal::keyValue('system.schema')->getAll() as $module => $schema) {
+  foreach (drupal_get_installed_schema_version(NULL, FALSE, TRUE) as $module => $schema) {
     if ($schema == SCHEMA_UNINSTALLED) {
       // Nothing to upgrade.
       continue;

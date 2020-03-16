@@ -167,18 +167,17 @@ display:
           buttons: false
           action_title: Action
           selected_actions:
-            views_bulk_operations_simple_test_action: views_bulk_operations_simple_test_action
-            views_bulk_operations_advanced_test_action: views_bulk_operations_advanced_test_action
-            views_bulk_operations_passing_test_action: views_bulk_operations_passing_test_action
-          preconfiguration:
-            views_bulk_operations_simple_test_action:
-              label_override: 'Simple test action'
-              preconfig: 'Test setting'
-            views_bulk_operations_advanced_test_action:
-              label_override: ''
-              test_preconfig: 'Test setting'
-            views_bulk_operations_passing_test_action:
-              label_override: ''
+            0:
+              action_id: views_bulk_operations_simple_test_action
+              preconfiguration:
+                label_override: 'Simple test action'
+                preconfig: 'Test setting'
+            1:
+              action_id: views_bulk_operations_advanced_test_action
+              preconfiguration:
+                test_preconfig: 'Test setting'
+            2:
+              action_id: views_bulk_operations_passing_test_action
           plugin_id: views_bulk_operations_bulk_form
       filters:
         status:

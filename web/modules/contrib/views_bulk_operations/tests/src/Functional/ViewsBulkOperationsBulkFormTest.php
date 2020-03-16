@@ -14,6 +14,11 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
   const TEST_NODE_COUNT = 15;
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stable';
+
+  /**
    * Modules to install.
    *
    * @var array
@@ -103,7 +108,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
     // Test that the views edit header appears first.
     $first_form_element = $this->xpath('//form/div[1][@id = :id]', [':id' => 'edit-header']);
-    $this->assertTrue($first_form_element, 'The views form edit header appears first.');
+    $this->assertNotEmpty($first_form_element, 'The views form edit header appears first.');
 
     // Make sure a checkbox appears on all rows.
     $edit = [];
@@ -112,7 +117,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     }
 
     // The advanced action should not be shown on the form - no permission.
-    $this->assertTrue(empty($this->cssSelect('select[name=views_bulk_operations_advanced_test_action]')), t('Advanced action is not selectable.'));
+    $this->assertEmpty($this->cssSelect('input[value=views_bulk_operations_advanced_test_action]'), t('Advanced action is not selectable.'));
 
     // Log in as a user with 'edit any page content' permission
     // to have access to perform the test operation.
@@ -131,7 +136,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
     $testViewConfig = \Drupal::service('config.factory')->get('views.view.views_bulk_operations_test');
     $configData = $testViewConfig->getRawData();
-    $preconfig_setting = $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['preconfiguration']['views_bulk_operations_simple_test_action']['preconfig'];
+    $preconfig_setting = $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['selected_actions'][0]['preconfiguration']['preconfig'];
 
     foreach ($selected as $index) {
       $assertSession->pageTextContains(
@@ -182,7 +187,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     // First execute the simple action to test
     // the ViewsBulkOperationsController class.
     $edit = [
-      'action' => 'views_bulk_operations_simple_test_action',
+      'action' => 0,
     ];
     $selected = [0, 2];
     foreach ($selected as $index) {
@@ -197,7 +202,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
     // Execute the advanced test action.
     $edit = [
-      'action' => 'views_bulk_operations_advanced_test_action',
+      'action' => 1,
     ];
     $selected = [0, 1, 3];
     foreach ($selected as $index) {
@@ -230,7 +235,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     // the next page should display results.
     $testViewConfig = \Drupal::service('config.factory')->get('views.view.views_bulk_operations_test_advanced');
     $configData = $testViewConfig->getRawData();
-    $preconfig_setting = $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['preconfiguration']['views_bulk_operations_advanced_test_action']['test_preconfig'];
+    $preconfig_setting = $configData['display']['default']['display_options']['fields']['views_bulk_operations_bulk_form']['selected_actions'][1]['preconfiguration']['test_preconfig'];
 
     // NOTE: The view pager has an offset set on this view, so checkbox
     // indexes are not equal to test nodes array keys. Hence the $index + 1.
@@ -245,7 +250,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
     // Test the exclude functionality with batching and entity
     // property changes affecting view query results.
     $edit = [
-      'action' => 'views_bulk_operations_advanced_test_action',
+      'action' => 1,
       'select_all' => 1,
     ];
     // Let's leave two checkboxes unchecked to test the exclude mode.
@@ -261,7 +266,8 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
       sprintf('Action processing results: Test (%d).', (count($this->testNodes) - 3)),
       sprintf('Action has been executed on all %d nodes.', (count($this->testNodes) - 3))
     );
-    $this->assertTrue((count($this->cssSelect('table.views-table tbody tr')) === 2), t("The view shows only excluded results."));
+
+    $this->assertNotEmpty((count($this->cssSelect('table.vbo-table tbody tr')) === 2), "The view shows only excluded results.");
   }
 
   /**
@@ -302,7 +308,7 @@ class ViewsBulkOperationsBulkFormTest extends BrowserTestBase {
 
       // Populate form values.
       $edit = [
-        'action' => 'views_bulk_operations_passing_test_action',
+        'action' => 2,
       ];
       if ($case['selection']) {
         foreach ($selected as $index) {

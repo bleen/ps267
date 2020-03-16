@@ -107,9 +107,18 @@ function _fontawesome_modify_library(array &$libraries, $librarySuffix, $type, $
     $libraryName .= '.' . $librarySuffix;
   }
 
+  // Load the configuration settings.
+  $configuration_settings = \Drupal::config('fontawesome.settings');
+
   // Handle SVG method.
   if ($type == 'svg') {
     $librarySettings = array_shift($libraries[$libraryName]['js']);
+    $librarySettings['type'] = 'external';
+    $librarySettings['attributes']['crossorigin'] = 'anonymous';
+    // Add the integrity check if set.
+    if (!empty($configuration_settings->get('external_svg_integrity'))) {
+      $librarySettings['attributes']['integrity'] = $configuration_settings->get('external_svg_integrity');
+    }
     $libraries[$libraryName]['js'] = [
       $cdnLocation => $librarySettings,
     ];
@@ -117,6 +126,9 @@ function _fontawesome_modify_library(array &$libraries, $librarySuffix, $type, $
   // Handle WebFonts method.
   elseif ($type == 'webfonts') {
     $librarySettings = array_shift($libraries[$libraryName]['css']['theme']);
+    $librarySettings['type'] = 'external';
+    // TODO: add integrity and crossorigin to CSS.
+    // See https://www.drupal.org/project/drupal/issues/2716115.
     $libraries[$libraryName]['css']['theme'] = [
       $cdnLocation => $librarySettings,
     ];
@@ -165,6 +177,14 @@ function fontawesome_ckeditor_css_alter(&$css, $editor) {
     $fontawesome_library = \Drupal::service('library.discovery')->getLibraryByName('fontawesome', 'fontawesome.webfonts');
     // Attach it's CSS.
     $css[] = $fontawesome_library['css'][0]['data'];
+
+    // Attach the shim CSS if needed.
+    if (Drupal::config('fontawesome.settings')->get('use_shim')) {
+      // Load the library.
+      $fontawesome_library_shim = \Drupal::service('library.discovery')->getLibraryByName('fontawesome', 'fontawesome.webfonts.shim');
+      // Attach it's CSS.
+      $css[] = $fontawesome_library_shim['css'][0]['data'];
+    }
   }
 }
 
@@ -280,6 +300,7 @@ function fontawesome_theme($existing, $type, $theme, $path) {
         'settings' => NULL,
         'transforms' => NULL,
         'mask' => NULL,
+        'css' => NULL,
       ],
     ],
   ];
