@@ -2,6 +2,7 @@ include .env
 
 DUMPFILE=db_$(shell date +%FT%T%Z).sql
 DUMPFILE_PATH=../${DUMPFILE}
+LIVE_TARBALL=/home/alexross/sites/ps267.org/backups/site_ps267.tar.gz
 
 .PHONY: list export-config backup reset update deploy-to-prod
 
@@ -21,10 +22,14 @@ export-config:
 	lando drush config-export -y --destination=${PROJECT_CONFIG_LOCATION}
 
 backup:
-	@echo "Backing up files and db for $(PROJECT_NAME)..."
+	@echo "Backing up local files and db for $(PROJECT_NAME)..."
 	lando drush sql-dump --result-file=$(DUMPFILE_PATH) --gzip
 	lando ssh -c "mv $(DUMPFILE).gz $(PROJECT_ROOT)/sql/"
 	rsync -a $(PROJECT_LOCAL_ROOT)/web/sites/default/files /Users/bleen/sites/ps267.org/backups/files
+	@echo "====================================================="
+	@echo "Backing up prod site (including all files) and database for $(PROJECT_NAME)..."
+	lando drush @ps267.live sql-dump --result-file=/home/alexross/sites/ps267.org/backups/$(DUMPFILE) --gzip
+	ssh alexross@bleen.net tar -czvf $(LIVE_TARBALL) /home/alexross/sites/ps267.org
 
 reset:
 	@echo "Getting DB and files from 'Live' and using them to reset the local DB and files"
