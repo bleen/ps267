@@ -8373,7 +8373,7 @@ a {
 .calendar .events .event .date .day-of-week {
   width: 100%;
   display: block;
-  color: #999;
+  color: #666;
   margin-top: -5px;
 }
 .calendar .events .event .details {
