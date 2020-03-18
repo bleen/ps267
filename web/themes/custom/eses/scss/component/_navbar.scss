@@ -45,6 +45,10 @@ body {
   border: none;
   margin-bottom: 0;
 
+  #block-eses-main-menu-menu {
+    color: #fff;
+  }
+
   @media #{$tablet} {
     background-color: lighten($brand-primary, 15%);
   }
